@@ -80,6 +80,11 @@ button{cursor:pointer;}
 .tile.on{border-color:var(--azul2);background:var(--azul3);}
 .tile.on .l{color:var(--azul);}
 
+.nuevo{background:linear-gradient(135deg,#1a3a6b,#2d6a9f);color:#fff;border-radius:14px;padding:12px 14px;margin-bottom:12px;display:flex;gap:12px;align-items:center;justify-content:space-between;}
+.nuevo b{display:block;font-size:1rem;}
+.nuevo span{font-size:.8rem;opacity:.85;}
+.nuevo .btn{background:#fff;color:#1a3a6b;flex:none;}
+.tag-nuevo{display:inline-block;background:var(--rojo);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:6px;margin-top:6px;}
 .ayuda{background:var(--azul3);border-radius:14px;padding:12px 14px;margin-bottom:12px;font-size:.9rem;color:var(--text);display:flex;gap:12px;align-items:flex-start;}
 .ayuda b{color:var(--azul);}
 .ayuda ol{padding-left:18px;margin-top:4px;}
@@ -466,7 +471,12 @@ function llenarSelects(){
 var SUP=localStorage.getItem('cargas_sup')||'';   // clave normalizada de la supervisora elegida
 var sFiltro='';                                     // '' activas · pend · obs
 var sQ='';
-window.elegirSup=function(k){ SUP=k; localStorage.setItem('cargas_sup',k); sFiltro=''; sQ=''; irVista('sup'); };
+// "nuevas" = cargas subidas después de la última vez que la supervisora tocó "Entendido" (o eligió su nombre)
+var vistoKey=function(){ return 'cargas_visto_'+SUP; };
+var visto=function(){ return localStorage.getItem(vistoKey())||''; };
+var esNueva=function(it){ return it.estado==='pend'&&(it.subido||'')>visto(); };
+window.marcarVisto=function(){ var max=misItems().reduce(function(m,it){ return it.subido>m?it.subido:m; },''); localStorage.setItem(vistoKey(),max||new Date().toISOString()); renderSup(); };
+window.elegirSup=function(k){ SUP=k; localStorage.setItem('cargas_sup',k); sFiltro=''; sQ=''; if(!visto()) localStorage.setItem(vistoKey(),new Date().toISOString()); irVista('sup'); };
 window.cambiarSup=function(){ SUP=''; localStorage.removeItem('cargas_sup'); irVista('sup'); };
 window.filtrar=function(f){ sFiltro=(sFiltro===f)?'':f; renderSup(); };
 window.ocultarAyuda=function(){ localStorage.setItem('cargas_ayuda','no'); renderSup(); };
@@ -478,6 +488,8 @@ function renderWho(){
   if(hay){ $('whoAv').textContent=iniciales(SUPS[SUP]); $('whoN').textContent='Hola, '+titulo(SUPS[SUP]).split(' ')[0]; $('whoS').textContent=titulo(SUPS[SUP]); }
   var pend=hay?misItems().filter(function(it){ return it.estado==='pend'; }).length:0;
   $('navBadge').style.display=pend?'':'none'; $('navBadge').textContent=pend;
+  // número en el icono de la app (Android/Chrome y PWA instalada)
+  try{ if(navigator.setAppBadge){ if(pend) navigator.setAppBadge(pend); else navigator.clearAppBadge(); } }catch(e){}
 }
 function renderSup(){
   renderWho();
@@ -498,6 +510,8 @@ function renderSup(){
       '<button class="tile p'+(sFiltro==='pend'?' on':'')+'" onclick="filtrar(\'pend\')"><span class="v">'+pend+'</span><span class="l">Por reportar</span></button>'+
       '<button class="tile x'+(sFiltro==='obs'?' on':'')+'" onclick="filtrar(\'obs\')"><span class="v">'+obs+'</span><span class="l">Con observación</span></button>'+
       '<button class="tile a" onclick="irVista(\'arch\')"><span class="v">'+ok+'</span><span class="l">Archivadas</span></button></div>';
+    var nuevas=todos.filter(esNueva).length;
+    if(nuevas) h+='<div class="nuevo"><div><b>🆕 '+(nuevas===1?'Tienes 1 carga nueva':'Tienes '+nuevas+' cargas nuevas')+'</b><span>Se subió información desde tu última visita.</span></div><button class="btn sec chico" onclick="marcarVisto()">Entendido</button></div>';
     if(localStorage.getItem('cargas_ayuda')!=='no'&&pend) h+='<div class="ayuda"><div><b>¿Cómo reporto una carga?</b><ol><li>Cuando llegue la carga a la tienda, toca <b>Reportar llegada</b>.</li><li>Elige si llegó completa, incompleta o no llegó.</li><li>Saca fotos de lo que llegó y toca <b>Enviar</b>.</li></ol></div><button class="x" onclick="ocultarAyuda()" aria-label="Cerrar">&times;</button></div>';
   }
   h+='<div class="buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="text" id="sQ" placeholder="Buscar tienda, OC o marca…" value="'+esc(sQ)+'" oninput="sQ=this.value;renderLista()"></div>';
@@ -527,6 +541,7 @@ function cajaReporte(r){
 function tarjeta(it){
   var o=it.o, idx=ITEMS.indexOf(it), d=dias(it.subido);
   var h='<div class="card"><div class="top"><div><div class="tn">'+esc(it.tienda)+'</div><div class="oc">OC <b>'+esc(o.oc)+'</b>'+(o.comentario?' · '+esc(o.comentario):'')+'</div></div><span class="st '+it.estado+'">'+ESTADO_TXT[it.estado]+'</span></div>';
+  if(esNueva(it)) h+='<div class="tag-nuevo">NUEVO</div>';
   h+='<div class="meta"><span class="bc '+claseCli(o.cliente)+'">'+esc(o.cliente)+'</span>'+(o.marca?'<span>'+esc(o.marca)+'</span>':'')+(o.depto?'<span>· '+esc(o.depto)+'</span>':'')+'<span>· <span class="n">'+it.modelos+'</span> modelo'+(it.modelos>1?'s':'')+'</span><span>· <span class="n">'+fmt(it.uds)+'</span> uds</span><span class="dias'+(it.estado==='pend'&&d>=7?' tarde':'')+'">· cargada '+hace(it.subido)+'</span></div>';
   if(it.resp) h+=cajaReporte(it.resp);
   var puede=!API_ERR&&it.sup;

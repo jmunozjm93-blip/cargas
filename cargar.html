@@ -41,6 +41,7 @@
   .bar i { display:block; height:100%; width:30%; background:var(--accent2); animation:slide 1.2s infinite; }
   @keyframes slide { 0%{transform:translateX(-100%)} 100%{transform:translateX(400%)} }
   .small { font-size:.82rem; color:var(--muted); }
+  a.wa { display:inline-block; background:#25d366; color:#fff; text-decoration:none; border-radius:8px; padding:10px 16px; font-weight:700; font-size:.92rem; }
   .aviso { color:var(--warn); }
   details summary { cursor:pointer; color:var(--muted); font-size:.86rem; }
   ol { padding-left:20px; } li { margin:4px 0; }
@@ -180,6 +181,26 @@ el('btnToken').onclick = async () => {
   } catch (e) { el('tokenSt').className = 'st bad'; el('tokenSt').textContent = '✗ ' + e.message; }
 };
 
+// ---------- aviso por WhatsApp: mensaje ya escrito con el resumen de lo subido ----------
+const titulo = s => String(s || '').toLowerCase().replace(/(^|\s)\S/g, c => c.toUpperCase());
+function mensajeWhatsApp(resumenes) {
+  const porSup = {};
+  for (const r of resumenes) for (const t of r.tiendas) {
+    if (!t.sup) continue;
+    const s = porSup[t.sup] || (porSup[t.sup] = { tiendas: new Set(), n: 0 });
+    s.tiendas.add(t.nombre.replace(/^\d+-/, '')); s.n++;
+  }
+  const clientes = [...new Set(resumenes.map(r => r.cliente))].join(' · ');
+  let m = `Hola! 📦 Subí cargas nuevas de *${clientes}* (${resumenes.length} OC: ${resumenes.map(r => r.oc).join(', ')}).
+
+`;
+  for (const [sup, s] of Object.entries(porSup).sort()) m += `• *${titulo(sup)}*: ${s.n} carga${s.n > 1 ? 's' : ''} (${[...s.tiendas].join(', ')})
+`;
+  m += `
+Cuando llegue la carga a la tienda, repórtenla con fotos aquí 👉 https://${OWNER}.github.io/${REPO}/`;
+  return 'https://wa.me/?text=' + encodeURIComponent(m);
+}
+
 // ---------- estado ----------
 async function cargarEstado() {
   try {
@@ -297,7 +318,7 @@ function siguiente() {
           setSt(c, '', 'Registrando…');
           await registrar(msg.ocs.map(o => o.resumen), file.name);
           setSt(c, 'ok', `✓ Subidas ${msg.ocs.length} OC. GitHub Pages las publica en 1–2 minutos.`);
-          acts.innerHTML = `<a class="small" href="${commit.html_url}" target="_blank" rel="noopener">Ver commit</a>`;
+          acts.innerHTML = `<a class="wa" href="${mensajeWhatsApp(msg.ocs.map(o => o.resumen))}" target="_blank" rel="noopener">💬 Avisar por WhatsApp</a><a class="small" href="${commit.html_url}" target="_blank" rel="noopener">Ver commit</a>`;
           cargarEstado();
         } catch (e) { setSt(c, 'bad', '✗ ' + e.message); bUp.disabled = false; }
       });
