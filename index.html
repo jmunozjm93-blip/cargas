@@ -386,6 +386,8 @@ function linkFormulario(it){
 
 // ============================ carga inicial ============================
 function cargar(){
+  // abierta con doble clic (file://) el navegador no deja leer data/ ni el Sheet: se manda al sitio publicado
+  if(location.protocol==='file:'){ $('sLista').innerHTML='<div class="msg err">Esta página no funciona abierta desde el archivo local. Ábrela desde el sitio publicado:<br><a href="https://jmunozjm93-blip.github.io/cargas/">https://jmunozjm93-blip.github.io/cargas/</a></div>'; return; }
   var pMan=fetch('data/manifiesto.json?t='+Date.now()).then(function(r){ if(!r.ok) throw new Error('No encontré data/manifiesto.json'); return r.json(); });
   var pCsv=fetch(SHEET_CSV+'&t='+Date.now()).then(function(r){ if(!r.ok) throw new Error('Google Sheets respondió '+r.status); return r.text(); }).then(leerRespuestas)
     .catch(function(e){ $('sAviso').innerHTML='<div class="aviso">No pude leer las respuestas del formulario ('+esc(e.message)+'). Se muestran todas las cargas como pendientes.</div>'; return []; });
