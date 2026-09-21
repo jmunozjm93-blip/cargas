@@ -67,7 +67,7 @@
         <li><b>Permissions → Repository permissions → Contents:</b> <b>Read and write</b> (nada más)</li>
         <li>Generate token → cópialo y pégalo arriba. Queda guardado solo en este navegador.</li>
       </ol>
-      <p class="small">Si ya tienes el token de <code>levantamientos</code>, puedes editarlo en GitHub y agregarle este repositorio en "Repository access".</p>
+      <p class="small">Este token se guarda aparte del de Levantamiento: cada app usa el suyo.</p>
     </details>
   </div>
 
@@ -97,7 +97,7 @@ const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&am
 el('repoName').textContent = `${OWNER}/${REPO}`;
 
 // ---------- GitHub ----------
-const token = () => localStorage.getItem('gh_token') || '';
+const token = () => localStorage.getItem('gh_token_cargas') || '';
 el('token').value = token();
 async function gh(path, opts = {}) {
   // cache: no-store → GitHub manda max-age=60 y el navegador devolvía listas viejas (sha desactualizado)
@@ -166,7 +166,7 @@ async function quitar(oc) {
 }
 
 el('btnToken').onclick = async () => {
-  localStorage.setItem('gh_token', el('token').value.trim());
+  localStorage.setItem('gh_token_cargas', el('token').value.trim());
   el('tokenSt').className = 'st'; el('tokenSt').textContent = 'Probando…';
   try {
     const r = await gh('');
