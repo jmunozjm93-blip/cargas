@@ -1,750 +1,109 @@
 {
- "ocs": {
-  "525917": {
-   "oc": "525917",
-   "cliente": "Paris",
-   "depto": "Deporte",
-   "marca": "Umbro",
-   "comentario": "",
-   "udsOC": null,
-   "fuente": "Ordenes Picking.xlsx",
-   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
-   "uds": 274,
-   "modelos": 13,
-   "sinSupervisor": [],
-   "tiendas": [
-    {
-     "cod": "22",
-     "nombre": "22-PARIS MARINA ARAUCO",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 274,
-     "modelos": 13
-    }
-   ],
-   "subido": "2026-09-21T18:59:36.761Z"
-  },
-  "525918": {
-   "oc": "525918",
-   "cliente": "Paris",
-   "depto": "Deporte",
-   "marca": "Umbro",
-   "comentario": "",
-   "udsOC": null,
-   "fuente": "Ordenes Picking.xlsx",
-   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
-   "uds": 40,
-   "modelos": 6,
-   "sinSupervisor": [],
-   "tiendas": [
-    {
-     "cod": "22",
-     "nombre": "22-PARIS MARINA ARAUCO",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 40,
-     "modelos": 6
-    }
-   ],
-   "subido": "2026-09-21T18:59:36.761Z"
-  },
-  "525920": {
-   "oc": "525920",
-   "cliente": "Paris",
-   "depto": "Deporte",
-   "marca": "Fila",
-   "comentario": "",
-   "udsOC": null,
-   "fuente": "Ordenes Picking.xlsx",
-   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
-   "uds": 466,
-   "modelos": 12,
-   "sinSupervisor": [],
-   "tiendas": [
-    {
-     "cod": "22",
-     "nombre": "22-PARIS MARINA ARAUCO",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 466,
-     "modelos": 12
-    }
-   ],
-   "subido": "2026-09-21T18:59:36.761Z"
-  },
-  "525921": {
-   "oc": "525921",
-   "cliente": "Paris",
-   "depto": "Deporte",
-   "marca": "Fila",
-   "comentario": "",
-   "udsOC": null,
-   "fuente": "Ordenes Picking.xlsx",
-   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
-   "uds": 80,
-   "modelos": 5,
-   "sinSupervisor": [],
-   "tiendas": [
-    {
-     "cod": "22",
-     "nombre": "22-PARIS MARINA ARAUCO",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 80,
-     "modelos": 5
-    }
-   ],
-   "subido": "2026-09-21T18:59:36.761Z"
-  },
-  "2320560": {
-   "oc": "2320560",
-   "cliente": "Ripley",
-   "depto": "Deporte",
-   "marca": "Converse",
-   "comentario": "Day one runner",
-   "udsOC": 1352,
-   "fuente": "Ordenes_Picking 27.08.xlsx",
-   "archivo": "Cargas_Deporte_Ripley.xlsx",
-   "uds": 1112,
-   "modelos": 3,
-   "sinSupervisor": [
-    "10023-SIN CATALOGAR"
-   ],
-   "tiendas": [
-    {
-     "cod": "10023",
-     "nombre": "10023-SIN CATALOGAR",
-     "sup": "",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10018",
-     "nombre": "10018-Puente",
-     "sup": "ANGELICA GARCIA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10019",
-     "nombre": "10019-Crillon",
-     "sup": "ANGELICA GARCIA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10026",
-     "nombre": "10026-Antofagasta",
-     "sup": "CAMILA GUERRERO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10010",
-     "nombre": "10010-Los Andes",
-     "sup": "DAYAN PILICHI",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10012",
-     "nombre": "10012-Parque Arauco",
-     "sup": "DAYAN PILICHI",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10022",
-     "nombre": "10022-Chillan",
-     "sup": "EVA FONSECA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10016",
-     "nombre": "10016-Plaza Vespucio",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10032",
-     "nombre": "10032-Rancagua",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 24,
-     "modelos": 2
-    },
-    {
-     "cod": "10002",
-     "nombre": "10002-Mall Concepcion",
-     "sup": "GONZALO TOLEDO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10011",
-     "nombre": "10011-Concepcion 2",
-     "sup": "GONZALO TOLEDO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10028",
-     "nombre": "10028-El Trebol",
-     "sup": "GONZALO TOLEDO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10003",
-     "nombre": "10003-Vina",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10025",
-     "nombre": "10025-Valparaiso",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10004",
-     "nombre": "10004-Temuco",
-     "sup": "TERESA LILLO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10014",
-     "nombre": "10014-Puerto Montt",
-     "sup": "TERESA LILLO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10021",
-     "nombre": "10021-Arica",
-     "sup": "YESSICA GRENDY",
-     "uds": 68,
-     "modelos": 3
-    }
-   ],
-   "subido": "2026-09-01T12:00:00.000Z"
-  },
-  "2320561": {
-   "oc": "2320561",
-   "cliente": "Ripley",
-   "depto": "Deporte",
-   "marca": "Converse",
-   "comentario": "Day one runner",
-   "udsOC": 1344,
-   "fuente": "Ordenes_Picking 27.08.xlsx",
-   "archivo": "Cargas_Deporte_Ripley.xlsx",
-   "uds": 1103,
-   "modelos": 3,
-   "sinSupervisor": [],
-   "tiendas": [
-    {
-     "cod": "10051",
-     "nombre": "10051-Mall Calama",
-     "sup": "CAMILA GUERRERO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10046",
-     "nombre": "10046-Plaza Tobalaba",
-     "sup": "CATALINA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10041",
-     "nombre": "10041-La Serena",
-     "sup": "ERIKA ZUAZUA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10069",
-     "nombre": "10069-Coquimbo",
-     "sup": "ERIKA ZUAZUA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10072",
-     "nombre": "10072-Los Angeles",
-     "sup": "EVA FONSECA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10074",
-     "nombre": "10074-Talca",
-     "sup": "EVA FONSECA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10076",
-     "nombre": "10076-Curico",
-     "sup": "EVA FONSECA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10032",
-     "nombre": "10032-Rancagua",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 44,
-     "modelos": 2
-    },
-    {
-     "cod": "10034",
-     "nombre": "10034-Costanera Center",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10045",
-     "nombre": "10045-Plaza Oeste",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10048",
-     "nombre": "10048-Huechuraba",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10057",
-     "nombre": "10057-Florida Center",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10071",
-     "nombre": "10071-Plaza Egana",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10037",
-     "nombre": "10037-Marina Arauco",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10068",
-     "nombre": "10068-Portal Temuco",
-     "sup": "TERESA LILLO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10078",
-     "nombre": "10078-M.Costanera P.Montt",
-     "sup": "TERESA LILLO",
-     "uds": 39,
-     "modelos": 2
-    },
-    {
-     "cod": "10049",
-     "nombre": "10049-Iquique",
-     "sup": "YESSICA GRENDY",
-     "uds": 68,
-     "modelos": 3
-    }
-   ],
-   "subido": "2026-09-01T12:00:00.000Z"
-  },
-  "2320562": {
-   "oc": "2320562",
-   "cliente": "Ripley",
-   "depto": "Deporte",
-   "marca": "Converse",
-   "comentario": "Day one runner",
-   "udsOC": 707,
-   "fuente": "Ordenes_Picking 27.08.xlsx",
-   "archivo": "Cargas_Deporte_Ripley.xlsx",
-   "uds": 573,
-   "modelos": 3,
-   "sinSupervisor": [],
-   "tiendas": [
-    {
-     "cod": "10097",
-     "nombre": "10097-Nueva Alameda",
-     "sup": "ANGELICA GARCIA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10099",
-     "nombre": "10099-San Bernardo",
-     "sup": "CATALINA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10084",
-     "nombre": "10084-Copiapo",
-     "sup": "ERIKA ZUAZUA",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10088",
-     "nombre": "10088-Maipu",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10079",
-     "nombre": "10079-La Calera",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10085",
-     "nombre": "10085-Quilpue",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10078",
-     "nombre": "10078-M.Costanera P.Montt",
-     "sup": "TERESA LILLO",
-     "uds": 29,
-     "modelos": 1
-    },
-    {
-     "cod": "10096",
-     "nombre": "10096-Punta Arenas",
-     "sup": "TERESA LILLO",
-     "uds": 68,
-     "modelos": 3
-    },
-    {
-     "cod": "10098",
-     "nombre": "10098-Nueva Valdivia Store",
-     "sup": "TERESA LILLO",
-     "uds": 68,
-     "modelos": 3
-    }
-   ],
-   "subido": "2026-09-01T12:00:00.000Z"
-  },
-  "2321324": {
-   "oc": "2321324",
-   "cliente": "Ripley",
-   "depto": "Deporte",
-   "marca": "Converse",
-   "comentario": "",
-   "udsOC": 600,
-   "fuente": "Ordenes_Picking 27.08.xlsx",
-   "archivo": "Cargas_Deporte_Ripley.xlsx",
-   "uds": 600,
-   "modelos": 1,
-   "sinSupervisor": [
-    "10023-SIN CATALOGAR"
-   ],
-   "tiendas": [
-    {
-     "cod": "10023",
-     "nombre": "10023-SIN CATALOGAR",
-     "sup": "",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10018",
-     "nombre": "10018-Puente",
-     "sup": "ANGELICA GARCIA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10019",
-     "nombre": "10019-Crillon",
-     "sup": "ANGELICA GARCIA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10097",
-     "nombre": "10097-Nueva Alameda",
-     "sup": "ANGELICA GARCIA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10026",
-     "nombre": "10026-Antofagasta",
-     "sup": "CAMILA GUERRERO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10051",
-     "nombre": "10051-Mall Calama",
-     "sup": "CAMILA GUERRERO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10046",
-     "nombre": "10046-Plaza Tobalaba",
-     "sup": "CATALINA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10099",
-     "nombre": "10099-San Bernardo",
-     "sup": "CATALINA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10010",
-     "nombre": "10010-Los Andes",
-     "sup": "DAYAN PILICHI",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10012",
-     "nombre": "10012-Parque Arauco",
-     "sup": "DAYAN PILICHI",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10041",
-     "nombre": "10041-La Serena",
-     "sup": "ERIKA ZUAZUA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10069",
-     "nombre": "10069-Coquimbo",
-     "sup": "ERIKA ZUAZUA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10084",
-     "nombre": "10084-Copiapo",
-     "sup": "ERIKA ZUAZUA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10022",
-     "nombre": "10022-Chillan",
-     "sup": "EVA FONSECA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10072",
-     "nombre": "10072-Los Angeles",
-     "sup": "EVA FONSECA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10074",
-     "nombre": "10074-Talca",
-     "sup": "EVA FONSECA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10076",
-     "nombre": "10076-Curico",
-     "sup": "EVA FONSECA",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10016",
-     "nombre": "10016-Plaza Vespucio",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10032",
-     "nombre": "10032-Rancagua",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10034",
-     "nombre": "10034-Costanera Center",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10045",
-     "nombre": "10045-Plaza Oeste",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10048",
-     "nombre": "10048-Huechuraba",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10057",
-     "nombre": "10057-Florida Center",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10088",
-     "nombre": "10088-Maipu",
-     "sup": "FERNANDA CARRASCO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10002",
-     "nombre": "10002-Mall Concepcion",
-     "sup": "GONZALO TOLEDO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10011",
-     "nombre": "10011-Concepcion 2",
-     "sup": "GONZALO TOLEDO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10028",
-     "nombre": "10028-El Trebol",
-     "sup": "GONZALO TOLEDO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10003",
-     "nombre": "10003-Vina",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10025",
-     "nombre": "10025-Valparaiso",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10037",
-     "nombre": "10037-Marina Arauco",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10079",
-     "nombre": "10079-La Calera",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10085",
-     "nombre": "10085-Quilpue",
-     "sup": "PAOLA BAHAMONDES",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10004",
-     "nombre": "10004-Temuco",
-     "sup": "TERESA LILLO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10014",
-     "nombre": "10014-Puerto Montt",
-     "sup": "TERESA LILLO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10068",
-     "nombre": "10068-Portal Temuco",
-     "sup": "TERESA LILLO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10078",
-     "nombre": "10078-M.Costanera P.Montt",
-     "sup": "TERESA LILLO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10096",
-     "nombre": "10096-Punta Arenas",
-     "sup": "TERESA LILLO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10098",
-     "nombre": "10098-Nueva Valdivia Store",
-     "sup": "TERESA LILLO",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10021",
-     "nombre": "10021-Arica",
-     "sup": "YESSICA GRENDY",
-     "uds": 15,
-     "modelos": 1
-    },
-    {
-     "cod": "10049",
-     "nombre": "10049-Iquique",
-     "sup": "YESSICA GRENDY",
-     "uds": 15,
-     "modelos": 1
-    }
-   ],
-   "subido": "2026-09-01T12:00:00.000Z"
-  }
- },
- "actualizado": "2026-09-21T18:59:36.761Z",
- "imagenes": {
-  "subido": "2026-09-15T21:21:28.352Z",
-  "modelos": 45486
- }
+    "ocs":  {
+                "525917":  {
+                               "oc":  "525917",
+                               "cliente":  "Paris",
+                               "depto":  "Deporte",
+                               "marca":  "Umbro",
+                               "comentario":  "",
+                               "udsOC":  null,
+                               "fuente":  "Ordenes Picking.xlsx",
+                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
+                               "uds":  274,
+                               "modelos":  13,
+                               "sinSupervisor":  [
+
+                                                 ],
+                               "tiendas":  [
+                                               {
+                                                   "cod":  "22",
+                                                   "nombre":  "22-PARIS MARINA ARAUCO",
+                                                   "sup":  "PAOLA BAHAMONDES",
+                                                   "uds":  274,
+                                                   "modelos":  13
+                                               }
+                                           ],
+                               "subido":  "2026-09-21T18:59:36.761Z"
+                           },
+                "525918":  {
+                               "oc":  "525918",
+                               "cliente":  "Paris",
+                               "depto":  "Deporte",
+                               "marca":  "Umbro",
+                               "comentario":  "",
+                               "udsOC":  null,
+                               "fuente":  "Ordenes Picking.xlsx",
+                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
+                               "uds":  40,
+                               "modelos":  6,
+                               "sinSupervisor":  [
+
+                                                 ],
+                               "tiendas":  [
+                                               {
+                                                   "cod":  "22",
+                                                   "nombre":  "22-PARIS MARINA ARAUCO",
+                                                   "sup":  "PAOLA BAHAMONDES",
+                                                   "uds":  40,
+                                                   "modelos":  6
+                                               }
+                                           ],
+                               "subido":  "2026-09-21T18:59:36.761Z"
+                           },
+                "525920":  {
+                               "oc":  "525920",
+                               "cliente":  "Paris",
+                               "depto":  "Deporte",
+                               "marca":  "Fila",
+                               "comentario":  "",
+                               "udsOC":  null,
+                               "fuente":  "Ordenes Picking.xlsx",
+                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
+                               "uds":  466,
+                               "modelos":  12,
+                               "sinSupervisor":  [
+
+                                                 ],
+                               "tiendas":  [
+                                               {
+                                                   "cod":  "22",
+                                                   "nombre":  "22-PARIS MARINA ARAUCO",
+                                                   "sup":  "PAOLA BAHAMONDES",
+                                                   "uds":  466,
+                                                   "modelos":  12
+                                               }
+                                           ],
+                               "subido":  "2026-09-21T18:59:36.761Z"
+                           },
+                "525921":  {
+                               "oc":  "525921",
+                               "cliente":  "Paris",
+                               "depto":  "Deporte",
+                               "marca":  "Fila",
+                               "comentario":  "",
+                               "udsOC":  null,
+                               "fuente":  "Ordenes Picking.xlsx",
+                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
+                               "uds":  80,
+                               "modelos":  5,
+                               "sinSupervisor":  [
+
+                                                 ],
+                               "tiendas":  [
+                                               {
+                                                   "cod":  "22",
+                                                   "nombre":  "22-PARIS MARINA ARAUCO",
+                                                   "sup":  "PAOLA BAHAMONDES",
+                                                   "uds":  80,
+                                                   "modelos":  5
+                                               }
+                                           ],
+                               "subido":  "2026-09-21T18:59:36.761Z"
+                           }
+            },
+    "actualizado":  "2026-09-21T19:01:55.2431792Z",
+    "imagenes":  {
+                     "subido":  "2026-09-15T21:21:28.352Z",
+                     "modelos":  45486
+                 }
 }
