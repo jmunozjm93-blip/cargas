@@ -49,7 +49,7 @@
 <body>
 <main>
   <h1>Cargar OC</h1>
-  <p class="lead">Adjunta el Excel de cargas (el que trae la hoja <code>Datos</code> con una fila por OC · modelo · tienda). La app lo valida, lo convierte y lo sube a GitHub; el <a href="index.html">dashboard</a> muestra las OC nuevas como pendientes para cada supervisora. Si una OC ya estaba cargada, se reemplaza.</p>
+  <p class="lead">Adjunta el Excel de cargas (el que trae la hoja <code>Datos</code> con una fila por OC · modelo · tienda). La app lo valida, lo convierte y lo sube a GitHub; el <a href="index.html">dashboard</a> muestra las OC nuevas como pendientes para cada supervisora. Si una OC ya estaba cargada, se reemplaza. También acepta <code>Excel_Macro.xlsx</code> para actualizar las fotos de los modelos.</p>
 
   <div class="box">
     <h2>1 · Conexión con GitHub</h2>
@@ -150,6 +150,13 @@ async function registrar(resumenes, archivo) {
   await subir('data/manifiesto.json', JSON.stringify(m, null, 1), `Registra ${resumenes.map(r => r.oc).join(', ')} (${archivo})`);
   return m;
 }
+async function registrarImagenes(resumen) {
+  const m = await leerManifiesto();
+  m.ocs = m.ocs || {};
+  m.imagenes = { subido: new Date().toISOString(), modelos: resumen.modelos };
+  await subir('data/manifiesto.json', JSON.stringify(m, null, 1), 'Registra las fotos de los modelos');
+  return m;
+}
 async function quitar(oc) {
   const m = await leerManifiesto();
   delete (m.ocs || {})[oc];
@@ -180,13 +187,14 @@ async function cargarEstado() {
     if (token()) m = await leerManifiesto();
     else { const r = await fetch('data/manifiesto.json?t=' + Date.now()); m = r.ok ? await r.json() : { ocs: {} }; }
     const ocs = Object.values(m.ocs || {}).sort((a, b) => (b.subido || '').localeCompare(a.subido || '') || b.oc.localeCompare(a.oc));
-    if (!ocs.length) { el('estado').textContent = '— ninguna OC cargada todavía —'; return; }
+    const fotos = m.imagenes ? `Fotos de los modelos (Excel_Macro): ${fmt(m.imagenes.modelos)} modelos, subido ${fecha(m.imagenes.subido)}` : 'Fotos de los modelos: — sin cargar (arrastra Excel_Macro.xlsx) —';
+    if (!ocs.length) { el('estado').innerHTML = `— ninguna OC cargada todavía —<p class="small">${esc(fotos)}</p>`; return; }
     let h = `<table><tr><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th class="n">Tiendas</th><th class="n">Unidades</th><th>Subido</th><th>Archivo</th><th></th></tr>`;
     for (const o of ocs) {
       const sin = o.sinSupervisor && o.sinSupervisor.length ? `<div class="small aviso">${o.sinSupervisor.length} sin supervisor</div>` : '';
       h += `<tr><td><b>${esc(o.oc)}</b></td><td>${esc(o.cliente)}</td><td>${esc(o.depto)}</td><td>${esc(o.marca)}</td><td>${esc(o.comentario)}</td><td class="n">${fmt(o.tiendas.length)}${sin}</td><td class="n">${fmt(o.uds)}</td><td>${fecha(o.subido)}</td><td class="small">${esc(o.archivo)}</td><td>${token() ? `<button class="del" data-oc="${esc(o.oc)}">Quitar</button>` : ''}</td></tr>`;
     }
-    h += `</table><p class="small">Actualizado: ${fecha(m.actualizado)}</p>`;
+    h += `</table><p class="small">${esc(fotos)} · OC actualizadas: ${fecha(m.actualizado)}</p>`;
     el('estado').innerHTML = h;
     el('estado').querySelectorAll('button.del').forEach(b => b.onclick = () => {
       const oc = b.dataset.oc;
@@ -224,6 +232,7 @@ function tarjeta(file) {
 const setSt = (c, cls, msg) => { const s = c.querySelector('[data-st]'); s.className = 'st ' + cls; s.textContent = msg; };
 
 function tablaResumen(ocs) {
+  if (ocs.tipo === 'imagenes') return `<table><tr><th class="n">Filas con link</th><th class="n">Modelos con foto</th></tr><tr><td class="n">${fmt(ocs.resumen.filasExcel)}</td><td class="n">${fmt(ocs.resumen.modelos)}</td></tr></table>`;
   let h = `<table><tr><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th class="n">Modelos</th><th class="n">Tiendas</th><th class="n">Unidades</th><th class="n">UND OC</th></tr>`;
   for (const { resumen: r } of ocs) {
     const sin = r.sinSupervisor.length ? `<div class="small aviso">${r.sinSupervisor.length} sin supervisor: ${esc(r.sinSupervisor.join(', '))}</div>` : '';
@@ -254,20 +263,33 @@ function siguiente() {
     delete pend[id];
     c.querySelector('[data-body]').innerHTML = '';
     if (msg.etapa === 'error') { setSt(c, 'bad', '✗ ' + msg.error); fin(); return; }
-    const kb = msg.ocs.reduce((s, o) => s + o.texto.length, 0) / 1024;
-    setSt(c, 'ok', `✓ Válido · ${msg.ocs.length} OC · leído en ${(msg.ms.lectura / 1000).toFixed(1)} s · JSON de ${kb.toFixed(0)} KB`);
-    c.querySelector('[data-body]').innerHTML = tablaResumen(msg.ocs);
+    // Excel_Macro.xlsx: catálogo de fotos → data/imagenes.json
+    const esImg = msg.tipo === 'imagenes';
+    const piezas = esImg ? [{ oc: 'imagenes', texto: msg.texto, resumen: msg.resumen }] : msg.ocs;
+    const kb = piezas.reduce((s, o) => s + o.texto.length, 0) / 1024;
+    setSt(c, 'ok', `✓ Válido · ${esImg ? fmt(msg.resumen.modelos) + ' modelos con foto' : msg.ocs.length + ' OC'} · leído en ${(msg.ms.lectura / 1000).toFixed(1)} s · JSON de ${kb.toFixed(0)} KB`);
+    c.querySelector('[data-body]').innerHTML = tablaResumen(esImg ? msg : msg.ocs);
     const acts = c.querySelector('[data-acts]');
     const bUp = document.createElement('button'); bUp.textContent = 'Subir a GitHub';
     const bDl = document.createElement('button'); bDl.className = 'sec'; bDl.textContent = 'Descargar JSON';
     acts.append(bUp, bDl);
-    bDl.onclick = () => { for (const o of msg.ocs) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([o.texto], { type: 'application/json' })); a.download = `${o.oc}.json`; a.click(); } };
+    bDl.onclick = () => { for (const o of piezas) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([o.texto], { type: 'application/json' })); a.download = `${o.oc}.json`; a.click(); } };
     bUp.onclick = () => {
       if (!token()) { setSt(c, 'bad', '✗ Primero guarda el token de GitHub (paso 1).'); return; }
       bUp.disabled = true; setSt(c, '', 'En cola para subir…');
       enCola(async () => {
         try {
           let commit;
+          if (esImg) {
+            setSt(c, '', 'Subiendo el catálogo de fotos…');
+            commit = await subir('data/imagenes.json', msg.texto, `Fotos de los modelos (${file.name})`);
+            setSt(c, '', 'Registrando…');
+            await registrarImagenes(msg.resumen);
+            setSt(c, 'ok', `✓ Subido data/imagenes.json (${fmt(msg.resumen.modelos)} modelos). GitHub Pages lo publica en 1–2 minutos.`);
+            acts.innerHTML = `<a class="small" href="${commit.html_url}" target="_blank" rel="noopener">Ver commit</a>`;
+            cargarEstado();
+            return;
+          }
           for (const o of msg.ocs) {
             setSt(c, '', `Subiendo OC ${o.oc}…`);
             commit = await subir(`data/oc/${o.oc}.json`, o.texto, `OC ${o.oc}: ${o.resumen.cliente} ${o.resumen.depto} (${file.name})`);

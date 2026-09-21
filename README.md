@@ -13,13 +13,14 @@ Dashboard de órdenes de compra (OC) enviadas a tienda y su recepción reportada
 | `js/worker-convertir.js` | Web Worker que lee el Excel sin congelar la pantalla |
 | `data/manifiesto.json` | Todas las OC cargadas con su resumen por tienda (lo que lee el dashboard) |
 | `data/oc/<oc>.json` | Detalle de cada OC: modelos y unidades por tienda (se pide al tocar una tienda) |
+| `data/imagenes.json` | Modelo → ID de foto en Google Drive (desde `Excel_Macro.xlsx`, hoja Imagenes) |
 | `apps-script/Codigo.gs` | Buzón de reportes (Google Apps Script): guarda las fotos en Drive y cada reporte como fila del Sheet; la página lo lee de ahí |
 
 ## De dónde salen los datos
 
 1. **OC enviadas**: el Excel de cargas (`Cargas_<Depto>_<Cliente>.xlsx`) que trae la hoja `Datos` con una fila por OC · modelo · talla · tienda (`NumAtCard · Cliente · Departamento · modelo · Descripcion modelo · ShipToCode · Tienda · Supervisor · Quantity …`). Se sube por `cargar.html`.
 2. **Recepción**: la supervisora toca la carga pendiente → **Reportar** → elige *Llegó completa / Llegó incompleta / No llegó*, escribe un comentario y saca fotos. La página achica las fotos (lado mayor 1280 px, JPG, ~150–250 KB) y manda todo al Apps Script, que guarda las fotos en la carpeta de Drive `Cargas - Fotos` y agrega una fila en la hoja `Reportes` del Sheet `Cargas - Reportes`. Al abrir la página se leen los reportes desde el mismo script (`?accion=reportes`).
-3. **Fotos de los modelos**: el catálogo `data/imagenes.json` del repositorio `levantamientos` (se actualiza desde allá con `Excel_Macro.xlsx`).
+3. **Fotos de los modelos**: `data/imagenes.json` de este mismo repositorio (`MODELO` → ID de foto en Google Drive). Se actualiza arrastrando `Excel_Macro.xlsx` (hoja `Imagenes`) en `cargar.html`.
 
 ## Cómo se cruzan
 

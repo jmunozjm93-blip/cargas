@@ -325,8 +325,7 @@ tbody tr.sub td{background:var(--input);font-size:.8rem;padding:6px 12px 6px 28p
 // ============================ configuración ============================
 // URL de la aplicación web del Apps Script (termina en /exec). Ver apps-script/Codigo.gs.
 var API_URL='https://script.google.com/macros/s/AKfycbyRN5DzM7IGIFzNpjKpcTj_xXeDIJFh78OaCoOKgD8ZaFYBlibmdov7vmqvINt0qA1R/exec';
-// fotos de los modelos: mismo catálogo que usa el dashboard de levantamientos
-var IMAGENES_URL='https://jmunozjm93-blip.github.io/levantamientos/data/imagenes.json';
+// fotos de los modelos: data/imagenes.json, se sube con Excel_Macro.xlsx desde cargar.html
 var ETIQUETAS={ completa:'Llegó completa', incompleta:'Llegó incompleta', nollego:'No llegó' };
 var FOTO_MAX=1280, FOTO_CALIDAD=.8, FOTOS_MAX=10;
 
@@ -565,7 +564,7 @@ window.abrirDetalle=function(idx){
 window.cerrarDetalle=function(){ $('sh').classList.remove('open'); };
 function detalleOC(oc){ if(!DETALLE[oc]) DETALLE[oc]=fetch('data/oc/'+oc+'.json?v='+encodeURIComponent((MAN.ocs[oc]||{}).subido||'')).then(function(r){ if(!r.ok) throw new Error('No encontré el detalle de la OC '+oc); return r.json(); }); return DETALLE[oc]; }
 var pImgs=null;
-function imagenes(){ if(!pImgs) pImgs=fetch(IMAGENES_URL).then(function(r){ return r.ok?r.json():{img:{}}; }).then(function(j){ IMGS=j.img||{}; }).catch(function(){ IMGS={}; }); return pImgs; }
+function imagenes(){ if(!pImgs) pImgs=(MAN&&MAN.imagenes?fetch('data/imagenes.json?v='+encodeURIComponent(MAN.imagenes.subido||'')):Promise.resolve({ok:false})).then(function(r){ return r.ok?r.json():{img:{}}; }).then(function(j){ IMGS=j.img||{}; }).catch(function(){ IMGS={}; }); return pImgs; }
 document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeLB(); cerrarDetalle(); cerrarReporte(); } });
 
 // ============================ reportar una carga ============================

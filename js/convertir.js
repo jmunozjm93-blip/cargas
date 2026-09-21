@@ -11,6 +11,10 @@
 (function (global) {
   'use strict';
 
+  // Excel_Macro.xlsx (hoja Imagenes): catálogo de fotos de los modelos, "MODELO.jpg" → ID de Google Drive
+  const RE_IMAGENES = /^Excel_Macro\.xlsx$/i;
+  function identificar(nombre) { return RE_IMAGENES.test(nombre.trim()) ? 'imagenes' : 'cargas'; }
+
   const COLUMNAS = ['NumAtCard', 'Cliente', 'Departamento', 'modelo', 'Descripcion modelo', 'ShipToCode', 'Tienda', 'Supervisor', 'Quantity'];
 
   // primer segmento de la descripción ("CONV|CALZ |DAY ONE…") → marca que se muestra
@@ -37,8 +41,29 @@
     return seg ? seg.charAt(0) + seg.slice(1).toLowerCase() : '';
   }
 
-  function opcionesLectura() {
-    return { type: 'array', dense: true, cellFormula: false, cellHTML: false, cellText: false, cellStyles: false };
+  function opcionesLectura(tipo) {
+    const o = { type: 'array', dense: true, cellFormula: false, cellHTML: false, cellText: false, cellStyles: false };
+    if (tipo === 'imagenes') o.sheets = ['Imagenes'];
+    return o;
+  }
+
+  // ---------- imágenes (Excel_Macro.xlsx, hoja Imagenes) ----------
+  // Si un modelo aparece varias veces, manda la última fila.
+  function parseImagenes(wb) {
+    const nombre = wb.SheetNames.find(n => n.trim().toLowerCase() === 'imagenes') || wb.SheetNames[0];
+    const filas = filasDe(wb.Sheets[nombre]);
+    const img = {};
+    let leidas = 0;
+    for (const r of filas) {
+      const archivo = txt(r[0]), link = txt(r[1]);
+      if (!archivo || /^nombre de/i.test(archivo)) continue;
+      const m = link.match(/[?&]id=([A-Za-z0-9_-]+)/);
+      if (!m) continue;
+      leidas++;
+      img[archivo.replace(/\.(jpe?g|png|webp)$/i, '').toUpperCase()] = m[1];
+    }
+    if (!leidas) throw new Error(`La hoja "${nombre}" no tiene links de Google Drive (columnas Nombre del Archivo · Link)`);
+    return { generado: new Date().toISOString(), filasExcel: leidas, modelos: Object.keys(img).length, img };
   }
 
   // ---------- hoja Resumen (opcional): comentario y unidades declaradas por OC, archivo de origen ----------
@@ -132,5 +157,5 @@
     };
   }
 
-  global.Convertir = { opcionesLectura, convertir, resumenDe, COLUMNAS };
+  global.Convertir = { identificar, opcionesLectura, convertir, parseImagenes, resumenDe, COLUMNAS };
 })(typeof self !== 'undefined' ? self : this);
