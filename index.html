@@ -239,13 +239,13 @@ tbody tr.sub td{background:var(--input);font-size:.8rem;padding:6px 12px 6px 28p
         <div class="fg"><label>Cliente</label><select id="sCli"></select></div>
         <div class="fg full"><label>Buscar</label><input type="text" id="sQ" placeholder="OC, tienda o modelo…" autocomplete="off"></div>
         <div class="fg full"><label>Estado</label><div class="seg" id="sEst">
-          <button data-e="" class="on">Todas</button><button data-e="pend">Pendientes</button><button data-e="ok">Reportadas</button><button data-e="obs">Con observación</button>
+          <button data-e="" class="on">Activas</button><button data-e="pend">Pendientes</button><button data-e="obs">Con observación</button><button data-e="ok">Archivadas</button>
         </div></div>
       </div>
     </section>
     <section class="kpis">
       <div class="panel kpi p"><span class="l">Pendientes</span><span class="v" id="kPend">0</span><span class="s" id="kPendS">&nbsp;</span></div>
-      <div class="panel kpi o"><span class="l">Reportadas</span><span class="v" id="kOk">0</span><span class="s" id="kOkS">&nbsp;</span></div>
+      <div class="panel kpi o"><span class="l">Archivadas</span><span class="v" id="kOk">0</span><span class="s" id="kOkS">&nbsp;</span></div>
       <div class="panel kpi x"><span class="l">Con observación</span><span class="v" id="kObs">0</span><span class="s">&nbsp;</span></div>
       <div class="panel kpi main"><span class="l">Unidades por recibir</span><span class="v" id="kUds">0</span><span class="s" id="kUdsS">&nbsp;</span></div>
     </section>
@@ -420,7 +420,8 @@ function itemsSup(){
     if(sup&&it.supN!==sup) return false;
     if(!sup&&!it.sup) return false;
     if(cli&&it.o.cliente!==cli) return false;
-    if(sEstado&&it.estado!==sEstado) return false;
+    // "Activas" = pendientes y con observación; las que llegaron completas se archivan solas
+    if(sEstado?it.estado!==sEstado:it.estado==='ok') return false;
     if(q&&norm(it.oc+' '+it.tienda+' '+it.o.comentario+' '+it.o.marca+' '+it.o.cliente).indexOf(q)<0) return false;
     return true;
   });
@@ -432,15 +433,15 @@ function renderSup(){
   var n=function(e){ return todos.filter(function(it){ return it.estado===e; }).length; };
   var pend=n('pend'), ok=n('ok'), obs=n('obs');
   $('kPend').textContent=fmt(pend); $('kPendS').textContent=pend?'tiendas por reportar':'todo reportado ✓';
-  $('kOk').textContent=fmt(ok); $('kOkS').textContent=todos.length?Math.round((ok+obs)/todos.length*100)+'% de '+todos.length:' ';
+  $('kOk').textContent=fmt(ok); $('kOkS').textContent=ok?'llegaron completas · '+Math.round((ok+obs)/todos.length*100)+'% reportado':'\u00a0';
   $('kObs').textContent=fmt(obs);
   var uds=todos.filter(function(it){ return it.estado==='pend'; }).reduce(function(s,it){ return s+it.uds; },0);
   $('kUds').textContent=fmt(uds); $('kUdsS').textContent='en cargas pendientes';
-  $('sEst').querySelectorAll('button').forEach(function(b){ var e=b.dataset.e; var c=e===''?todos.length:n(e); b.innerHTML=esc(b.textContent.replace(/\s*\d+$/,''))+'<b>'+c+'</b>'; b.classList.toggle('on',e===sEstado); });
+  $('sEst').querySelectorAll('button').forEach(function(b){ var e=b.dataset.e; var c=e===''?n('pend')+n('obs'):n(e); b.innerHTML=esc(b.textContent.replace(/\s*\d+$/,''))+'<b>'+c+'</b>'; b.classList.toggle('on',e===sEstado); });
 
   var lista=itemsSup();
   if(!sup){ $('sLista').innerHTML='<div class="nr">Elige tu nombre arriba para ver tus cargas.'+(lista.length?'<br><span class="small">Hay '+fmt(lista.length)+' tiendas cargadas entre todas las supervisoras.</span>':'')+'</div>'; return; }
-  if(!lista.length){ $('sLista').innerHTML='<div class="nr">'+(sEstado==='pend'?'No tienes cargas pendientes. ¡Todo reportado! 🎉':'Sin cargas para estos filtros.')+'</div>'; return; }
+  if(!lista.length){ $('sLista').innerHTML='<div class="nr">'+(sEstado==='pend'||sEstado===''?'No tienes cargas pendientes. ¡Todo reportado! 🎉':sEstado==='ok'?'Todavía no hay cargas archivadas.':'Sin cargas para estos filtros.')+'</div>'; return; }
   // agrupadas por OC, la más reciente primero; dentro, pendientes primero
   var grupos={}, orden=[];
   lista.forEach(function(it){ if(!grupos[it.oc]){ grupos[it.oc]=[]; orden.push(it.oc); } grupos[it.oc].push(it); });
@@ -629,7 +630,7 @@ window.enviarReporte=function(){
     RESP.push({ i:RESP.length, fecha:new Date(j.fecha||Date.now()), oc:it.oc, cod:it.cod, tienda:it.tienda, cliente:it.o.cliente, estado:RP.estado, comentario:datos.comentario, sup:RP.quien, supN:norm(RP.quien), fotos:j.fotos||[], obs:RP.estado!=='completa' });
     cruzar(); render();
     b.disabled=false; $('rp').classList.remove('open');
-    toast('Reporte enviado ✓ '+it.tienda);
+    toast(RP.estado==='completa'?'Reporte enviado ✓ '+it.tienda+' · carga archivada':'Reporte enviado ✓ '+it.tienda);
   }).catch(function(e){ b.disabled=false; b.textContent='Enviar reporte'; $('rpErr').textContent='No se pudo enviar: '+e.message+'. Revisa la señal e inténtalo de nuevo.'; });
 };
 

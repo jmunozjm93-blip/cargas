@@ -26,7 +26,7 @@ Dashboard de órdenes de compra (OC) enviadas a tienda y su recepción reportada
 
 Cada fila del Excel es una **OC × tienda**. El reporte se hace desde esa misma fila, así que trae la OC y el código de tienda exactos: no hay nada que escribir a mano ni tiendas mal elegidas.
 
-- Hay reporte → **Reportada** si fue *Llegó completa*; **Con observación** si fue *incompleta* o *no llegó*. Si hay varios reportes manda el último; todos se ven en el detalle.
+- Hay reporte → si fue *Llegó completa* la carga se **archiva sola** (sale de la lista "Activas" de la supervisora y queda en "Archivadas"); si fue *incompleta* o *no llegó* queda como **Con observación**, a la vista. Si hay varios reportes manda el último; todos se ven en el detalle. En el Resumen se ven todas.
 - No hay reporte → **Pendiente**, con los días desde que se cargó la OC.
 - Tiendas sin supervisor en el Excel (`SIN ASIGNAR`, `RUTA NUEVO`) se listan como **Sin supervisora** y no cuentan en el avance.
 - Reportes cuya OC ya no está cargada (se quitó) se listan en el Resumen como "Reportes sin OC cargada".
