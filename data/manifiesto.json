@@ -1,5 +1,97 @@
 {
  "ocs": {
+  "525917": {
+   "oc": "525917",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 274,
+   "modelos": 13,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 274,
+     "modelos": 13
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
+  "525918": {
+   "oc": "525918",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 40,
+   "modelos": 6,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 40,
+     "modelos": 6
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
+  "525920": {
+   "oc": "525920",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 466,
+   "modelos": 12,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 466,
+     "modelos": 12
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
+  "525921": {
+   "oc": "525921",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 80,
+   "modelos": 5,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 80,
+     "modelos": 5
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
   "2320560": {
    "oc": "2320560",
    "cliente": "Ripley",
@@ -650,6 +742,9 @@
    "subido": "2026-09-01T12:00:00.000Z"
   }
  },
- "actualizado": "2026-09-01T12:00:00.000Z",
- "imagenes": { "subido": "2026-09-15T21:21:28.352Z", "modelos": 45486 }
+ "actualizado": "2026-09-21T18:59:36.761Z",
+ "imagenes": {
+  "subido": "2026-09-15T21:21:28.352Z",
+  "modelos": 45486
+ }
 }
