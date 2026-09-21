@@ -18,7 +18,7 @@ Dashboard de órdenes de compra (OC) enviadas a tienda y su recepción reportada
 
 ## De dónde salen los datos
 
-1. **OC enviadas**: el Excel de cargas (`Cargas_<Depto>_<Cliente>.xlsx`) que trae la hoja `Datos` con una fila por OC · modelo · talla · tienda (`NumAtCard · Cliente · Departamento · modelo · Descripcion modelo · ShipToCode · Tienda · Supervisor · Quantity …`). Se sube por `cargar.html`.
+1. **OC enviadas**: el Excel de cargas (`Cargas_<Depto>_<Cliente>.xlsx`) que trae la hoja `Datos` con una fila por OC · modelo · talla · tienda (`NumAtCard · Cliente · modelo · Descripcion modelo · ShipToCode · Tienda · Supervisor · Quantity …`; la columna `Departamento` es opcional: si no viene se toma del nombre del archivo, ej. `Cargas_21.09_Paris-deporte.xlsx` → Deporte). Se sube por `cargar.html`.
 2. **Recepción**: la supervisora toca la carga pendiente → **Reportar** → elige *Llegó completa / Llegó incompleta / No llegó*, escribe un comentario y saca fotos. La página achica las fotos (lado mayor 1280 px, JPG, ~150–250 KB) y manda todo al Apps Script, que guarda las fotos en la carpeta de Drive `Cargas - Fotos` y agrega una fila en la hoja `Reportes` del Sheet `Cargas - Reportes`. Al abrir la página se leen los reportes desde el mismo script (`?accion=reportes`).
 3. **Fotos de los modelos**: `data/imagenes.json` de este mismo repositorio (`MODELO` → ID de foto en Google Drive). Se actualiza arrastrando `Excel_Macro.xlsx` (hoja `Imagenes`) en `cargar.html`.
 
@@ -28,7 +28,7 @@ Cada fila del Excel es una **OC × tienda**. El reporte se hace desde esa misma 
 
 - Hay reporte → **Reportada** si fue *Llegó completa*; **Con observación** si fue *incompleta* o *no llegó*. Si hay varios reportes manda el último; todos se ven en el detalle.
 - No hay reporte → **Pendiente**, con los días desde que se cargó la OC.
-- Tiendas sin supervisor en el Excel (`SIN ASIGNAR`) se listan como **Sin supervisora** y no cuentan en el avance.
+- Tiendas sin supervisor en el Excel (`SIN ASIGNAR`, `RUTA NUEVO`) se listan como **Sin supervisora** y no cuentan en el avance.
 - Reportes cuya OC ya no está cargada (se quitó) se listan en el Resumen como "Reportes sin OC cargada".
 
 ## Instalar el buzón de reportes (una vez)

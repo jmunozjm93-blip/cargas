@@ -3,7 +3,7 @@
  * Regla de oro: los números son los del Excel, tal cual. No se estima nada.
  *
  * Formato del Excel (fijo): trae una hoja "Datos" con una fila por OC · modelo · talla · tienda:
- *   NumAtCard · Cliente · Departamento · modelo · Descripcion modelo · ShipToCode · Tienda · Supervisor ·
+ *   NumAtCard · Cliente · [Departamento] · modelo · Descripcion modelo · ShipToCode · Tienda · Supervisor ·
  *   ItemCode · Dscription · Quantity · DocNum · Direccion · StatusOrden
  * Opcionalmente una hoja "Resumen" con "OC (NumAtCard) · Comentario · Modelos · Tiendas · UND OC · …" y,
  * en la fila 2, "Fuente: <archivo de picking>". Las hojas con nombre de OC (dinámicas) no se usan.
@@ -15,13 +15,16 @@
   const RE_IMAGENES = /^Excel_Macro\.xlsx$/i;
   function identificar(nombre) { return RE_IMAGENES.test(nombre.trim()) ? 'imagenes' : 'cargas'; }
 
-  const COLUMNAS = ['NumAtCard', 'Cliente', 'Departamento', 'modelo', 'Descripcion modelo', 'ShipToCode', 'Tienda', 'Supervisor', 'Quantity'];
+  const COLUMNAS = ['NumAtCard', 'Cliente', 'modelo', 'Descripcion modelo', 'ShipToCode', 'Tienda', 'Supervisor', 'Quantity'];
+  // "Departamento" es opcional: si no viene, se toma del nombre del archivo (Cargas_21.09_Paris-deporte.xlsx → Deporte)
+  const DEPTOS = [[/calzado[\s_-]*(dama|mujer)/i, 'Calzado dama'], [/deporte[\s_-]*mujer/i, 'Deporte mujer'], [/deporte[\s_-]*hombre/i, 'Deporte hombre'], [/deporte/i, 'Deporte'], [/kids|ni[ñn]o/i, 'Kids'], [/juvenil/i, 'Juvenil'], [/accesorio/i, 'Accesorios'], [/ropa|vestuario/i, 'Ropa']];
+  function deptoDeNombre(nombre) { const n = String(nombre || '').replace(/\.xlsx$/i, ''); for (const [re, d] of DEPTOS) if (re.test(n)) return d; return ''; }
 
   // primer segmento de la descripción ("CONV|CALZ |DAY ONE…") → marca que se muestra
-  const MARCAS = { CONV: 'Converse', CONVERSE: 'Converse', FILA: 'Fila', UMB: 'Umbro', UMBRO: 'Umbro' };
+  const MARCAS = { CONV: 'Converse', CONVERSE: 'Converse', FILA: 'Fila', UMB: 'Umbro', UMBR: 'Umbro', UMBRO: 'Umbro' };
 
   // valores de la columna Supervisor que significan "nadie"
-  const SIN_SUPERVISOR = ['', 'Z', '-', 'N/A', 'NA', 'SIN ASIGNAR', 'SIN SUPERVISOR'];
+  const SIN_SUPERVISOR = ['', 'Z', '-', 'N/A', 'NA', 'SIN ASIGNAR', 'SIN SUPERVISOR', 'RUTA NUEVO', 'RUTA NUEVA'];
 
   const vacio = v => v == null || v === '';
   const txt = v => vacio(v) ? '' : String(v).trim();
@@ -97,6 +100,8 @@
     const col = {};
     for (const c of COLUMNAS) { const i = hdr.indexOf(c); if (i < 0) throw new Error(`Hoja "Datos": falta la columna "${c}"`); col[c] = i; }
     const iStatus = hdr.indexOf('StatusOrden');
+    const iDepto = hdr.indexOf('Departamento');
+    const deptoArchivo = deptoDeNombre(nombreArchivo);
 
     const resumen = leerResumen(wb);
     const ocs = {};
@@ -107,7 +112,7 @@
       if (!oc) continue;
       filasLeidas++;
       const o = ocs[oc] || (ocs[oc] = {
-        oc, cliente: txt(r[col.Cliente]), depto: txt(r[col.Departamento]), marcas: {}, tiendas: {}, modelos: {}, estados: {},
+        oc, cliente: txt(r[col.Cliente]), depto: iDepto >= 0 ? txt(r[iDepto]) : deptoArchivo, marcas: {}, tiendas: {}, modelos: {}, estados: {},
       });
       const modelo = txt(r[col.modelo]), desc = txt(r[col['Descripcion modelo']]);
       const tCod = cod(r[col.ShipToCode]), tNom = txt(r[col.Tienda]);
