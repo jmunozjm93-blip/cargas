@@ -1,0 +1,136 @@
+/* Conversión del Excel de cargas (órdenes de compra por tienda) al JSON que consume el dashboard.
+ * Corre en el navegador sobre libros abiertos con SheetJS (XLSX.read).
+ * Regla de oro: los números son los del Excel, tal cual. No se estima nada.
+ *
+ * Formato del Excel (fijo): trae una hoja "Datos" con una fila por OC · modelo · talla · tienda:
+ *   NumAtCard · Cliente · Departamento · modelo · Descripcion modelo · ShipToCode · Tienda · Supervisor ·
+ *   ItemCode · Dscription · Quantity · DocNum · Direccion · StatusOrden
+ * Opcionalmente una hoja "Resumen" con "OC (NumAtCard) · Comentario · Modelos · Tiendas · UND OC · …" y,
+ * en la fila 2, "Fuente: <archivo de picking>". Las hojas con nombre de OC (dinámicas) no se usan.
+ */
+(function (global) {
+  'use strict';
+
+  const COLUMNAS = ['NumAtCard', 'Cliente', 'Departamento', 'modelo', 'Descripcion modelo', 'ShipToCode', 'Tienda', 'Supervisor', 'Quantity'];
+
+  // primer segmento de la descripción ("CONV|CALZ |DAY ONE…") → marca que se muestra
+  const MARCAS = { CONV: 'Converse', CONVERSE: 'Converse', FILA: 'Fila', UMB: 'Umbro', UMBRO: 'Umbro' };
+
+  // valores de la columna Supervisor que significan "nadie"
+  const SIN_SUPERVISOR = ['', 'Z', '-', 'N/A', 'NA', 'SIN ASIGNAR', 'SIN SUPERVISOR'];
+
+  const vacio = v => v == null || v === '';
+  const txt = v => vacio(v) ? '' : String(v).trim();
+  const nombrePersona = v => txt(v).replace(/\s+/g, ' ').toUpperCase();
+  const cod = v => (typeof v === 'number') ? String(v) : txt(v);
+  const num = v => { if (typeof v === 'number') return v; const n = parseFloat(String(v).replace(',', '.')); return isNaN(n) ? 0 : n; };
+
+  function filasDe(ws) {
+    if (ws['!data']) return ws['!data'].map(row => row ? row.map(c => (c ? c.v : null)) : []);
+    return XLSX.utils.sheet_to_json(ws, { header: 1, raw: true, defval: null });
+  }
+
+  function marcaDe(desc, modelo) {
+    const seg = txt(desc).split('|')[0].trim().toUpperCase();
+    if (MARCAS[seg]) return MARCAS[seg];
+    if (/^[A-Z]?\d{5,6}[A-Z]-/.test(modelo)) return 'Converse'; // A20633C-102, 1U646C-…
+    return seg ? seg.charAt(0) + seg.slice(1).toLowerCase() : '';
+  }
+
+  function opcionesLectura() {
+    return { type: 'array', dense: true, cellFormula: false, cellHTML: false, cellText: false, cellStyles: false };
+  }
+
+  // ---------- hoja Resumen (opcional): comentario y unidades declaradas por OC, archivo de origen ----------
+  function leerResumen(wb) {
+    const nombre = wb.SheetNames.find(n => n.toLowerCase() === 'resumen');
+    const out = { fuente: '', ocs: {} };
+    if (!nombre) return out;
+    const filas = filasDe(wb.Sheets[nombre]);
+    for (const r of filas.slice(0, 5)) { const m = /^fuente:\s*(.+)$/i.exec(txt(r[0])); if (m) out.fuente = m[1].trim(); }
+    const iHdr = filas.findIndex(r => /^oc\b/i.test(txt(r[0])));
+    if (iHdr < 0) return out;
+    const hdr = filas[iHdr].map(h => txt(h).toLowerCase());
+    const iCom = hdr.findIndex(h => h.startsWith('comentario'));
+    const iUnd = hdr.findIndex(h => h === 'und oc' || h.startsWith('unidades oc'));
+    for (const r of filas.slice(iHdr + 1)) {
+      const oc = cod(r[0]);
+      if (!/^\d+$/.test(oc)) continue;
+      out.ocs[oc] = { comentario: iCom >= 0 ? txt(r[iCom]) : '', udsOC: iUnd >= 0 ? num(r[iUnd]) : null };
+    }
+    return out;
+  }
+
+  // ---------- hoja Datos ----------
+  function convertir(wb, nombreArchivo) {
+    const nombre = wb.SheetNames.find(n => n.toLowerCase() === 'datos');
+    if (!nombre) throw new Error(`El Excel no tiene la hoja "Datos" (hojas: ${wb.SheetNames.join(' · ')})`);
+    const filas = filasDe(wb.Sheets[nombre]);
+    const iHdr = filas.findIndex(r => r && r.some(c => txt(c) === 'NumAtCard'));
+    if (iHdr < 0) throw new Error('Hoja "Datos": no encontré la fila de títulos (debe tener la columna NumAtCard)');
+    const hdr = filas[iHdr].map(txt);
+    const col = {};
+    for (const c of COLUMNAS) { const i = hdr.indexOf(c); if (i < 0) throw new Error(`Hoja "Datos": falta la columna "${c}"`); col[c] = i; }
+    const iStatus = hdr.indexOf('StatusOrden');
+
+    const resumen = leerResumen(wb);
+    const ocs = {};
+    let filasLeidas = 0;
+    for (const r of filas.slice(iHdr + 1)) {
+      if (!r) continue;
+      const oc = cod(r[col.NumAtCard]);
+      if (!oc) continue;
+      filasLeidas++;
+      const o = ocs[oc] || (ocs[oc] = {
+        oc, cliente: txt(r[col.Cliente]), depto: txt(r[col.Departamento]), marcas: {}, tiendas: {}, modelos: {}, estados: {},
+      });
+      const modelo = txt(r[col.modelo]), desc = txt(r[col['Descripcion modelo']]);
+      const tCod = cod(r[col.ShipToCode]), tNom = txt(r[col.Tienda]);
+      const sup = nombrePersona(r[col.Supervisor]);
+      const q = num(r[col.Quantity]);
+      const marca = marcaDe(desc, modelo);
+      o.marcas[marca] = (o.marcas[marca] || 0) + q;
+      if (iStatus >= 0) { const s = txt(r[iStatus]); if (s) o.estados[s] = (o.estados[s] || 0) + q; }
+      const m = o.modelos[modelo] || (o.modelos[modelo] = { modelo, desc, marca, uds: 0 });
+      m.uds += q;
+      const t = o.tiendas[tCod] || (o.tiendas[tCod] = { cod: tCod, nombre: tNom || tCod, sup: SIN_SUPERVISOR.includes(sup) ? '' : sup, uds: 0, items: {} });
+      t.uds += q;
+      t.items[modelo] = (t.items[modelo] || 0) + q;
+    }
+    if (!filasLeidas) throw new Error('Hoja "Datos": no tiene filas con OC');
+
+    const generado = new Date().toISOString();
+    const salida = [];
+    for (const oc of Object.keys(ocs).sort()) {
+      const o = ocs[oc];
+      const marcas = Object.entries(o.marcas).sort((a, b) => b[1] - a[1]).map(x => x[0]).filter(Boolean);
+      const res = resumen.ocs[oc] || {};
+      const tiendas = Object.values(o.tiendas)
+        .sort((a, b) => (a.sup || '~').localeCompare(b.sup || '~') || a.nombre.localeCompare(b.nombre))
+        .map(t => ({ cod: t.cod, nombre: t.nombre, sup: t.sup, uds: t.uds,
+          items: Object.entries(t.items).map(([modelo, uds]) => ({ modelo, uds })).sort((a, b) => a.modelo.localeCompare(b.modelo)) }));
+      salida.push({
+        oc, cliente: o.cliente, depto: o.depto, marca: marcas.join(' · '),
+        comentario: res.comentario || '', udsOC: res.udsOC == null ? null : res.udsOC,
+        fuente: resumen.fuente, archivo: nombreArchivo, generado,
+        uds: tiendas.reduce((s, t) => s + t.uds, 0),
+        estados: o.estados,
+        modelos: Object.values(o.modelos).sort((a, b) => a.modelo.localeCompare(b.modelo)),
+        tiendas,
+      });
+    }
+    return salida;
+  }
+
+  // lo que va al manifiesto (sin el detalle de modelos por tienda)
+  function resumenDe(o) {
+    return {
+      oc: o.oc, cliente: o.cliente, depto: o.depto, marca: o.marca, comentario: o.comentario, udsOC: o.udsOC,
+      fuente: o.fuente, archivo: o.archivo, uds: o.uds, modelos: o.modelos.length,
+      sinSupervisor: o.tiendas.filter(t => !t.sup).map(t => t.nombre),
+      tiendas: o.tiendas.map(t => ({ cod: t.cod, nombre: t.nombre, sup: t.sup, uds: t.uds, modelos: t.items.length })),
+    };
+  }
+
+  global.Convertir = { opcionesLectura, convertir, resumenDe, COLUMNAS };
+})(typeof self !== 'undefined' ? self : this);
