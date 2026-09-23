@@ -31,6 +31,8 @@ Cada fila del Excel es una **OC × tienda**. El reporte se hace desde esa misma 
 - Tiendas sin supervisor en el Excel (`SIN ASIGNAR`, `RUTA NUEVO`) se listan como **Sin supervisora** y no cuentan en el avance.
 - Reportes cuya OC ya no está cargada (se quitó) se listan en el Resumen como "Reportes sin OC cargada".
 
+En el Resumen, la columna **Estado** es un semáforo: 🔴 *Sin reportar* (falta alguna tienda, con el conteo), 🟡 *Con observación* (todas reportaron pero alguna quedó incompleta o no llegó), 🟢 *Todo ok* y ⚪ *Sin asignar* (tiendas sin supervisora).
+
 ## Instalar el buzón de reportes (una vez)
 
 Con la cuenta de Google donde quieres que quede el Sheet:

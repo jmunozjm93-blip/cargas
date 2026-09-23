@@ -176,6 +176,12 @@ tbody tr.sub td{background:var(--input);font-size:.8rem;padding:6px 12px 6px 28p
 .pct{display:inline-flex;align-items:center;gap:8px;}
 .pct .bar{width:60px;height:6px;background:var(--line);border-radius:3px;overflow:hidden;}
 .pct .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--azul2),var(--azul));}
+.sem{display:inline-flex;align-items:center;gap:7px;font-size:.76rem;font-weight:800;white-space:nowrap;}
+.sem i{width:13px;height:13px;border-radius:50%;flex:none;box-shadow:0 0 0 3px rgba(0,0,0,.06);}
+.sem.v{color:var(--ok);} .sem.v i{background:var(--ok);}
+.sem.a{color:var(--warn);} .sem.a i{background:var(--warn);}
+.sem.r{color:var(--obs);} .sem.r i{background:var(--obs);}
+.sem.g{color:var(--gris);} .sem.g i{background:var(--gris);}
 .small{font-size:.76rem;color:var(--muted);}
 
 /* ---------- paneles deslizantes: detalle y reporte ---------- */
@@ -317,11 +323,11 @@ tbody tr.sub td{background:var(--input);font-size:.8rem;padding:6px 12px 6px 28p
     </section>
     <section class="panel tabla">
       <div class="tbar"><h2>Por supervisora</h2><span class="small">Toca una fila para ver sus cargas</span></div>
-      <div class="tw"><table><thead><tr><th>Supervisora</th><th class="n">Enviadas</th><th class="n">Reportadas</th><th class="n">Pendientes</th><th class="n">Con obs.</th><th class="n">Más antigua</th><th>Avance</th></tr></thead><tbody id="rSups"></tbody></table></div>
+      <div class="tw"><table><thead><tr><th>Estado</th><th>Supervisora</th><th class="n">Enviadas</th><th class="n">Reportadas</th><th class="n">Pendientes</th><th class="n">Con obs.</th><th class="n">Más antigua</th><th>Avance</th></tr></thead><tbody id="rSups"></tbody></table></div>
     </section>
     <section class="panel tabla">
       <div class="tbar"><h2>Por OC</h2><span class="small">Toca una OC para ver sus tiendas</span></div>
-      <div class="tw"><table><thead><tr><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th>Cargada</th><th class="n">Uds</th><th class="n">Tiendas</th><th class="n">Reportadas</th><th class="n">Pendientes</th><th class="n">Obs.</th><th>Avance</th></tr></thead><tbody id="rOcs"></tbody></table></div>
+      <div class="tw"><table><thead><tr><th>Estado</th><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th>Cargada</th><th class="n">Uds</th><th class="n">Tiendas</th><th class="n">Reportadas</th><th class="n">Pendientes</th><th class="n">Obs.</th><th>Avance</th></tr></thead><tbody id="rOcs"></tbody></table></div>
     </section>
     <section class="panel tabla">
       <div class="tbar"><h2>Reportes sin OC cargada</h2><span class="small" id="rSinInfo"></span></div>
@@ -563,6 +569,14 @@ function itemsRes(){
     return true;
   });
 }
+// semáforo: rojo = falta reportar · amarillo = reportado con observación · verde = todo ok
+var SEM_CLASE={pend:'r',obs:'a',ok:'v',sin:'g'};
+function semaforo(pend,obs,tot,sinSup){
+  if(sinSup) return '<span class="sem g" title="Tiendas sin supervisora asignada"><i></i>Sin asignar</span>';
+  if(pend) return '<span class="sem r" title="'+pend+' de '+tot+' tiendas sin reportar"><i></i>Sin reportar'+(tot>1?' ('+pend+'/'+tot+')':'')+'</span>';
+  if(obs) return '<span class="sem a" title="'+obs+' con observación"><i></i>Con observación</span>';
+  return '<span class="sem v" title="Todas las tiendas reportaron carga completa"><i></i>Todo ok</span>';
+}
 function pct(ok,tot){ var p=tot?Math.round(ok/tot*100):0; return '<span class="pct"><span class="bar"><i style="width:'+p+'%"></i></span>'+p+'%</span>'; }
 function renderRes(){
   var lista=itemsRes();
@@ -579,25 +593,25 @@ function renderRes(){
   var h='';
   Object.keys(sups).sort(function(a,b){ return sups[b].pend-sups[a].pend||sups[a].n.localeCompare(sups[b].n); }).forEach(function(k){
     var s=sups[k];
-    h+='<tr class="cl" onclick="verSup(\''+esc(k==='~'?'':k)+'\')"><td><b>'+esc(s.n)+'</b></td><td class="n">'+fmt(s.tot)+'</td><td class="n">'+fmt(s.ok+s.obs)+'</td><td class="n">'+(s.pend?'<b style="color:var(--warn)">'+fmt(s.pend)+'</b>':'0')+'</td><td class="n">'+(s.obs?'<b style="color:var(--obs)">'+fmt(s.obs)+'</b>':'0')+'</td><td class="n">'+(s.ant!=null?s.ant+' d':'—')+'</td><td>'+pct(s.ok+s.obs,s.tot)+'</td></tr>';
+    h+='<tr class="cl" onclick="verSup(\''+esc(k==='~'?'':k)+'\')"><td>'+semaforo(s.pend,s.obs,s.tot,k==='~')+'</td><td><b>'+esc(s.n)+'</b></td><td class="n">'+fmt(s.tot)+'</td><td class="n">'+fmt(s.ok+s.obs)+'</td><td class="n">'+(s.pend?'<b style="color:var(--warn)">'+fmt(s.pend)+'</b>':'0')+'</td><td class="n">'+(s.obs?'<b style="color:var(--obs)">'+fmt(s.obs)+'</b>':'0')+'</td><td class="n">'+(s.ant!=null?s.ant+' d':'—')+'</td><td>'+pct(s.ok+s.obs,s.tot)+'</td></tr>';
   });
-  $('rSups').innerHTML=h||'<tr><td colspan="7" class="small">Sin datos</td></tr>';
+  $('rSups').innerHTML=h||'<tr><td colspan="8" class="small">Sin datos</td></tr>';
 
   var ocs={}, orden=[];
   lista.forEach(function(it){ if(!ocs[it.oc]){ ocs[it.oc]={o:it.o,its:[]}; orden.push(it.oc); } ocs[it.oc].its.push(it); });
   h='';
   orden.forEach(function(oc){
     var g=ocs[oc], o=g.o, its=g.its, ok2=n(its,'ok')+n(its,'obs'), pend2=n(its,'pend'), obs2=n(its,'obs'), abierta=ABIERTAS[oc];
-    h+='<tr class="cl" onclick="toggleOC(\''+esc(oc)+'\')"><td><b>'+(abierta?'▾':'▸')+' '+esc(oc)+'</b></td><td><span class="bc '+claseCli(o.cliente)+'">'+esc(o.cliente)+'</span></td><td>'+esc(o.depto)+'</td><td>'+esc(o.marca)+'</td><td class="small">'+esc(o.comentario)+'</td><td>'+fFecha(o.subido)+'</td><td class="n">'+fmt(its.reduce(function(s,x){ return s+x.uds; },0))+'</td><td class="n">'+its.length+'</td><td class="n">'+ok2+'</td><td class="n">'+(pend2?'<b style="color:var(--warn)">'+pend2+'</b>':'0')+'</td><td class="n">'+(obs2?'<b style="color:var(--obs)">'+obs2+'</b>':'0')+'</td><td>'+pct(ok2,its.length)+'</td></tr>';
+    h+='<tr class="cl" onclick="toggleOC(\''+esc(oc)+'\')"><td>'+semaforo(pend2,obs2,its.length,false)+'</td><td><b>'+(abierta?'▾':'▸')+' '+esc(oc)+'</b></td><td><span class="bc '+claseCli(o.cliente)+'">'+esc(o.cliente)+'</span></td><td>'+esc(o.depto)+'</td><td>'+esc(o.marca)+'</td><td class="small">'+esc(o.comentario)+'</td><td>'+fFecha(o.subido)+'</td><td class="n">'+fmt(its.reduce(function(s,x){ return s+x.uds; },0))+'</td><td class="n">'+its.length+'</td><td class="n">'+ok2+'</td><td class="n">'+(pend2?'<b style="color:var(--warn)">'+pend2+'</b>':'0')+'</td><td class="n">'+(obs2?'<b style="color:var(--obs)">'+obs2+'</b>':'0')+'</td><td>'+pct(ok2,its.length)+'</td></tr>';
     if(abierta){
       var rank={pend:0,obs:1,ok:2,sin:3};
       its.slice().sort(function(a,b){ return rank[a.estado]-rank[b.estado]||a.tienda.localeCompare(b.tienda); }).forEach(function(it){
         var r=it.resp, d=dias(it.subido);
-        h+='<tr class="sub cl" onclick="abrirDetalle('+ITEMS.indexOf(it)+')"><td colspan="2">'+esc(it.tienda)+'</td><td colspan="2">'+esc(it.sup?titulo(it.sup):'—')+'</td><td colspan="2" class="small">'+(r?'<b>'+esc(ETIQUETAS[r.estado]||r.estado)+'</b>'+(r.comentario?' · '+esc(r.comentario):''):'')+'</td><td class="n">'+fmt(it.uds)+'</td><td colspan="4"><span class="st '+it.estado+'">'+ESTADO_TXT[it.estado]+'</span> <span class="small">'+(r?fFecha(r.fecha):(it.estado==='pend'&&d!=null?d+' d':''))+'</span></td><td></td></tr>';
+        h+='<tr class="sub cl" onclick="abrirDetalle('+ITEMS.indexOf(it)+')"><td><span class="sem '+SEM_CLASE[it.estado]+'"><i></i></span></td><td colspan="2">'+esc(it.tienda)+'</td><td colspan="2">'+esc(it.sup?titulo(it.sup):'—')+'</td><td colspan="2" class="small">'+(r?'<b>'+esc(ETIQUETAS[r.estado]||r.estado)+'</b>'+(r.comentario?' · '+esc(r.comentario):''):'')+'</td><td class="n">'+fmt(it.uds)+'</td><td colspan="4"><span class="st '+it.estado+'">'+ESTADO_TXT[it.estado]+'</span> <span class="small">'+(r?fFecha(r.fecha):(it.estado==='pend'&&d!=null?d+' d':''))+'</span></td><td></td></tr>';
       });
     }
   });
-  $('rOcs').innerHTML=h||'<tr><td colspan="12" class="small">Sin OC para estos filtros</td></tr>';
+  $('rOcs').innerHTML=h||'<tr><td colspan="13" class="small">Sin OC para estos filtros</td></tr>';
 
   var sin=SINCRUZAR.filter(function(r){ var cli=$('rCli').value, sup=$('rSup').value, q=norm($('rQ').value); if(cli&&norm(r.cliente)!==norm(cli)) return false; if(sup&&r.supN!==sup) return false; if(q&&norm(r.oc+' '+r.tienda+' '+r.sup+' '+r.comentario).indexOf(q)<0) return false; return true; });
   $('rSinInfo').textContent=sin.length?fmt(sin.length):'ninguno';
