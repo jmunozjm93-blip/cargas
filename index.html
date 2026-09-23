@@ -330,6 +330,10 @@ tbody tr.sub td{background:var(--input);font-size:.8rem;padding:6px 12px 6px 28p
       <div class="tw"><table><thead><tr><th>Estado</th><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th>Cargada</th><th class="n">Uds</th><th class="n">Tiendas</th><th class="n">Reportadas</th><th class="n">Pendientes</th><th class="n">Obs.</th><th>Avance</th></tr></thead><tbody id="rOcs"></tbody></table></div>
     </section>
     <section class="panel tabla">
+      <div class="tbar"><h2>Tiendas y supervisoras</h2><span class="small" id="rMaeInfo"></span></div>
+      <div class="tw"><table><thead><tr><th>Supervisora</th><th class="n">Tiendas</th><th>Cadenas</th><th>Tiendas asignadas</th></tr></thead><tbody id="rMae"></tbody></table></div>
+    </section>
+    <section class="panel tabla">
       <div class="tbar"><h2>Reportes sin OC cargada</h2><span class="small" id="rSinInfo"></span></div>
       <div class="tw"><table><thead><tr><th>Fecha</th><th>Supervisora</th><th>Cliente</th><th>Tienda</th><th>OC</th><th>Reporte</th></tr></thead><tbody id="rSin"></tbody></table></div>
     </section>
@@ -413,7 +417,9 @@ function toast(msg,err){ var t=$('toast'); t.textContent=msg; t.className='toast
 })();
 
 // ============================ datos ============================
-var MAN=null, OCS=[], RESP=[], ITEMS=[], SINCRUZAR=[], IMGS=null, DETALLE={}, SHEET_URL='', SUPS={};
+var MAN=null, OCS=[], RESP=[], ITEMS=[], SINCRUZAR=[], IMGS=null, DETALLE={}, SHEET_URL='', SUPS={}, MAESTRO={};
+// cliente de la OC → cadena del maestro de supervisoras
+var claveCliente=function(s){ var n=norm(s); return n.indexOf('FALABELLA')>=0?'FALABELLA':n.indexOf('RIPLEY')>=0?'RIPLEY':n.indexOf('PARIS')>=0?'PARIS':n.indexOf('POLAR')>=0?'LAPOLAR':n.indexOf('HITES')>=0?'HITES':n; };
 
 // respuesta de doGet: {ok, reportes:[{fecha, oc, cliente, depto, cod, tienda, sup, estado, comentario, fotos:[ids], uds}]}
 function leerReportes(j){
@@ -433,7 +439,10 @@ function cruzar(){
   var ultimo=function(a){ return a.slice().sort(function(x,y){ return (y.fecha?y.fecha.getTime():0)-(x.fecha?x.fecha.getTime():0); })[0]; };
   OCS.forEach(function(o){
     o.tiendas.forEach(function(t){
-      var it={ oc:o.oc, o:o, t:t, cod:t.cod, tienda:t.nombre, sup:t.sup, supN:norm(t.sup), uds:t.uds, modelos:t.modelos, subido:o.subido, resp:null, reps:[], estado:t.sup?'pend':'sin' };
+      // el maestro de supervisoras (data/supervisores.json) manda, también sobre las OC ya cargadas
+      var mt=MAESTRO[claveCliente(o.cliente)+'|'+t.cod];
+      var nom=(mt&&mt[0])||t.nombre, sup=mt?mt[1].toUpperCase():t.sup;
+      var it={ oc:o.oc, o:o, t:t, cod:t.cod, tienda:nom, sup:sup, supN:norm(sup), uds:t.uds, modelos:t.modelos, subido:o.subido, resp:null, reps:[], estado:sup?'pend':'sin' };
       var rs=porClave[o.oc+'|'+t.cod];
       if(rs&&rs.length){ it.reps=rs; it.resp=ultimo(rs); rs.forEach(function(r){ r.usada=true; }); it.estado=it.resp.obs?'obs':'ok'; }
       ITEMS.push(it);
@@ -453,8 +462,10 @@ function cargar(){
   var pRep=!API_URL?Promise.reject(new Error('falta configurar API_URL con la dirección del Apps Script'))
     :fetch(API_URL+'?accion=reportes&t='+Date.now()).then(function(r){ if(!r.ok) throw new Error('el script respondió '+r.status); return r.json(); }).then(leerReportes);
   pRep=pRep.catch(function(e){ $('sAviso').innerHTML='<div class="aviso">No pude leer los reportes ('+esc(e.message)+'). Se muestran todas las cargas como pendientes y no se puede reportar. Revisa la señal y recarga.</div>'; API_ERR=true; return []; });
-  Promise.all([pMan,pRep]).then(function(res){
-    MAN=res[0]; RESP=res[1];
+  // maestro de supervisoras por tienda; si no está, se usa lo que traiga cada OC
+  var pSup=fetch('data/supervisores.json?t='+Date.now()).then(function(r){ return r.ok?r.json():null; }).catch(function(){ return null; });
+  Promise.all([pMan,pRep,pSup]).then(function(res){
+    MAN=res[0]; RESP=res[1]; MAESTRO=(res[2]&&res[2].sup)||{};
     OCS=Object.keys(MAN.ocs||{}).map(function(k){ return MAN.ocs[k]; }).sort(function(a,b){ return (b.subido||'').localeCompare(a.subido||'')||b.oc.localeCompare(a.oc); });
     cruzar(); llenarSelects(); render();
     $('meta').textContent='OC actualizadas '+fFecha(MAN.actualizado)+' · '+fmt(RESP.length)+' reportes';
@@ -619,6 +630,34 @@ function renderRes(){
   sin.slice(0,60).forEach(function(r){ h+='<tr><td>'+fFecha(r.fecha)+'</td><td>'+esc(titulo(r.sup))+'</td><td>'+esc(r.cliente)+'</td><td>'+esc(r.tienda)+'</td><td>'+esc(r.oc)+'</td><td class="small"><b>'+esc(ETIQUETAS[r.estado]||r.estado)+'</b>'+(r.comentario?' · '+esc(r.comentario):'')+'</td></tr>'; });
   if(sin.length>60) h+='<tr><td colspan="6" class="small">… y '+fmt(sin.length-60)+' más</td></tr>';
   $('rSin').innerHTML=h||'<tr><td colspan="6" class="small">Todos los reportes corresponden a una OC cargada.</td></tr>';
+
+  renderMaestro();
+}
+// listado del maestro: qué tiendas tiene asignada cada supervisora (Supervisores_Consolidado.xlsx)
+var CADENAS={FALABELLA:'Falabella',RIPLEY:'Ripley',PARIS:'Paris',LAPOLAR:'La Polar',HITES:'Hites'};
+function renderMaestro(){
+  var claves=Object.keys(MAESTRO);
+  if(!claves.length){ $('rMaeInfo').textContent='sin cargar — arrastra Supervisores_Consolidado.xlsx en Cargar OC'; $('rMae').innerHTML='<tr><td colspan="4" class="small">Mientras no esté, cada OC usa la columna Supervisor de su propio Excel.</td></tr>'; return; }
+  var q=norm($('rQ').value), fSup=$('rSup').value, fCli=$('rCli').value;
+  var sups={};
+  claves.forEach(function(k){
+    var cad=k.split('|')[0], cod=k.split('|')[1], t=MAESTRO[k], nom=t[0], quien=t[1];
+    if(fCli&&claveCliente(fCli)!==cad) return;
+    if(fSup&&norm(quien)!==fSup) return;
+    if(q&&norm(quien+' '+nom+' '+cod+' '+(CADENAS[cad]||cad)).indexOf(q)<0) return;
+    var s=sups[quien]||(sups[quien]={ n:titulo(quien), cadenas:{}, tiendas:[] });
+    s.cadenas[CADENAS[cad]||cad]=1;
+    s.tiendas.push({ cad:cad, txt:(CADENAS[cad]||cad)+' '+nom });
+  });
+  var nombres=Object.keys(sups).sort(function(a,b){ return sups[a].n.localeCompare(sups[b].n); });
+  $('rMaeInfo').textContent=fmt(claves.length)+' tiendas · '+(MAN.supervisores?'actualizado '+fFecha(MAN.supervisores.subido):'');
+  var h='';
+  nombres.forEach(function(k){
+    var s=sups[k];
+    var lista=s.tiendas.sort(function(a,b){ return a.txt.localeCompare(b.txt); }).map(function(t){ return esc(t.txt); }).join(' · ');
+    h+='<tr><td><b>'+esc(s.n)+'</b></td><td class="n">'+fmt(s.tiendas.length)+'</td><td class="small">'+esc(Object.keys(s.cadenas).sort().join(', '))+'</td><td class="small">'+lista+'</td></tr>';
+  });
+  $('rMae').innerHTML=h||'<tr><td colspan="4" class="small">Nada coincide con estos filtros.</td></tr>';
 }
 var ABIERTAS={};
 window.toggleOC=function(oc){ ABIERTAS[oc]=!ABIERTAS[oc]; renderRes(); };

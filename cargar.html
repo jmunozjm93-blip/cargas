@@ -50,7 +50,7 @@
 <body>
 <main>
   <h1>Cargar OC</h1>
-  <p class="lead">Adjunta el Excel de cargas (el que trae la hoja <code>Datos</code> con una fila por OC · modelo · tienda). La app lo valida, lo convierte y lo sube a GitHub; el <a href="index.html">dashboard</a> muestra las OC nuevas como pendientes para cada supervisora. Si una OC ya estaba cargada, se reemplaza. También acepta <code>Excel_Macro.xlsx</code> para actualizar las fotos de los modelos.</p>
+  <p class="lead">Adjunta el Excel de cargas (el que trae la hoja <code>Datos</code> con una fila por OC · modelo · tienda). La app lo valida, lo convierte y lo sube a GitHub; el <a href="index.html">dashboard</a> muestra las OC nuevas como pendientes para cada supervisora. Si una OC ya estaba cargada, se reemplaza. También acepta <code>Supervisores_Consolidado.xlsx</code> (maestro de supervisoras por tienda) y <code>Excel_Macro.xlsx</code> (fotos de los modelos).</p>
 
   <div class="box">
     <h2>1 · Conexión con GitHub</h2>
@@ -79,7 +79,7 @@
 
   <div class="box">
     <h2>3 · Adjuntar archivos</h2>
-    <div class="drop" id="drop">Arrastra aquí los Excel de cargas<br><span class="small">Se aceptan varios a la vez; se procesan de a uno.</span>
+    <div class="drop" id="drop">Arrastra aquí los Excel de cargas, <b>Supervisores_Consolidado.xlsx</b> o <b>Excel_Macro.xlsx</b><br><span class="small">Se aceptan varios a la vez; se procesan de a uno.</span>
       <div style="margin-top:14px"><label for="file" class="btnfile">Elegir archivos…</label></div>
       <input type="file" id="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple>
     </div>
@@ -151,6 +151,13 @@ async function registrar(resumenes, archivo) {
   await subir('data/manifiesto.json', JSON.stringify(m, null, 1), `Registra ${resumenes.map(r => r.oc).join(', ')} (${archivo})`);
   return m;
 }
+async function registrarSupervisores(resumen) {
+  const m = await leerManifiesto();
+  m.ocs = m.ocs || {};
+  m.supervisores = { subido: new Date().toISOString(), tiendas: resumen.tiendas };
+  await subir('data/manifiesto.json', JSON.stringify(m, null, 1), 'Registra el maestro de supervisoras');
+  return m;
+}
 async function registrarImagenes(resumen) {
   const m = await leerManifiesto();
   m.ocs = m.ocs || {};
@@ -209,13 +216,14 @@ async function cargarEstado() {
     else { const r = await fetch('data/manifiesto.json?t=' + Date.now()); m = r.ok ? await r.json() : { ocs: {} }; }
     const ocs = Object.values(m.ocs || {}).sort((a, b) => (b.subido || '').localeCompare(a.subido || '') || b.oc.localeCompare(a.oc));
     const fotos = m.imagenes ? `Fotos de los modelos (Excel_Macro): ${fmt(m.imagenes.modelos)} modelos, subido ${fecha(m.imagenes.subido)}` : 'Fotos de los modelos: — sin cargar (arrastra Excel_Macro.xlsx) —';
-    if (!ocs.length) { el('estado').innerHTML = `— ninguna OC cargada todavía —<p class="small">${esc(fotos)}</p>`; return; }
+    const maestro = m.supervisores ? `Supervisoras por tienda: ${fmt(m.supervisores.tiendas)} tiendas, subido ${fecha(m.supervisores.subido)}` : 'Supervisoras por tienda: — sin cargar (arrastra Supervisores_Consolidado.xlsx) —';
+    if (!ocs.length) { el('estado').innerHTML = `— ninguna OC cargada todavía —<p class="small">${esc(maestro)}<br>${esc(fotos)}</p>`; return; }
     let h = `<table><tr><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th class="n">Tiendas</th><th class="n">Unidades</th><th>Subido</th><th>Archivo</th><th></th></tr>`;
     for (const o of ocs) {
       const sin = o.sinSupervisor && o.sinSupervisor.length ? `<div class="small aviso">${o.sinSupervisor.length} sin supervisor</div>` : '';
       h += `<tr><td><b>${esc(o.oc)}</b></td><td>${esc(o.cliente)}</td><td>${esc(o.depto)}</td><td>${esc(o.marca)}</td><td>${esc(o.comentario)}</td><td class="n">${fmt(o.tiendas.length)}${sin}</td><td class="n">${fmt(o.uds)}</td><td>${fecha(o.subido)}</td><td class="small">${esc(o.archivo)}</td><td>${token() ? `<button class="del" data-oc="${esc(o.oc)}">Quitar</button>` : ''}</td></tr>`;
     }
-    h += `</table><p class="small">${esc(fotos)} · OC actualizadas: ${fecha(m.actualizado)}</p>`;
+    h += `</table><p class="small">${esc(maestro)}<br>${esc(fotos)}<br>OC actualizadas: ${fecha(m.actualizado)}</p>`;
     el('estado').innerHTML = h;
     el('estado').querySelectorAll('button.del').forEach(b => b.onclick = () => {
       const oc = b.dataset.oc;
@@ -254,6 +262,14 @@ const setSt = (c, cls, msg) => { const s = c.querySelector('[data-st]'); s.class
 
 function tablaResumen(ocs) {
   if (ocs.tipo === 'imagenes') return `<table><tr><th class="n">Filas con link</th><th class="n">Modelos con foto</th></tr><tr><td class="n">${fmt(ocs.resumen.filasExcel)}</td><td class="n">${fmt(ocs.resumen.modelos)}</td></tr></table>`;
+  if (ocs.tipo === 'supervisores') {
+    const r = ocs.resumen;
+    let t = `<table><tr><th>Supervisora</th><th class="n">Tiendas</th></tr>`;
+    for (const [s, n] of Object.entries(r.porSup).sort()) t += `<tr><td>${esc(s)}</td><td class="n">${fmt(n)}</td></tr>`;
+    t += `<tr><th>Total</th><th class="n">${fmt(r.tiendas)} de ${fmt(r.filasExcel)} filas</th></tr></table>`;
+    if (r.sinSupervisor) t += `<div class="small aviso">${r.sinSupervisor} tienda(s) del maestro sin supervisora: no se incluyen.</div>`;
+    return t;
+  }
   let h = `<table><tr><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th class="n">Modelos</th><th class="n">Tiendas</th><th class="n">Unidades</th><th class="n">UND OC</th></tr>`;
   for (const { resumen: r } of ocs) {
     const sin = r.sinSupervisor.length ? `<div class="small aviso">${r.sinSupervisor.length} sin supervisor: ${esc(r.sinSupervisor.join(', '))}</div>` : '';
@@ -286,10 +302,14 @@ function siguiente() {
     if (msg.etapa === 'error') { setSt(c, 'bad', '✗ ' + msg.error); fin(); return; }
     // Excel_Macro.xlsx: catálogo de fotos → data/imagenes.json
     const esImg = msg.tipo === 'imagenes';
-    const piezas = esImg ? [{ oc: 'imagenes', texto: msg.texto, resumen: msg.resumen }] : msg.ocs;
+    const esSup = msg.tipo === 'supervisores';
+    const piezas = (esImg || esSup) ? [{ oc: msg.tipo, texto: msg.texto, resumen: msg.resumen }] : msg.ocs;
     const kb = piezas.reduce((s, o) => s + o.texto.length, 0) / 1024;
-    setSt(c, 'ok', `✓ Válido · ${esImg ? fmt(msg.resumen.modelos) + ' modelos con foto' : msg.ocs.length + ' OC'} · leído en ${(msg.ms.lectura / 1000).toFixed(1)} s · JSON de ${kb.toFixed(0)} KB`);
-    c.querySelector('[data-body]').innerHTML = tablaResumen(esImg ? msg : msg.ocs);
+    const que = esImg ? fmt(msg.resumen.modelos) + ' modelos con foto'
+      : esSup ? fmt(msg.resumen.tiendas) + ' tiendas con supervisora'
+      : msg.ocs.length + ' OC' + (msg.maestro ? ` · supervisoras del maestro (${fmt(msg.maestro)} tiendas)` : ' · sin maestro de supervisoras');
+    setSt(c, 'ok', `✓ Válido · ${que} · leído en ${(msg.ms.lectura / 1000).toFixed(1)} s · JSON de ${kb.toFixed(0)} KB`);
+    c.querySelector('[data-body]').innerHTML = tablaResumen((esImg || esSup) ? msg : msg.ocs);
     const acts = c.querySelector('[data-acts]');
     const bUp = document.createElement('button'); bUp.textContent = 'Subir a GitHub';
     const bDl = document.createElement('button'); bDl.className = 'sec'; bDl.textContent = 'Descargar JSON';
@@ -301,6 +321,16 @@ function siguiente() {
       enCola(async () => {
         try {
           let commit;
+          if (esSup) {
+            setSt(c, '', 'Subiendo el maestro de supervisoras…');
+            commit = await subir('data/supervisores.json', msg.texto, `Supervisoras por tienda (${file.name})`);
+            setSt(c, '', 'Registrando…');
+            await registrarSupervisores(msg.resumen);
+            setSt(c, 'ok', `✓ Subido data/supervisores.json (${fmt(msg.resumen.tiendas)} tiendas). El dashboard corrige las supervisoras de todas las OC, también las ya cargadas.`);
+            acts.innerHTML = `<a class="small" href="${commit.html_url}" target="_blank" rel="noopener">Ver commit</a>`;
+            cargarEstado();
+            return;
+          }
           if (esImg) {
             setSt(c, '', 'Subiendo el catálogo de fotos…');
             commit = await subir('data/imagenes.json', msg.texto, `Fotos de los modelos (${file.name})`);

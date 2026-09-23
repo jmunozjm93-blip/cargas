@@ -1,6 +1,5 @@
 # Cargas · Grupo Depor
 
-
 Dashboard de órdenes de compra (OC) enviadas a tienda y su recepción reportada por las supervisoras **desde la misma página** (sin formulario de Google). Misma arquitectura que `levantamientos`: página estática en GitHub Pages, las OC en JSON dentro del repositorio subidas desde el navegador con un token; los reportes van a un Google Sheet a través de un Apps Script.
 
 **Sitio publicado:** https://jmunozjm93-blip.github.io/cargas/
@@ -14,13 +13,15 @@ Dashboard de órdenes de compra (OC) enviadas a tienda y su recepción reportada
 | `data/manifiesto.json` | Todas las OC cargadas con su resumen por tienda (lo que lee el dashboard) |
 | `data/oc/<oc>.json` | Detalle de cada OC: modelos y unidades por tienda (se pide al tocar una tienda) |
 | `data/imagenes.json` | Modelo → ID de foto en Google Drive (desde `Excel_Macro.xlsx`, hoja Imagenes) |
+| `data/supervisores.json` | Maestro de supervisoras por tienda (desde `Supervisores_Consolidado.xlsx`, hoja Supervisores); manda sobre la columna `Supervisor` del Excel de cargas |
 | `apps-script/Codigo.gs` | Buzón de reportes (Google Apps Script): guarda las fotos en Drive y cada reporte como fila del Sheet; la página lo lee de ahí |
 
 ## De dónde salen los datos
 
 1. **OC enviadas**: el Excel de cargas (`Cargas_<Depto>_<Cliente>.xlsx`) que trae la hoja `Datos` con una fila por OC · modelo · talla · tienda (`NumAtCard · Cliente · modelo · Descripcion modelo · ShipToCode · Tienda · Supervisor · Quantity …`; la columna `Departamento` es opcional: si no viene se toma del nombre del archivo, ej. `Cargas_21.09_Paris-deporte.xlsx` → Deporte). Se sube por `cargar.html`.
 2. **Recepción**: la supervisora toca la carga pendiente → **Reportar** → elige *Llegó completa / Llegó incompleta / No llegó*, escribe un comentario y saca fotos. La página achica las fotos (lado mayor 1280 px, JPG, ~150–250 KB) y manda todo al Apps Script, que guarda las fotos en la carpeta de Drive `Cargas - Fotos` y agrega una fila en la hoja `Reportes` del Sheet `Cargas - Reportes`. Al abrir la página se leen los reportes desde el mismo script (`?accion=reportes`).
-3. **Fotos de los modelos**: `data/imagenes.json` de este mismo repositorio (`MODELO` → ID de foto en Google Drive). Se actualiza arrastrando `Excel_Macro.xlsx` (hoja `Imagenes`) en `cargar.html`.
+3. **Supervisora de cada tienda**: `data/supervisores.json`, el maestro que sale de `Supervisores_Consolidado.xlsx` (columnas `Cadena · Cod · Tienda · Supervisor`). Se sube por `cargar.html` y **manda sobre lo que traiga el Excel de cargas**: corrige nombres distintos, `SIN ASIGNAR` y `RUTA NUEVO`, y se aplica también a las OC ya cargadas (no hay que volver a subirlas). Si una tienda no está en el maestro, se usa lo que diga su Excel.
+4. **Fotos de los modelos**: `data/imagenes.json` de este mismo repositorio (`MODELO` → ID de foto en Google Drive). Se actualiza arrastrando `Excel_Macro.xlsx` (hoja `Imagenes`) en `cargar.html`.
 
 ## Cómo se cruzan
 

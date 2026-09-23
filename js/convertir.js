@@ -13,7 +13,25 @@
 
   // Excel_Macro.xlsx (hoja Imagenes): catálogo de fotos de los modelos, "MODELO.jpg" → ID de Google Drive
   const RE_IMAGENES = /^Excel_Macro\.xlsx$/i;
-  function identificar(nombre) { return RE_IMAGENES.test(nombre.trim()) ? 'imagenes' : 'cargas'; }
+  // Supervisores_Consolidado.xlsx (hoja Supervisores): maestro Cadena · Cod · Tienda · Supervisor
+  const RE_SUPERVISORES = /^Supervisores[_ ]?Consolidado\.xlsx$/i;
+  function identificar(nombre) {
+    const n = nombre.trim();
+    if (RE_IMAGENES.test(n)) return 'imagenes';
+    if (RE_SUPERVISORES.test(n)) return 'supervisores';
+    return 'cargas';
+  }
+
+  // cliente del Excel de cargas / cadena del maestro → la misma clave
+  function claveCliente(s) {
+    const n = String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z]/g, '');
+    if (n.indexOf('FALABELLA') >= 0) return 'FALABELLA';
+    if (n.indexOf('RIPLEY') >= 0) return 'RIPLEY';
+    if (n.indexOf('PARIS') >= 0) return 'PARIS';
+    if (n.indexOf('POLAR') >= 0) return 'LAPOLAR';
+    if (n.indexOf('HITES') >= 0) return 'HITES';
+    return n;
+  }
 
   const COLUMNAS = ['NumAtCard', 'Cliente', 'modelo', 'Descripcion modelo', 'ShipToCode', 'Tienda', 'Supervisor', 'Quantity'];
   // "Departamento" es opcional: si no viene, se toma del nombre del archivo (Cargas_21.09_Paris-deporte.xlsx → Deporte)
@@ -47,7 +65,29 @@
   function opcionesLectura(tipo) {
     const o = { type: 'array', dense: true, cellFormula: false, cellHTML: false, cellText: false, cellStyles: false };
     if (tipo === 'imagenes') o.sheets = ['Imagenes'];
+    if (tipo === 'supervisores') o.sheets = ['Supervisores'];
     return o;
+  }
+
+  // ---------- maestro de supervisoras (Supervisores_Consolidado.xlsx, hoja Supervisores) ----------
+  // "CADENA|cod" → [nombre de tienda, supervisora]. Manda sobre la columna Supervisor del Excel de cargas.
+  function parseSupervisores(wb) {
+    const nombre = wb.SheetNames.find(n => n.trim().toLowerCase() === 'supervisores') || wb.SheetNames[0];
+    const filas = filasDe(wb.Sheets[nombre]);
+    const iHdr = filas.findIndex(r => r && txt(r[0]).toLowerCase() === 'cadena');
+    if (iHdr < 0) throw new Error(`La hoja "${nombre}" no tiene la fila de títulos (Cadena · Cod · Tienda · Supervisor)`);
+    const sup = {};
+    let leidas = 0, sinSup = 0;
+    for (const r of filas.slice(iHdr + 1)) {
+      if (!r) continue;
+      const cad = claveCliente(r[0]), c = cod(r[1]), tienda = txt(r[2]), quien = txt(r[3]);
+      if (!cad || !c) continue;
+      leidas++;
+      if (SIN_SUPERVISOR.includes(nombrePersona(quien))) { sinSup++; continue; }
+      sup[cad + '|' + c] = [tienda || c, quien];
+    }
+    if (!leidas) throw new Error(`La hoja "${nombre}" no tiene filas con Cadena y Cod`);
+    return { generado: new Date().toISOString(), archivo: 'Supervisores_Consolidado.xlsx', tiendas: Object.keys(sup).length, filasExcel: leidas, sinSupervisor: sinSup, sup };
   }
 
   // ---------- imágenes (Excel_Macro.xlsx, hoja Imagenes) ----------
@@ -90,7 +130,8 @@
   }
 
   // ---------- hoja Datos ----------
-  function convertir(wb, nombreArchivo) {
+  function convertir(wb, nombreArchivo, maestro) {
+    const mSup = (maestro && maestro.sup) || {};
     const nombre = wb.SheetNames.find(n => n.toLowerCase() === 'datos');
     if (!nombre) throw new Error(`El Excel no tiene la hoja "Datos" (hojas: ${wb.SheetNames.join(' · ')})`);
     const filas = filasDe(wb.Sheets[nombre]);
@@ -123,7 +164,13 @@
       if (iStatus >= 0) { const s = txt(r[iStatus]); if (s) o.estados[s] = (o.estados[s] || 0) + q; }
       const m = o.modelos[modelo] || (o.modelos[modelo] = { modelo, desc, marca, uds: 0 });
       m.uds += q;
-      const t = o.tiendas[tCod] || (o.tiendas[tCod] = { cod: tCod, nombre: tNom || tCod, sup: SIN_SUPERVISOR.includes(sup) ? '' : sup, uds: 0, items: {} });
+      // el maestro (Supervisores_Consolidado) manda; si la tienda no está ahí, se usa lo que traiga el Excel
+      const mt = mSup[claveCliente(o.cliente) + '|' + tCod];
+      const t = o.tiendas[tCod] || (o.tiendas[tCod] = {
+        cod: tCod, nombre: (mt && mt[0]) || tNom || tCod,
+        sup: mt ? nombrePersona(mt[1]) : (SIN_SUPERVISOR.includes(sup) ? '' : sup),
+        deMaestro: !!mt, uds: 0, items: {},
+      });
       t.uds += q;
       t.items[modelo] = (t.items[modelo] || 0) + q;
     }
@@ -162,5 +209,5 @@
     };
   }
 
-  global.Convertir = { identificar, opcionesLectura, convertir, parseImagenes, resumenDe, COLUMNAS };
+  global.Convertir = { identificar, opcionesLectura, convertir, parseImagenes, parseSupervisores, claveCliente, resumenDe, COLUMNAS };
 })(typeof self !== 'undefined' ? self : this);
