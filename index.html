@@ -330,10 +330,6 @@ tbody tr.sub td{background:var(--input);font-size:.8rem;padding:6px 12px 6px 28p
       <div class="tw"><table><thead><tr><th>Estado</th><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th>Cargada</th><th class="n">Uds</th><th class="n">Tiendas</th><th class="n">Reportadas</th><th class="n">Pendientes</th><th class="n">Obs.</th><th>Avance</th></tr></thead><tbody id="rOcs"></tbody></table></div>
     </section>
     <section class="panel tabla">
-      <div class="tbar"><h2>Tiendas y supervisoras</h2><span class="small" id="rMaeInfo"></span></div>
-      <div class="tw"><table><thead><tr><th>Supervisora</th><th class="n">Tiendas</th><th>Cadenas</th><th>Tiendas asignadas</th></tr></thead><tbody id="rMae"></tbody></table></div>
-    </section>
-    <section class="panel tabla">
       <div class="tbar"><h2>Reportes sin OC cargada</h2><span class="small" id="rSinInfo"></span></div>
       <div class="tw"><table><thead><tr><th>Fecha</th><th>Supervisora</th><th>Cliente</th><th>Tienda</th><th>OC</th><th>Reporte</th></tr></thead><tbody id="rSin"></tbody></table></div>
     </section>
@@ -634,35 +630,6 @@ function renderRes(){
   sin.slice(0,60).forEach(function(r){ h+='<tr><td>'+fFecha(r.fecha)+'</td><td>'+esc(titulo(r.sup))+'</td><td>'+esc(r.cliente)+'</td><td>'+esc(r.tienda)+'</td><td>'+esc(r.oc)+'</td><td class="small"><b>'+esc(ETIQUETAS[r.estado]||r.estado)+'</b>'+(r.comentario?' · '+esc(r.comentario):'')+'</td></tr>'; });
   if(sin.length>60) h+='<tr><td colspan="6" class="small">… y '+fmt(sin.length-60)+' más</td></tr>';
   $('rSin').innerHTML=h||'<tr><td colspan="6" class="small">Todos los reportes corresponden a una OC cargada.</td></tr>';
-
-  renderMaestro();
-}
-// listado del maestro: qué tiendas tiene asignada cada supervisora (Supervisores_Consolidado.xlsx)
-var CADENAS={FALABELLA:'Falabella',RIPLEY:'Ripley',PARIS:'Paris',LAPOLAR:'La Polar',HITES:'Hites'};
-function renderMaestro(){
-  var claves=Object.keys(MAESTRO);
-  if(!claves.length){ $('rMaeInfo').textContent='sin cargar — arrastra Supervisores_Consolidado.xlsx en Cargar OC'; $('rMae').innerHTML='<tr><td colspan="4" class="small">Mientras no esté, cada OC usa la columna Supervisor de su propio Excel.</td></tr>'; return; }
-  var q=norm($('rQ').value), fSup=$('rSup').value, fCli=$('rCli').value;
-  var sups={};
-  claves.forEach(function(k){
-    var cad=k.split('|')[0], cod=k.split('|')[1], t=MAESTRO[k], nom=t[0], quien=t[1];
-    if(fCli&&claveCliente(fCli)!==cad) return;
-    if(fSup&&norm(quien)!==fSup) return;
-    if(q&&norm(quien+' '+nom+' '+cod+' '+(CADENAS[cad]||cad)).indexOf(q)<0) return;
-    var s=sups[quien]||(sups[quien]={ n:titulo(quien), cadenas:{}, tiendas:[] });
-    s.cadenas[CADENAS[cad]||cad]=1;
-    s.tiendas.push({ cad:cad, txt:(CADENAS[cad]||cad)+' '+nom });
-  });
-  var nombres=Object.keys(sups).sort(function(a,b){ return sups[a].n.localeCompare(sups[b].n); });
-  $('rMaeInfo').textContent=fmt(claves.length)+' tiendas · '+(MAN.supervisores?'actualizado '+fFecha(MAN.supervisores.subido):'')
-    +(OMITIDAS.length?' · '+fmt(OMITIDAS.length)+' tienda(s) de las OC no están en el maestro y no se muestran: '+OMITIDAS.map(function(t){ return t.cliente+' '+t.tienda; }).join(', '):'');
-  var h='';
-  nombres.forEach(function(k){
-    var s=sups[k];
-    var lista=s.tiendas.sort(function(a,b){ return a.txt.localeCompare(b.txt); }).map(function(t){ return esc(t.txt); }).join(' · ');
-    h+='<tr><td><b>'+esc(s.n)+'</b></td><td class="n">'+fmt(s.tiendas.length)+'</td><td class="small">'+esc(Object.keys(s.cadenas).sort().join(', '))+'</td><td class="small">'+lista+'</td></tr>';
-  });
-  $('rMae').innerHTML=h||'<tr><td colspan="4" class="small">Nada coincide con estos filtros.</td></tr>';
 }
 var ABIERTAS={};
 window.toggleOC=function(oc){ ABIERTAS[oc]=!ABIERTAS[oc]; renderRes(); };

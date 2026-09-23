@@ -29,7 +29,7 @@ Cada fila del Excel es una **OC × tienda**. El reporte se hace desde esa misma 
 
 - Hay reporte → si fue *Llegó completa* la carga se **archiva sola** (sale de la lista "Activas" de la supervisora y queda en "Archivadas"); si fue *incompleta* o *no llegó* queda como **Con observación**, a la vista. Si hay varios reportes manda el último; todos se ven en el detalle. En el Resumen se ven todas.
 - No hay reporte → **Pendiente**, con los días desde que se cargó la OC.
-- Tiendas que quedan sin supervisora (no están en el maestro y su Excel dice `SIN ASIGNAR` / `RUTA NUEVO`) **no se suben ni se muestran**: nadie las reportaría. La app de carga avisa cuáles quedaron fuera y el Resumen las lista bajo "Tiendas y supervisoras".
+- Tiendas que quedan sin supervisora (no están en el maestro y su Excel dice `SIN ASIGNAR` / `RUTA NUEVO`) **no se suben ni se muestran**: nadie las reportaría. La app de carga avisa cuáles quedaron fuera.
 - Reportes cuya OC ya no está cargada (se quitó) se listan en el Resumen como "Reportes sin OC cargada".
 
 En el Resumen, la columna **Estado** es un semáforo: 🔴 *Sin reportar* (falta alguna tienda, con el conteo), 🟡 *Con observación* (todas reportaron pero alguna quedó incompleta o no llegó), 🟢 *Todo ok* y ⚪ *Sin asignar* (tiendas sin supervisora).
