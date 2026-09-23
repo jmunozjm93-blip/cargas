@@ -1,538 +1,963 @@
 {
-    "ocs":  {
-                "500184":  {
-                               "oc":  "500184",
-                               "cliente":  "Hites",
-                               "depto":  "Deporte",
-                               "marca":  "Fila",
-                               "comentario":  "",
-                               "udsOC":  91,
-                               "fuente":  "Ordenes Picking 23.09.xlsx",
-                               "archivo":  "Cargas_23.09_Deporte_Hites.xlsx",
-                               "uds":  91,
-                               "modelos":  4,
-                               "sinSupervisor":  [
-                                                     "51-PUENTE ALTO",
-                                                     "55-SAN BERNARDO",
-                                                     "93-SIN CATALOGAR"
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "51",
-                                                   "nombre":  "51-PUENTE ALTO",
-                                                   "sup":  "",
-                                                   "uds":  5,
-                                                   "modelos":  2
-                                               },
-                                               {
-                                                   "cod":  "55",
-                                                   "nombre":  "55-SAN BERNARDO",
-                                                   "sup":  "",
-                                                   "uds":  34,
-                                                   "modelos":  3
-                                               },
-                                               {
-                                                   "cod":  "93",
-                                                   "nombre":  "93-SIN CATALOGAR",
-                                                   "sup":  "",
-                                                   "uds":  1,
-                                                   "modelos":  1
-                                               },
-                                               {
-                                                   "cod":  "18",
-                                                   "nombre":  "18-OVALLE",
-                                                   "sup":  "ERIKA ZUAZUA",
-                                                   "uds":  16,
-                                                   "modelos":  4
-                                               },
-                                               {
-                                                   "cod":  "40",
-                                                   "nombre":  "40-LA SERENA",
-                                                   "sup":  "ERIKA ZUAZUA",
-                                                   "uds":  18,
-                                                   "modelos":  3
-                                               },
-                                               {
-                                                   "cod":  "38",
-                                                   "nombre":  "38-TALCA",
-                                                   "sup":  "EVA FONSECA",
-                                                   "uds":  1,
-                                                   "modelos":  1
-                                               },
-                                               {
-                                                   "cod":  "52",
-                                                   "nombre":  "52-CONCEPCION 2",
-                                                   "sup":  "GONZALO TOLEDO",
-                                                   "uds":  5,
-                                                   "modelos":  1
-                                               },
-                                               {
-                                                   "cod":  "67",
-                                                   "nombre":  "67-MELIPILLA",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  6,
-                                                   "modelos":  2
-                                               },
-                                               {
-                                                   "cod":  "45",
-                                                   "nombre":  "45-OSORNO",
-                                                   "sup":  "TERESA LILLO",
-                                                   "uds":  1,
-                                                   "modelos":  1
-                                               },
-                                               {
-                                                   "cod":  "56",
-                                                   "nombre":  "56-TEMUCO",
-                                                   "sup":  "TERESA LILLO",
-                                                   "uds":  2,
-                                                   "modelos":  2
-                                               },
-                                               {
-                                                   "cod":  "68",
-                                                   "nombre":  "68-PUERTO MONTT",
-                                                   "sup":  "TERESA LILLO",
-                                                   "uds":  2,
-                                                   "modelos":  1
-                                               }
-                                           ],
-                               "subido":  "2026-09-23T17:04:30.325Z"
-                           },
-                "523227":  {
-                               "oc":  "523227",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Fila",
-                               "comentario":  "",
-                               "udsOC":  88,
-                               "fuente":  "Ordenes Picking 23.09.xlsx",
-                               "archivo":  "Cargas_23.09_Deporte_Paris.xlsx",
-                               "uds":  88,
-                               "modelos":  7,
-                               "sinSupervisor":  [
-                                                     "100-SIN CATALOGAR"
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "100",
-                                                   "nombre":  "100-SIN CATALOGAR",
-                                                   "sup":  "",
-                                                   "uds":  88,
-                                                   "modelos":  7
-                                               }
-                                           ],
-                               "subido":  "2026-09-23T17:04:26.027Z"
-                           },
-                "525917":  {
-                               "oc":  "525917",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Umbro",
-                               "comentario":  "",
-                               "udsOC":  null,
-                               "fuente":  "Ordenes Picking.xlsx",
-                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
-                               "uds":  274,
-                               "modelos":  13,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  274,
-                                                   "modelos":  13
-                                               }
-                                           ],
-                               "subido":  "2026-09-21T18:59:36.761Z"
-                           },
-                "525918":  {
-                               "oc":  "525918",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Umbro",
-                               "comentario":  "",
-                               "udsOC":  null,
-                               "fuente":  "Ordenes Picking.xlsx",
-                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
-                               "uds":  40,
-                               "modelos":  6,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  40,
-                                                   "modelos":  6
-                                               }
-                                           ],
-                               "subido":  "2026-09-21T18:59:36.761Z"
-                           },
-                "525920":  {
-                               "oc":  "525920",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Fila",
-                               "comentario":  "",
-                               "udsOC":  null,
-                               "fuente":  "Ordenes Picking.xlsx",
-                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
-                               "uds":  466,
-                               "modelos":  12,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  466,
-                                                   "modelos":  12
-                                               }
-                                           ],
-                               "subido":  "2026-09-21T18:59:36.761Z"
-                           },
-                "525921":  {
-                               "oc":  "525921",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Fila",
-                               "comentario":  "",
-                               "udsOC":  null,
-                               "fuente":  "Ordenes Picking.xlsx",
-                               "archivo":  "Cargas_21.09_Paris-deporte.xlsx",
-                               "uds":  80,
-                               "modelos":  5,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  80,
-                                                   "modelos":  5
-                                               }
-                                           ],
-                               "subido":  "2026-09-21T18:59:36.761Z"
-                           },
-                "526251":  {
-                               "oc":  "526251",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Umbro",
-                               "comentario":  "",
-                               "udsOC":  81,
-                               "fuente":  "Ordenes Picking 23.09.xlsx",
-                               "archivo":  "Cargas_23.09_Deporte_Paris.xlsx",
-                               "uds":  81,
-                               "modelos":  5,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  81,
-                                                   "modelos":  5
-                                               }
-                                           ],
-                               "subido":  "2026-09-23T17:04:26.027Z"
-                           },
-                "527302":  {
-                               "oc":  "527302",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Fila",
-                               "comentario":  "",
-                               "udsOC":  60,
-                               "fuente":  "Ordenes Picking 23.09.xlsx",
-                               "archivo":  "Cargas_23.09_Deporte_Paris.xlsx",
-                               "uds":  60,
-                               "modelos":  4,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  60,
-                                                   "modelos":  4
-                                               }
-                                           ],
-                               "subido":  "2026-09-23T17:04:26.027Z"
-                           },
-                "527559":  {
-                               "oc":  "527559",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Umbro",
-                               "comentario":  "",
-                               "udsOC":  5040,
-                               "fuente":  "Ordenes Picking 23.09.xlsx",
-                               "archivo":  "Cargas_23.09_Deporte_Paris.xlsx",
-                               "uds":  5040,
-                               "modelos":  9,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "104",
-                                                   "nombre":  "104-PARIS BANDERA",
-                                                   "sup":  "ANGELICA GARCIA",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "106",
-                                                   "nombre":  "106-PARIS MALL PASEO ESTACION",
-                                                   "sup":  "ANGELICA GARCIA",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "30",
-                                                   "nombre":  "30-PARIS ANTOFAGASTA",
-                                                   "sup":  "CAMILA GUERRERO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "39",
-                                                   "nombre":  "39-PARIS CALAMA",
-                                                   "sup":  "CAMILA GUERRERO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "105",
-                                                   "nombre":  "105-PARIS COPIAPO",
-                                                   "sup":  "ERIKA ZUAZUA",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "121",
-                                                   "nombre":  "121-PARIS OVALLE",
-                                                   "sup":  "ERIKA ZUAZUA",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "124",
-                                                   "nombre":  "124-PARIS COQUIMBO",
-                                                   "sup":  "ERIKA ZUAZUA",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "108",
-                                                   "nombre":  "108-PARIS PORTAL NUNOA",
-                                                   "sup":  "FERNANDA CARRASCO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "123",
-                                                   "nombre":  "123-PARIS LA DEHESA",
-                                                   "sup":  "FERNANDA CARRASCO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "88",
-                                                   "nombre":  "88-PARIS PARQUE ARAUCO",
-                                                   "sup":  "FERNANDA CARRASCO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "89",
-                                                   "nombre":  "89-PARIS PLAZA VESPUCIO",
-                                                   "sup":  "FERNANDA CARRASCO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "102",
-                                                   "nombre":  "102-PARIS ARAUCO MAIPU",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "111",
-                                                   "nombre":  "111-PARIS SAN ANTONIO",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "115",
-                                                   "nombre":  "115-PARIS COSTANERA CENTER",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "119",
-                                                   "nombre":  "119-PARIS QUILICURA",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "125",
-                                                   "nombre":  "125-PARIS INDEPENDENCIA",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "20",
-                                                   "nombre":  "20-PARIS ALTO LAS CONDES",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "37",
-                                                   "nombre":  "37-PARIS HUECHURABA",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "427",
-                                                   "nombre":  "427-PARIS MELIPILLA",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "64",
-                                                   "nombre":  "64-PARIS FLORIDA CENTER",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "9",
-                                                   "nombre":  "9-PARIS LYON",
-                                                   "sup":  "MARIA JOSE YANES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "107",
-                                                   "nombre":  "107-PARIS PORTAL BELLOTO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "13",
-                                                   "nombre":  "13-PARIS VALPARAISO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "410",
-                                                   "nombre":  "410-PARIS QUILLOTA",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "101",
-                                                   "nombre":  "101-PARIS SAN BERNARDO",
-                                                   "sup":  "SEBASTIAN PIZARRO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "118",
-                                                   "nombre":  "118-PARIS QUILIN",
-                                                   "sup":  "SEBASTIAN PIZARRO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "407",
-                                                   "nombre":  "407-PARIS PUENTE ALTO",
-                                                   "sup":  "SEBASTIAN PIZARRO",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "103",
-                                                   "nombre":  "103-PARIS IQUIQUE",
-                                                   "sup":  "YESSICA GRENDY",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               },
-                                               {
-                                                   "cod":  "110",
-                                                   "nombre":  "110-PARIS ARICA",
-                                                   "sup":  "YESSICA GRENDY",
-                                                   "uds":  168,
-                                                   "modelos":  9
-                                               }
-                                           ],
-                               "subido":  "2026-09-23T17:04:26.027Z"
-                           },
-                "527701":  {
-                               "oc":  "527701",
-                               "cliente":  "Paris",
-                               "depto":  "Deporte",
-                               "marca":  "Fila",
-                               "comentario":  "",
-                               "udsOC":  15,
-                               "fuente":  "Ordenes Picking 23.09.xlsx",
-                               "archivo":  "Cargas_23.09_Deporte_Paris.xlsx",
-                               "uds":  15,
-                               "modelos":  1,
-                               "sinSupervisor":  [
-
-                                                 ],
-                               "tiendas":  [
-                                               {
-                                                   "cod":  "22",
-                                                   "nombre":  "22-PARIS MARINA ARAUCO",
-                                                   "sup":  "PAOLA BAHAMONDES",
-                                                   "uds":  15,
-                                                   "modelos":  1
-                                               }
-                                           ],
-                               "subido":  "2026-09-23T17:04:26.027Z"
-                           }
-            },
-    "actualizado":  "2026-09-23T17:04:30.325Z",
-    "imagenes":  {
-                     "subido":  "2026-09-15T21:21:28.352Z",
-                     "modelos":  45486
-                 },
-    "supervisores":  {
-                         "subido":  "2026-09-23T17:20:58Z",
-                         "tiendas":  212
-                     }
+ "ocs": {
+  "500184": {
+   "oc": "500184",
+   "cliente": "Hites",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": 91,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Deporte_Hites.xlsx",
+   "uds": 91,
+   "modelos": 4,
+   "sinSupervisor": [
+    "51-PUENTE ALTO",
+    "55-SAN BERNARDO",
+    "93-SIN CATALOGAR"
+   ],
+   "tiendas": [
+    {
+     "cod": "51",
+     "nombre": "51-PUENTE ALTO",
+     "sup": "",
+     "uds": 5,
+     "modelos": 2
+    },
+    {
+     "cod": "55",
+     "nombre": "55-SAN BERNARDO",
+     "sup": "",
+     "uds": 34,
+     "modelos": 3
+    },
+    {
+     "cod": "93",
+     "nombre": "93-SIN CATALOGAR",
+     "sup": "",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "18",
+     "nombre": "18-OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 16,
+     "modelos": 4
+    },
+    {
+     "cod": "40",
+     "nombre": "40-LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 18,
+     "modelos": 3
+    },
+    {
+     "cod": "38",
+     "nombre": "38-TALCA",
+     "sup": "EVA FONSECA",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "52",
+     "nombre": "52-CONCEPCION 2",
+     "sup": "GONZALO TOLEDO",
+     "uds": 5,
+     "modelos": 1
+    },
+    {
+     "cod": "67",
+     "nombre": "67-MELIPILLA",
+     "sup": "MARIA JOSE YANES",
+     "uds": 6,
+     "modelos": 2
+    },
+    {
+     "cod": "45",
+     "nombre": "45-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "56",
+     "nombre": "56-TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 2,
+     "modelos": 2
+    },
+    {
+     "cod": "68",
+     "nombre": "68-PUERTO MONTT",
+     "sup": "TERESA LILLO",
+     "uds": 2,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-09-23T17:04:30.325Z"
+  },
+  "523227": {
+   "oc": "523227",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": 88,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Deporte_Paris.xlsx",
+   "uds": 88,
+   "modelos": 7,
+   "sinSupervisor": [
+    "100-SIN CATALOGAR"
+   ],
+   "tiendas": [
+    {
+     "cod": "100",
+     "nombre": "100-SIN CATALOGAR",
+     "sup": "",
+     "uds": 88,
+     "modelos": 7
+    }
+   ],
+   "subido": "2026-09-23T17:04:26.027Z"
+  },
+  "525917": {
+   "oc": "525917",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 274,
+   "modelos": 13,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 274,
+     "modelos": 13
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
+  "525918": {
+   "oc": "525918",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 40,
+   "modelos": 6,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 40,
+     "modelos": 6
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
+  "525920": {
+   "oc": "525920",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 466,
+   "modelos": 12,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 466,
+     "modelos": 12
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
+  "525921": {
+   "oc": "525921",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": null,
+   "fuente": "Ordenes Picking.xlsx",
+   "archivo": "Cargas_21.09_Paris-deporte.xlsx",
+   "uds": 80,
+   "modelos": 5,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 80,
+     "modelos": 5
+    }
+   ],
+   "subido": "2026-09-21T18:59:36.761Z"
+  },
+  "526251": {
+   "oc": "526251",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "",
+   "udsOC": 81,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Deporte_Paris.xlsx",
+   "uds": 81,
+   "modelos": 5,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 81,
+     "modelos": 5
+    }
+   ],
+   "subido": "2026-09-23T17:04:26.027Z"
+  },
+  "527302": {
+   "oc": "527302",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": 60,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Deporte_Paris.xlsx",
+   "uds": 60,
+   "modelos": 4,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 60,
+     "modelos": 4
+    }
+   ],
+   "subido": "2026-09-23T17:04:26.027Z"
+  },
+  "527559": {
+   "oc": "527559",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "",
+   "udsOC": 5040,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Deporte_Paris.xlsx",
+   "uds": 5040,
+   "modelos": 9,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "104",
+     "nombre": "104-PARIS BANDERA",
+     "sup": "ANGELICA GARCIA",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "106",
+     "nombre": "106-PARIS MALL PASEO ESTACION",
+     "sup": "ANGELICA GARCIA",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "30",
+     "nombre": "30-PARIS ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "39",
+     "nombre": "39-PARIS CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "105",
+     "nombre": "105-PARIS COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "121",
+     "nombre": "121-PARIS OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "124",
+     "nombre": "124-PARIS COQUIMBO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "108",
+     "nombre": "108-PARIS PORTAL NUNOA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "123",
+     "nombre": "123-PARIS LA DEHESA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "88",
+     "nombre": "88-PARIS PARQUE ARAUCO",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "89",
+     "nombre": "89-PARIS PLAZA VESPUCIO",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "102",
+     "nombre": "102-PARIS ARAUCO MAIPU",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "111",
+     "nombre": "111-PARIS SAN ANTONIO",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "115",
+     "nombre": "115-PARIS COSTANERA CENTER",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "119",
+     "nombre": "119-PARIS QUILICURA",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "125",
+     "nombre": "125-PARIS INDEPENDENCIA",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "20",
+     "nombre": "20-PARIS ALTO LAS CONDES",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "37",
+     "nombre": "37-PARIS HUECHURABA",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "427",
+     "nombre": "427-PARIS MELIPILLA",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "64",
+     "nombre": "64-PARIS FLORIDA CENTER",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "9",
+     "nombre": "9-PARIS LYON",
+     "sup": "MARIA JOSE YANES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "107",
+     "nombre": "107-PARIS PORTAL BELLOTO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "13",
+     "nombre": "13-PARIS VALPARAISO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "410",
+     "nombre": "410-PARIS QUILLOTA",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "101",
+     "nombre": "101-PARIS SAN BERNARDO",
+     "sup": "SEBASTIAN PIZARRO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "118",
+     "nombre": "118-PARIS QUILIN",
+     "sup": "SEBASTIAN PIZARRO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "407",
+     "nombre": "407-PARIS PUENTE ALTO",
+     "sup": "SEBASTIAN PIZARRO",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "103",
+     "nombre": "103-PARIS IQUIQUE",
+     "sup": "YESSICA GRENDY",
+     "uds": 168,
+     "modelos": 9
+    },
+    {
+     "cod": "110",
+     "nombre": "110-PARIS ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 168,
+     "modelos": 9
+    }
+   ],
+   "subido": "2026-09-23T17:04:26.027Z"
+  },
+  "527701": {
+   "oc": "527701",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": 15,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Deporte_Paris.xlsx",
+   "uds": 15,
+   "modelos": 1,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 15,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-09-23T17:04:26.027Z"
+  },
+  "2323200": {
+   "oc": "2323200",
+   "cliente": "Ripley",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "",
+   "udsOC": 1286,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Ripley.xlsx",
+   "uds": 1282,
+   "modelos": 16,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "10026",
+     "nombre": "10026-Antofagasta",
+     "sup": "CAMILA GUERRERO",
+     "uds": 12,
+     "modelos": 1
+    },
+    {
+     "cod": "10010",
+     "nombre": "10010-Los Andes",
+     "sup": "DAYAN PILICHI",
+     "uds": 176,
+     "modelos": 12
+    },
+    {
+     "cod": "10016",
+     "nombre": "10016-Plaza Vespucio",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 215,
+     "modelos": 15
+    },
+    {
+     "cod": "10002",
+     "nombre": "10002-Mall Concepcion",
+     "sup": "GONZALO TOLEDO",
+     "uds": 230,
+     "modelos": 16
+    },
+    {
+     "cod": "10025",
+     "nombre": "10025-Valparaiso",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 176,
+     "modelos": 12
+    },
+    {
+     "cod": "10004",
+     "nombre": "10004-Temuco",
+     "sup": "TERESA LILLO",
+     "uds": 230,
+     "modelos": 16
+    },
+    {
+     "cod": "10014",
+     "nombre": "10014-Puerto Montt",
+     "sup": "TERESA LILLO",
+     "uds": 230,
+     "modelos": 16
+    },
+    {
+     "cod": "10021",
+     "nombre": "10021-Arica",
+     "sup": "YESSICA GRENDY",
+     "uds": 13,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-09-23T20:39:25.937Z"
+  },
+  "2323203": {
+   "oc": "2323203",
+   "cliente": "Ripley",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "",
+   "udsOC": 608,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Ripley.xlsx",
+   "uds": 1286,
+   "modelos": 16,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "10026",
+     "nombre": "10026-Antofagasta",
+     "sup": "CAMILA GUERRERO",
+     "uds": 164,
+     "modelos": 12
+    },
+    {
+     "cod": "10041",
+     "nombre": "10041-La Serena",
+     "sup": "ERIKA ZUA ZUA",
+     "uds": 176,
+     "modelos": 12
+    },
+    {
+     "cod": "10032",
+     "nombre": "10032-Rancagua",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 230,
+     "modelos": 16
+    },
+    {
+     "cod": "10034",
+     "nombre": "10034-Costanera Center",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 176,
+     "modelos": 12
+    },
+    {
+     "cod": "10045",
+     "nombre": "10045-Plaza Oeste",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 13,
+     "modelos": 1
+    },
+    {
+     "cod": "10028",
+     "nombre": "10028-El Trebol",
+     "sup": "GONZALO TOLEDO",
+     "uds": 230,
+     "modelos": 16
+    },
+    {
+     "cod": "10037",
+     "nombre": "10037-Marina Arauco",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 230,
+     "modelos": 16
+    },
+    {
+     "cod": "10049",
+     "nombre": "10049-Iquique",
+     "sup": "YESSICA GRENDY",
+     "uds": 67,
+     "modelos": 5
+    }
+   ],
+   "subido": "2026-09-23T20:39:25.937Z"
+  },
+  "2323204": {
+   "oc": "2323204",
+   "cliente": "Ripley",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "",
+   "udsOC": 124,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Ripley.xlsx",
+   "uds": 608,
+   "modelos": 16,
+   "sinSupervisor": [],
+   "tiendas": [
+    {
+     "cod": "10096",
+     "nombre": "10096-Punta Arenas",
+     "sup": "TERESA LILLO",
+     "uds": 230,
+     "modelos": 16
+    },
+    {
+     "cod": "10098",
+     "nombre": "10098-Nueva Valdivia Store",
+     "sup": "TERESA LILLO",
+     "uds": 215,
+     "modelos": 15
+    },
+    {
+     "cod": "10049",
+     "nombre": "10049-Iquique",
+     "sup": "YESSICA GRENDY",
+     "uds": 163,
+     "modelos": 11
+    }
+   ],
+   "subido": "2026-09-23T20:39:25.937Z"
+  },
+  "2323363": {
+   "oc": "2323363",
+   "cliente": "Ripley",
+   "depto": "Calzado Mujer",
+   "marca": "Converse",
+   "comentario": "",
+   "udsOC": 119,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Ripley.xlsx",
+   "uds": 119,
+   "modelos": 12,
+   "sinSupervisor": [
+    "10067-Eleuterio Ramírez 1076"
+   ],
+   "tiendas": [
+    {
+     "cod": "10067",
+     "nombre": "10067-Eleuterio Ramírez 1076",
+     "sup": "",
+     "uds": 119,
+     "modelos": 12
+    }
+   ],
+   "subido": "2026-09-23T20:39:25.937Z"
+  },
+  "12803302": {
+   "oc": "12803302",
+   "cliente": "Ripley",
+   "depto": "Kids",
+   "marca": "Converse",
+   "comentario": "",
+   "udsOC": 784,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Ripley.xlsx",
+   "uds": 124,
+   "modelos": 11,
+   "sinSupervisor": [
+    "10023-10023D"
+   ],
+   "tiendas": [
+    {
+     "cod": "10023",
+     "nombre": "10023-10023D",
+     "sup": "",
+     "uds": 3,
+     "modelos": 2
+    },
+    {
+     "cod": "10026",
+     "nombre": "10026-Antofagasta",
+     "sup": "CAMILA GUERRERO",
+     "uds": 3,
+     "modelos": 2
+    },
+    {
+     "cod": "10051",
+     "nombre": "10051-Mall Calama",
+     "sup": "CAMILA GUERRERO",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10046",
+     "nombre": "10046-Plaza Tobalaba",
+     "sup": "CATALINA BRAVO",
+     "uds": 6,
+     "modelos": 2
+    },
+    {
+     "cod": "10099",
+     "nombre": "10099-San Bernardo",
+     "sup": "CATALINA BRAVO",
+     "uds": 4,
+     "modelos": 2
+    },
+    {
+     "cod": "10010",
+     "nombre": "10010-Los Andes",
+     "sup": "DAYAN PILICHI",
+     "uds": 2,
+     "modelos": 1
+    },
+    {
+     "cod": "10012",
+     "nombre": "10012-Parque Arauco",
+     "sup": "DAYAN PILICHI",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10041",
+     "nombre": "10041-La Serena",
+     "sup": "ERIKA ZUA ZUA",
+     "uds": 12,
+     "modelos": 7
+    },
+    {
+     "cod": "10069",
+     "nombre": "10069-Coquimbo",
+     "sup": "ERIKA ZUA ZUA",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10084",
+     "nombre": "10084-Copiapo",
+     "sup": "ERIKA ZUA ZUA",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10022",
+     "nombre": "10022-Chillan",
+     "sup": "EVA FONSECA",
+     "uds": 2,
+     "modelos": 2
+    },
+    {
+     "cod": "10072",
+     "nombre": "10072-Los Angeles",
+     "sup": "EVA FONSECA",
+     "uds": 4,
+     "modelos": 3
+    },
+    {
+     "cod": "10074",
+     "nombre": "10074-Talca",
+     "sup": "EVA FONSECA",
+     "uds": 8,
+     "modelos": 6
+    },
+    {
+     "cod": "10016",
+     "nombre": "10016-Plaza Vespucio",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 16,
+     "modelos": 8
+    },
+    {
+     "cod": "10032",
+     "nombre": "10032-Rancagua",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 7,
+     "modelos": 4
+    },
+    {
+     "cod": "10034",
+     "nombre": "10034-Costanera Center",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 8,
+     "modelos": 4
+    },
+    {
+     "cod": "10045",
+     "nombre": "10045-Plaza Oeste",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 3,
+     "modelos": 1
+    },
+    {
+     "cod": "10048",
+     "nombre": "10048-Huechuraba",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10057",
+     "nombre": "10057-Florida Center",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10088",
+     "nombre": "10088-Maipu",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 6,
+     "modelos": 3
+    },
+    {
+     "cod": "10028",
+     "nombre": "10028-El Trebol",
+     "sup": "GONZALO TOLEDO",
+     "uds": 2,
+     "modelos": 2
+    },
+    {
+     "cod": "10003",
+     "nombre": "10003-Vina",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 3,
+     "modelos": 2
+    },
+    {
+     "cod": "10025",
+     "nombre": "10025-Valparaiso",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10037",
+     "nombre": "10037-Marina Arauco",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 4,
+     "modelos": 3
+    },
+    {
+     "cod": "10079",
+     "nombre": "10079-La Calera",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10085",
+     "nombre": "10085-Quilpue",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10068",
+     "nombre": "10068-Portal Temuco",
+     "sup": "TERESA LILLO",
+     "uds": 4,
+     "modelos": 3
+    },
+    {
+     "cod": "10078",
+     "nombre": "10078-M.Costanera P.Montt",
+     "sup": "TERESA LILLO",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10098",
+     "nombre": "10098-Nueva Valdivia Store",
+     "sup": "TERESA LILLO",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10021",
+     "nombre": "10021-Arica",
+     "sup": "YESSICA GRENDY",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "10049",
+     "nombre": "10049-Iquique",
+     "sup": "YESSICA GRENDY",
+     "uds": 15,
+     "modelos": 7
+    }
+   ],
+   "subido": "2026-09-23T20:39:25.937Z"
+  }
+ },
+ "actualizado": "2026-09-23T20:39:25.937Z",
+ "imagenes": {
+  "subido": "2026-09-15T21:21:28.352Z",
+  "modelos": 45486
+ },
+ "supervisores": {
+  "subido": "2026-09-23T17:20:58Z",
+  "tiendas": 212
+ }
 }
