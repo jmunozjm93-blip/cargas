@@ -22,6 +22,11 @@
     return 'cargas';
   }
 
+  // el código de tienda viene con o sin ceros a la izquierda según el Excel (078 en Hites, 78 en el maestro)
+  function claveTienda(cliente, codigo) {
+    return claveCliente(cliente) + '|' + String(codigo == null ? '' : codigo).trim().replace(/^0+(?=\d)/, '');
+  }
+
   // cliente del Excel de cargas / cadena del maestro → la misma clave
   function claveCliente(s) {
     const n = String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z]/g, '');
@@ -84,7 +89,7 @@
       if (!cad || !c) continue;
       leidas++;
       if (SIN_SUPERVISOR.includes(nombrePersona(quien))) { sinSup++; continue; }
-      sup[cad + '|' + c] = [tienda || c, quien];
+      sup[claveTienda(cad, c)] = [tienda || c, quien];
     }
     if (!leidas) throw new Error(`La hoja "${nombre}" no tiene filas con Cadena y Cod`);
     return { generado: new Date().toISOString(), archivo: 'Supervisores_Consolidado.xlsx', tiendas: Object.keys(sup).length, filasExcel: leidas, sinSupervisor: sinSup, sup };
@@ -165,7 +170,7 @@
       const m = o.modelos[modelo] || (o.modelos[modelo] = { modelo, desc, marca, uds: 0 });
       m.uds += q;
       // el maestro (Supervisores_Consolidado) manda; si la tienda no está ahí, se usa lo que traiga el Excel
-      const mt = mSup[claveCliente(o.cliente) + '|' + tCod];
+      const mt = mSup[claveTienda(o.cliente, tCod)];
       const t = o.tiendas[tCod] || (o.tiendas[tCod] = {
         cod: tCod, nombre: (mt && mt[0]) || tNom || tCod,
         sup: mt ? nombrePersona(mt[1]) : (SIN_SUPERVISOR.includes(sup) ? '' : sup),
@@ -182,8 +187,10 @@
       const o = ocs[oc];
       const marcas = Object.entries(o.marcas).sort((a, b) => b[1] - a[1]).map(x => x[0]).filter(Boolean);
       const res = resumen.ocs[oc] || {};
-      const tiendas = Object.values(o.tiendas)
-        .sort((a, b) => (a.sup || '~').localeCompare(b.sup || '~') || a.nombre.localeCompare(b.nombre))
+      // las tiendas sin supervisora (ni en el maestro ni en el Excel) no se publican: nadie las reportaría
+      const omitidas = Object.values(o.tiendas).filter(t => !t.sup).map(t => ({ cod: t.cod, nombre: t.nombre, uds: t.uds }));
+      const tiendas = Object.values(o.tiendas).filter(t => t.sup)
+        .sort((a, b) => a.sup.localeCompare(b.sup) || a.nombre.localeCompare(b.nombre))
         .map(t => ({ cod: t.cod, nombre: t.nombre, sup: t.sup, uds: t.uds,
           items: Object.entries(t.items).map(([modelo, uds]) => ({ modelo, uds })).sort((a, b) => a.modelo.localeCompare(b.modelo)) }));
       salida.push({
@@ -193,7 +200,7 @@
         uds: tiendas.reduce((s, t) => s + t.uds, 0),
         estados: o.estados,
         modelos: Object.values(o.modelos).sort((a, b) => a.modelo.localeCompare(b.modelo)),
-        tiendas,
+        tiendas, omitidas,
       });
     }
     return salida;
@@ -204,10 +211,12 @@
     return {
       oc: o.oc, cliente: o.cliente, depto: o.depto, marca: o.marca, comentario: o.comentario, udsOC: o.udsOC,
       fuente: o.fuente, archivo: o.archivo, uds: o.uds, modelos: o.modelos.length,
-      sinSupervisor: o.tiendas.filter(t => !t.sup).map(t => t.nombre),
+      // tiendas que quedaron fuera por no tener supervisora (ni en el maestro ni en el Excel)
+      sinSupervisor: (o.omitidas || []).map(t => t.nombre),
+      udsOmitidas: (o.omitidas || []).reduce((s, t) => s + t.uds, 0),
       tiendas: o.tiendas.map(t => ({ cod: t.cod, nombre: t.nombre, sup: t.sup, uds: t.uds, modelos: t.items.length })),
     };
   }
 
-  global.Convertir = { identificar, opcionesLectura, convertir, parseImagenes, parseSupervisores, claveCliente, resumenDe, COLUMNAS };
+  global.Convertir = { identificar, opcionesLectura, convertir, parseImagenes, parseSupervisores, claveCliente, claveTienda, resumenDe, COLUMNAS };
 })(typeof self !== 'undefined' ? self : this);

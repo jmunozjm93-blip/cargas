@@ -417,9 +417,11 @@ function toast(msg,err){ var t=$('toast'); t.textContent=msg; t.className='toast
 })();
 
 // ============================ datos ============================
-var MAN=null, OCS=[], RESP=[], ITEMS=[], SINCRUZAR=[], IMGS=null, DETALLE={}, SHEET_URL='', SUPS={}, MAESTRO={};
+var MAN=null, OCS=[], RESP=[], ITEMS=[], SINCRUZAR=[], IMGS=null, DETALLE={}, SHEET_URL='', SUPS={}, MAESTRO={}, OMITIDAS=[];
 // cliente de la OC → cadena del maestro de supervisoras
 var claveCliente=function(s){ var n=norm(s); return n.indexOf('FALABELLA')>=0?'FALABELLA':n.indexOf('RIPLEY')>=0?'RIPLEY':n.indexOf('PARIS')>=0?'PARIS':n.indexOf('POLAR')>=0?'LAPOLAR':n.indexOf('HITES')>=0?'HITES':n; };
+// el código de tienda viene con o sin ceros a la izquierda según el Excel (078 en Hites, 78 en el maestro)
+var claveTienda=function(cliente,codigo){ return claveCliente(cliente)+'|'+String(codigo==null?'':codigo).trim().replace(/^0+(?=\d)/,''); };
 
 // respuesta de doGet: {ok, reportes:[{fecha, oc, cliente, depto, cod, tienda, sup, estado, comentario, fotos:[ids], uds}]}
 function leerReportes(j){
@@ -433,16 +435,18 @@ function leerReportes(j){
 
 // cruza cada OC × tienda del manifiesto con los reportes
 function cruzar(){
-  ITEMS=[]; SINCRUZAR=[];
+  ITEMS=[]; SINCRUZAR=[]; OMITIDAS=[];
   var porClave={};
   RESP.forEach(function(r){ r.usada=false; if(r.oc&&r.cod) (porClave[r.oc+'|'+r.cod]=porClave[r.oc+'|'+r.cod]||[]).push(r); });
   var ultimo=function(a){ return a.slice().sort(function(x,y){ return (y.fecha?y.fecha.getTime():0)-(x.fecha?x.fecha.getTime():0); })[0]; };
   OCS.forEach(function(o){
     o.tiendas.forEach(function(t){
       // el maestro de supervisoras (data/supervisores.json) manda, también sobre las OC ya cargadas
-      var mt=MAESTRO[claveCliente(o.cliente)+'|'+t.cod];
+      var mt=MAESTRO[claveTienda(o.cliente,t.cod)];
       var nom=(mt&&mt[0])||t.nombre, sup=mt?mt[1].toUpperCase():t.sup;
-      var it={ oc:o.oc, o:o, t:t, cod:t.cod, tienda:nom, sup:sup, supN:norm(sup), uds:t.uds, modelos:t.modelos, subido:o.subido, resp:null, reps:[], estado:sup?'pend':'sin' };
+      // sin supervisora no se muestra: nadie la reportaría (queda contada abajo en el Resumen)
+      if(!sup){ OMITIDAS.push({ oc:o.oc, cliente:o.cliente, cod:t.cod, tienda:t.nombre, uds:t.uds }); return; }
+      var it={ oc:o.oc, o:o, t:t, cod:t.cod, tienda:nom, sup:sup, supN:norm(sup), uds:t.uds, modelos:t.modelos, subido:o.subido, resp:null, reps:[], estado:'pend' };
       var rs=porClave[o.oc+'|'+t.cod];
       if(rs&&rs.length){ it.reps=rs; it.resp=ultimo(rs); rs.forEach(function(r){ r.usada=true; }); it.estado=it.resp.obs?'obs':'ok'; }
       ITEMS.push(it);
@@ -650,7 +654,8 @@ function renderMaestro(){
     s.tiendas.push({ cad:cad, txt:(CADENAS[cad]||cad)+' '+nom });
   });
   var nombres=Object.keys(sups).sort(function(a,b){ return sups[a].n.localeCompare(sups[b].n); });
-  $('rMaeInfo').textContent=fmt(claves.length)+' tiendas · '+(MAN.supervisores?'actualizado '+fFecha(MAN.supervisores.subido):'');
+  $('rMaeInfo').textContent=fmt(claves.length)+' tiendas · '+(MAN.supervisores?'actualizado '+fFecha(MAN.supervisores.subido):'')
+    +(OMITIDAS.length?' · '+fmt(OMITIDAS.length)+' tienda(s) de las OC no están en el maestro y no se muestran: '+OMITIDAS.map(function(t){ return t.cliente+' '+t.tienda; }).join(', '):'');
   var h='';
   nombres.forEach(function(k){
     var s=sups[k];

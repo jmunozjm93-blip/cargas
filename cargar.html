@@ -272,7 +272,7 @@ function tablaResumen(ocs) {
   }
   let h = `<table><tr><th>OC</th><th>Cliente</th><th>Depto.</th><th>Marca</th><th>Comentario</th><th class="n">Modelos</th><th class="n">Tiendas</th><th class="n">Unidades</th><th class="n">UND OC</th></tr>`;
   for (const { resumen: r } of ocs) {
-    const sin = r.sinSupervisor.length ? `<div class="small aviso">${r.sinSupervisor.length} sin supervisor: ${esc(r.sinSupervisor.join(', '))}</div>` : '';
+    const sin = r.sinSupervisor.length ? `<div class="small aviso">No se suben ${r.sinSupervisor.length} tienda(s) sin supervisora (${fmt(r.udsOmitidas)} uds): ${esc(r.sinSupervisor.join(', '))}</div>` : '';
     const dif = r.udsOC != null && r.udsOC !== r.uds ? `<div class="small aviso">${fmt(r.uds - r.udsOC)} vs OC</div>` : '';
     h += `<tr><td><b>${esc(r.oc)}</b></td><td>${esc(r.cliente)}</td><td>${esc(r.depto)}</td><td>${esc(r.marca)}</td><td>${esc(r.comentario)}</td><td class="n">${fmt(r.modelos)}</td><td class="n">${fmt(r.tiendas.length)}${sin}</td><td class="n">${fmt(r.uds)}${dif}</td><td class="n">${fmt(r.udsOC)}</td></tr>`;
   }
