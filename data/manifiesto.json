@@ -1,5 +1,102 @@
 {
  "ocs": {
+  "500184": {
+   "oc": "500184",
+   "cliente": "Hites",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "",
+   "udsOC": 91,
+   "fuente": "Ordenes Picking 23.09.xlsx",
+   "archivo": "Cargas_23.09_Deporte_Hites.xlsx",
+   "uds": 91,
+   "modelos": 4,
+   "sinSupervisor": [
+    "51-PUENTE ALTO",
+    "55-SAN BERNARDO",
+    "93-SIN CATALOGAR"
+   ],
+   "tiendas": [
+    {
+     "cod": "51",
+     "nombre": "51-PUENTE ALTO",
+     "sup": "",
+     "uds": 5,
+     "modelos": 2
+    },
+    {
+     "cod": "55",
+     "nombre": "55-SAN BERNARDO",
+     "sup": "",
+     "uds": 34,
+     "modelos": 3
+    },
+    {
+     "cod": "93",
+     "nombre": "93-SIN CATALOGAR",
+     "sup": "",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "18",
+     "nombre": "18-OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 16,
+     "modelos": 4
+    },
+    {
+     "cod": "40",
+     "nombre": "40-LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 18,
+     "modelos": 3
+    },
+    {
+     "cod": "38",
+     "nombre": "38-TALCA",
+     "sup": "EVA FONSECA",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "52",
+     "nombre": "52-CONCEPCION 2",
+     "sup": "GONZALO TOLEDO",
+     "uds": 5,
+     "modelos": 1
+    },
+    {
+     "cod": "67",
+     "nombre": "67-MELIPILLA",
+     "sup": "MARIA JOSE YANES",
+     "uds": 6,
+     "modelos": 2
+    },
+    {
+     "cod": "45",
+     "nombre": "45-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "56",
+     "nombre": "56-TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 2,
+     "modelos": 2
+    },
+    {
+     "cod": "68",
+     "nombre": "68-PUERTO MONTT",
+     "sup": "TERESA LILLO",
+     "uds": 2,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-09-23T17:04:30.325Z"
+  },
   "523227": {
    "oc": "523227",
    "cliente": "Paris",
@@ -413,7 +510,7 @@
    "subido": "2026-09-23T17:04:26.027Z"
   }
  },
- "actualizado": "2026-09-23T17:04:26.027Z",
+ "actualizado": "2026-09-23T17:04:30.325Z",
  "imagenes": {
   "subido": "2026-09-15T21:21:28.352Z",
   "modelos": 45486
