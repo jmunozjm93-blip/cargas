@@ -5,62 +5,102 @@
  * y agrega una fila en la hoja "Reportes" del Sheet; la página lee esa hoja para marcar qué cargas
  * ya están reportadas.
  *
- * Instalación (una sola vez, con la cuenta de Google donde quieres que quede el Sheet):
- *   1. script.google.com → Nuevo proyecto → pegar este archivo entero (reemplaza lo que haya) → Guardar.
- *   2. Arriba, elegir la función "configurar" → Ejecutar → autorizar con tu cuenta.
- *      Crea el Sheet "Cargas - Reportes" y la carpeta "Cargas - Fotos" en tu Drive (mira el Registro
- *      de ejecución: muestra los links).
- *   3. Implementar → Nueva implementación → tipo "Aplicación web":
+ * IMPORTANTE: no borrar el Sheet "Cargas - Reportes" ni la carpeta "Cargas - Fotos" de Drive.
+ * Si se borran, la página deja de poder reportar (el /exec responde 404).
+ *
+ * Instalación (una sola vez):
+ *   1. script.google.com → Nuevo proyecto → pegar este archivo entero → Guardar.
+ *   2. Elegir la función "configurar" → Ejecutar → autorizar.
+ *   3. Implementar → Nueva implementación → "Aplicación web":
  *      Ejecutar como: "Yo" · Quién tiene acceso: "Cualquier usuario" → Implementar.
  *   4. Copiar la "URL de la aplicación web" (termina en /exec) y pegarla en index.html, en API_URL.
- *
- * Si cambias este código, hay que hacer "Implementar → Administrar implementaciones → editar →
- * Versión: nueva" para que la URL /exec use el código nuevo.
  */
 
 var NOMBRE_SHEET = 'Cargas - Reportes';
 var NOMBRE_CARPETA = 'Cargas - Fotos';
+var NOMBRE_CARPETA_RAIZ = 'Cargas - Grupo Depor';   // carpeta que agrupa todo lo de este sistema
 var HOJA = 'Reportes';
 var COLUMNAS = ['Fecha', 'OC', 'Cliente', 'Departamento', 'Cod tienda', 'Tienda', 'Supervisora', 'Estado', 'Comentario', 'Fotos', 'Unidades', 'Origen'];
 
 // ---------- configuración inicial ----------
 function configurar() {
   var props = PropertiesService.getScriptProperties();
-  var ss;
-  if (props.getProperty('SHEET_ID')) {
-    ss = SpreadsheetApp.openById(props.getProperty('SHEET_ID'));
-  } else {
-    ss = SpreadsheetApp.create(NOMBRE_SHEET);
-    props.setProperty('SHEET_ID', ss.getId());
-  }
+  var ss = null;
+  var id = props.getProperty('SHEET_ID');
+  if (id) { try { ss = SpreadsheetApp.openById(id); } catch (e) { ss = null; } }
+  if (!ss) { ss = SpreadsheetApp.create(NOMBRE_SHEET); props.setProperty('SHEET_ID', ss.getId()); }
+  organizar();
   var hoja = ss.getSheetByName(HOJA);
   if (!hoja) {
-    hoja = ss.getSheets()[0].getName() === 'Hoja 1' || ss.getSheets()[0].getName() === 'Sheet1' ? ss.getSheets()[0].setName(HOJA) : ss.insertSheet(HOJA);
+    var primera = ss.getSheets()[0];
+    hoja = (primera.getName() === 'Hoja 1' || primera.getName() === 'Sheet1') ? primera.setName(HOJA) : ss.insertSheet(HOJA);
   }
   if (hoja.getLastRow() === 0) {
     hoja.appendRow(COLUMNAS);
     hoja.getRange(1, 1, 1, COLUMNAS.length).setFontWeight('bold');
     hoja.setFrozenRows(1);
   }
-  var carpeta;
-  if (props.getProperty('CARPETA_ID')) {
-    carpeta = DriveApp.getFolderById(props.getProperty('CARPETA_ID'));
-  } else {
+  var carpeta = null;
+  var cid = props.getProperty('CARPETA_ID');
+  if (cid) { try { carpeta = DriveApp.getFolderById(cid); } catch (e) { carpeta = null; } }
+  if (!carpeta) {
     var it = DriveApp.getFoldersByName(NOMBRE_CARPETA);
     carpeta = it.hasNext() ? it.next() : DriveApp.createFolder(NOMBRE_CARPETA);
     props.setProperty('CARPETA_ID', carpeta.getId());
   }
-  // las fotos se ven en la página por link público; la carpeta entera queda "cualquiera con el enlace puede ver"
   carpeta.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
   Logger.log('Sheet: ' + ss.getUrl());
   Logger.log('Carpeta de fotos: ' + carpeta.getUrl());
   Logger.log('Listo. Ahora: Implementar → Nueva implementación → Aplicación web.');
 }
 
+// ---------- carpeta madre: agrupa el Sheet, las fotos y el propio script ----------
+function raiz_() {
+  var props = PropertiesService.getScriptProperties();
+  var id = props.getProperty('RAIZ_ID'), f = null;
+  if (id) { try { f = DriveApp.getFolderById(id); if (f.isTrashed()) f = null; } catch (e) { f = null; } }
+  if (!f) {
+    var it = DriveApp.getFoldersByName(NOMBRE_CARPETA_RAIZ);
+    f = it.hasNext() ? it.next() : DriveApp.createFolder(NOMBRE_CARPETA_RAIZ);
+    props.setProperty('RAIZ_ID', f.getId());
+  }
+  return f;
+}
+
+// Mueve a la carpeta madre el Sheet de reportes, la carpeta de fotos y este mismo script.
+// Se puede volver a ejecutar cuando sea: si ya están dentro, no hace nada.
+function organizar() {
+  var props = PropertiesService.getScriptProperties();
+  var raiz = raiz_();
+  var movidos = [];
+
+  var sid = props.getProperty('SHEET_ID');
+  if (sid) { try { DriveApp.getFileById(sid).moveTo(raiz); movidos.push('Sheet de reportes'); } catch (e) { Logger.log('Sheet: ' + e); } }
+
+  var cid = props.getProperty('CARPETA_ID');
+  if (cid) { try { DriveApp.getFolderById(cid).moveTo(raiz); movidos.push('Carpeta de fotos'); } catch (e) { Logger.log('Fotos: ' + e); } }
+
+  try { DriveApp.getFileById(ScriptApp.getScriptId()).moveTo(raiz); movidos.push('Script'); } catch (e) { Logger.log('Script: ' + e); }
+
+  // carpetas sueltas de fotos que hayan quedado de versiones anteriores
+  var it = DriveApp.getFoldersByName(NOMBRE_CARPETA);
+  while (it.hasNext()) {
+    var f = it.next();
+    if (f.getId() === cid) continue;
+    try { f.moveTo(raiz); movidos.push('Carpeta de fotos antigua (' + f.getId() + ')'); } catch (e) { Logger.log('Antigua: ' + e); }
+  }
+
+  Logger.log('Carpeta: ' + raiz.getUrl());
+  Logger.log('Movidos: ' + (movidos.length ? movidos.join(' · ') : 'nada, ya estaba todo dentro'));
+  return raiz.getUrl();
+}
+
 function hoja_() {
   var id = PropertiesService.getScriptProperties().getProperty('SHEET_ID');
   if (!id) throw new Error('Falta ejecutar configurar()');
-  return SpreadsheetApp.openById(id).getSheetByName(HOJA);
+  var h = SpreadsheetApp.openById(id).getSheetByName(HOJA);
+  if (!h) throw new Error('El Sheet no tiene la hoja ' + HOJA);
+  return h;
 }
 function carpeta_() {
   return DriveApp.getFolderById(PropertiesService.getScriptProperties().getProperty('CARPETA_ID'));
@@ -94,9 +134,6 @@ function doGet(e) {
 }
 
 // ---------- POST: la página manda un reporte ----------
-// body (JSON, como texto plano para evitar el preflight CORS):
-// { oc, cliente, depto, cod, tienda, sup, estado: 'completa'|'incompleta'|'nollego', comentario, uds,
-//   fotos: [{ nombre, tipo, b64 }] }
 function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
