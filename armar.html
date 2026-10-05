@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Armar cargas</title>
+<style>
+  :root { --bg:#0f1115; --card:#181b22; --card2:#20242d; --text:#e8eaee; --muted:#9aa3ad; --line:#2a3039; --ok:#22c55e; --warn:#f59e0b; --bad:#ef4444; --accent:#1a3a6b; --accent2:#2d6a9f; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); padding:28px 16px 60px; }
+  main { max-width:1100px; margin:0 auto; }
+  h1 { font-size:1.5rem; margin:0 0 4px; }
+  .lead { color:var(--muted); margin:0 0 22px; }
+  a { color:#8ec5ff; }
+  .box { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:16px; }
+  .box h2 { font-size:1rem; margin:0 0 12px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); }
+  textarea { width:100%; min-height:170px; background:#0b0d11; color:var(--text); border:1px solid var(--line); border-radius:8px; padding:10px 12px; font:.86rem/1.45 ui-monospace,Consolas,monospace; resize:vertical; tab-size:14; }
+  button { background:var(--accent2); color:#fff; border:0; border-radius:8px; padding:10px 16px; font-weight:600; cursor:pointer; font-size:.92rem; }
+  button.sec { background:var(--card2); color:var(--text); border:1px solid var(--line); }
+  button.mini { padding:3px 9px; font-size:.78rem; margin:2px 4px 2px 0; }
+  button:disabled { opacity:.45; cursor:default; }
+  .drop { border:2px dashed #3a4150; border-radius:12px; padding:26px 20px; text-align:center; color:var(--muted); transition:.15s; cursor:pointer; }
+  .drop.over { border-color:var(--accent2); color:var(--text); background:#171c25; }
+  .drop b { color:var(--text); }
+  .btnfile { display:inline-block; background:var(--accent2); color:#fff; border-radius:8px; padding:10px 18px; font-weight:600; cursor:pointer; font-size:.92rem; }
+  #file { position:absolute; width:1px; height:1px; opacity:0; overflow:hidden; }
+  .fuentes { margin-top:12px; display:grid; gap:6px; font-size:.9rem; }
+  .fuentes div { display:flex; gap:8px; align-items:baseline; }
+  .fuentes .k { color:var(--muted); min-width:120px; }
+  .st { margin-top:8px; font-size:.9rem; color:var(--muted); }
+  .ok { color:var(--ok); } .bad { color:var(--bad); } .warn { color:var(--warn); }
+  .st.bad { white-space:pre-wrap; }
+  .tabla { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; margin-top:10px; font-size:.86rem; }
+  th, td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:500; white-space:nowrap; }
+  td.n, th.n { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr.falta td { background:#2a1719; }
+  tfoot td { font-weight:700; border-top:2px solid var(--line); }
+  .acts { display:flex; gap:12px; margin-top:14px; flex-wrap:wrap; align-items:center; }
+  .bar { height:4px; background:#2c3340; border-radius:2px; overflow:hidden; margin-top:10px; }
+  .bar i { display:block; height:100%; width:30%; background:var(--accent2); animation:slide 1.2s infinite; }
+  @keyframes slide { 0%{transform:translateX(-100%)} 100%{transform:translateX(400%)} }
+  .small { font-size:.82rem; color:var(--muted); }
+  label.chk { display:flex; gap:6px; align-items:center; font-size:.9rem; color:var(--text); cursor:pointer; }
+  ul.avisos { margin:8px 0 0; padding-left:18px; font-size:.84rem; color:var(--warn); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Armar cargas</h1>
+  <p class="lead">Pega el listado de OC y adjunta el <code>Ordenes_Picking</code> del día. La app cruza cada OC con el picking y con el maestro de supervisoras y arma el Excel de cargas (hojas <b>Resumen</b>, <b>Datos</b> y una por OC con modelos × tiendas, supervisora y foto). Ese Excel después se sube en <a href="cargar.html">Cargar OC</a>. Todo se procesa en este navegador: los Excel no salen del PC.</p>
+
+  <div class="box">
+    <h2>1 · Listado de OC</h2>
+    <textarea id="lista" spellcheck="false" placeholder="Copia desde Excel las columnas y pégalas aquí (con o sin la fila de títulos):&#10;&#10;Marca	Departamento	N°DEOC	Familia	UND OC&#10;CONVERSE	Deporte	527303	Zapatillas	2302&#10;CONVERSE	Kids	528676	Zapatillas	1363&#10;…&#10;&#10;También sirve una OC por línea, o arrastrar el Excel del listado abajo."></textarea>
+    <div class="st" id="listaSt"></div>
+  </div>
+
+  <div class="box">
+    <h2>2 · Archivos</h2>
+    <div class="drop" id="drop">Arrastra aquí el <b>Ordenes_Picking</b> del día<br><span class="small">Opcional: <b>Supervisores_Consolidado.xlsx</b> (si no, se usa el maestro publicado) , <b>Excel_Macro.xlsx</b> (fotos más nuevas que las publicadas) o el Excel del listado de OC.</span>
+      <div style="margin-top:14px"><label for="file" class="btnfile">Elegir archivos…</label></div>
+      <input type="file" id="file" accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple>
+    </div>
+    <div class="fuentes">
+      <div><span class="k">Picking</span><span id="fPicking" class="warn">— falta adjuntarlo —</span></div>
+      <div><span class="k">Supervisoras</span><span id="fSup">Cargando el maestro publicado…</span></div>
+      <div><span class="k">Fotos</span><span id="fFotos">Cargando el catálogo publicado…</span></div>
+    </div>
+    <div id="lectura"></div>
+  </div>
+
+  <div class="box">
+    <h2>3 · Revisión y Excel</h2>
+    <div id="revision" class="small">Falta el listado de OC y el picking.</div>
+    <div class="acts">
+      <button id="btnGen" disabled>Generar Excel</button>
+      <label class="chk"><input type="checkbox" id="conFotos" checked> Incluir fotos de los modelos</label>
+      <span class="small" id="nombreSalida"></span>
+    </div>
+    <div class="st" id="genSt"></div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script src="js/convertir.js"></script>
+<script src="js/armar.js"></script>
+<script>
+const el = id => document.getElementById(id);
+const fmt = n => n == null ? '–' : Number(n).toLocaleString('es-CL');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const setSt = (id, cls, msg) => { el(id).className = 'st ' + cls; el(id).textContent = msg; };
+const guardar = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+const leer = k => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } };
+
+const S = { lista: { items: [], avisos: [] }, picking: null, maestro: null, maestroOrigen: '', imagenes: null, ocs: [] };
+
+// ---------- maestro de supervisoras y catálogo de fotos publicados ----------
+fetch('data/supervisores.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).then(m => {
+  if (!m) throw new Error('no está publicado');
+  if (!S.maestro) { S.maestro = m; S.maestroOrigen = 'publicado'; }
+  pintarFuentes(); revisar();
+}).catch(e => { if (!S.maestro) { el('fSup').className = 'warn'; el('fSup').textContent = `— no pude leer el maestro publicado (${e.message}); arrastra Supervisores_Consolidado.xlsx —`; } });
+fetch('data/imagenes.json').then(r => r.ok ? r.json() : null).then(j => { if (!S.imagenes) S.imagenes = j; pintarFuentes(); })
+  .catch(() => { el('fFotos').className = 'warn'; el('fFotos').textContent = '— no pude leer el catálogo: el Excel sale sin fotos —'; });
+
+function pintarFuentes() {
+  if (S.picking) { el('fPicking').className = 'ok'; el('fPicking').textContent = `✓ ${S.picking.nombre} · ${fmt(S.picking.totalFilas)} filas · ${fmt(Object.keys(S.picking.idx.porOC).length)} OC`; }
+  if (S.maestro) { el('fSup').className = 'ok'; el('fSup').textContent = `✓ ${fmt(S.maestro.tiendas)} tiendas · ${S.maestroOrigen === 'publicado' ? 'maestro publicado (' + new Date(S.maestro.generado).toLocaleDateString('es-CL') + ')' : S.maestroOrigen}`; }
+  if (S.imagenes) { el('fFotos').className = 'ok'; el('fFotos').textContent = `✓ ${fmt(S.imagenes.modelos)} modelos con foto (${S.imagenesOrigen || 'catálogo Excel_Macro publicado'})`; }
+}
+
+// ---------- listado ----------
+el('lista').value = leer('armar_lista');
+el('lista').addEventListener('input', () => { guardar('armar_lista', el('lista').value); leerLista(); });
+function leerLista() {
+  S.lista = Armar.parseLista(Armar.filasDeTexto(el('lista').value));
+  const n = S.lista.items.length;
+  const uds = S.lista.items.reduce((s, i) => s + (i.udsOC || 0), 0);
+  el('listaSt').className = 'st ' + (n ? 'ok' : '');
+  el('listaSt').innerHTML = (n ? `✓ ${n} OC · ${fmt(uds)} unidades declaradas` : 'Sin OC todavía.') +
+    (S.lista.avisos.length ? `<ul class="avisos">${S.lista.avisos.map(a => `<li>${esc(a)}</li>`).join('')}</ul>` : '');
+  revisar();
+}
+
+// cambia una OC del listado por la sugerida (misma fila del texto)
+function reemplazarOC(fila, vieja, nueva) {
+  const lineas = el('lista').value.replace(/\r/g, '').split('\n');
+  let i = 0, n = 0;
+  for (; i < lineas.length; i++) { if (lineas[i].trim()) n++; if (n === fila) break; }
+  if (i < lineas.length) lineas[i] = lineas[i].replace(new RegExp('(^|\\D)' + vieja + '(?!\\d)'), '$1' + nueva);
+  el('lista').value = lineas.join('\n');
+  guardar('armar_lista', el('lista').value);
+  leerLista();
+}
+
+// ---------- revisión ----------
+function revisar() {
+  const listo = S.lista.items.length && S.picking;
+  el('btnGen').disabled = !listo;
+  el('nombreSalida').textContent = '';
+  if (!listo) { el('revision').className = 'small'; el('revision').textContent = !S.lista.items.length ? 'Falta el listado de OC (paso 1).' : 'Falta el Ordenes_Picking (paso 2).'; return; }
+  S.ocs = Armar.armar(S.lista.items, S.picking.idx, S.maestro);
+  const ok = S.ocs.filter(o => o.encontrada);
+  let h = `<div class="tabla"><table><thead><tr><th>OC</th><th>Cliente</th><th>Marca</th><th>Depto.</th><th>Familia</th><th class="n">Tiendas</th><th class="n">Modelos</th><th class="n">UND OC</th><th class="n">Picking</th><th class="n">Dif.</th><th>Estado en picking</th><th>Revisión</th></tr></thead><tbody>`;
+  for (const o of S.ocs) {
+    if (!o.encontrada) {
+      const sug = o.sugerencias.map(s => `<button class="mini sec" data-fila="${o.fila}" data-vieja="${esc(o.oc)}" data-nueva="${esc(s.oc)}">Usar ${esc(s.oc)}</button><span class="small">${esc(s.cliente)} · ${fmt(s.uds)} uds${s.mismasUds ? ' · <span class="ok">calza con UND OC</span>' : ''}</span><br>`).join('');
+      h += `<tr class="falta"><td><b>${esc(o.oc)}</b></td><td>—</td><td>${esc(o.marca)}</td><td>${esc(o.depto)}</td><td>${esc(o.familia)}</td><td class="n">–</td><td class="n">–</td><td class="n">${fmt(o.udsOC)}</td><td class="n">–</td><td class="n">–</td><td></td>
+        <td><span class="bad">✗ No está en el picking</span>${sug ? `<div class="small" style="margin-top:4px">¿Quisiste decir…?</div>${sug}` : ''}</td></tr>`;
+      continue;
+    }
+    const dif = o.udsOC != null ? o.uds - o.udsOC : null;
+    const obs = [];
+    if (dif) obs.push(`<span class="warn">⚠ ${dif > 0 ? '+' : ''}${fmt(dif)} uds vs OC</span>`);
+    if (o.sinSupervisor.length) obs.push(`<span class="warn">⚠ ${o.sinSupervisor.length} tienda(s) sin supervisora: ${esc(o.sinSupervisor.map(t => t.nombre).join(', '))}</span>`);
+    if (o.descartadas) obs.push(`<span class="small">${fmt(o.descartadas)} línea(s) duplicadas descartadas (DocNum anterior)</span>`);
+    const tiposRaros = Object.keys(o.tipos).filter(t => t !== 'Ordenes');
+    if (tiposRaros.length) obs.push(`<span class="warn">⚠ trae filas de tipo ${esc(tiposRaros.join(', '))}</span>`);
+    if (!obs.length) obs.push('<span class="ok">✓ Cuadra</span>');
+    const est = Object.entries(o.estados).map(([s, q]) => `${esc(s)} ${fmt(q)}`).join('<br>');
+    h += `<tr><td><b>${esc(o.oc)}</b></td><td>${esc(o.cliente)}</td><td>${esc(o.marca)}</td><td>${esc(o.depto)}</td><td>${esc(o.familia)}</td><td class="n">${fmt(o.tiendas.length)}</td><td class="n">${fmt(o.modelos.length)}</td><td class="n">${fmt(o.udsOC)}</td><td class="n">${fmt(o.uds)}</td><td class="n ${dif ? 'warn' : ''}">${dif == null ? '–' : (dif > 0 ? '+' : '') + fmt(dif)}</td><td class="small">${est}</td><td>${obs.join('<br>')}</td></tr>`;
+  }
+  const totOC = S.ocs.reduce((s, o) => s + (o.udsOC || 0), 0), totPk = ok.reduce((s, o) => s + o.uds, 0);
+  h += `</tbody><tfoot><tr><td colspan="7">${ok.length} de ${S.ocs.length} OC encontradas</td><td class="n">${fmt(totOC)}</td><td class="n">${fmt(totPk)}</td><td class="n">${fmt(totPk - totOC)}</td><td colspan="2"></td></tr></tfoot></table></div>`;
+  el('revision').className = '';
+  el('revision').innerHTML = h;
+  el('revision').querySelectorAll('button[data-nueva]').forEach(b => b.onclick = () => reemplazarOC(+b.dataset.fila, b.dataset.vieja, b.dataset.nueva));
+  el('btnGen').disabled = !ok.length;
+  if (ok.length) el('nombreSalida').textContent = '→ ' + Armar.nombreArchivo(S.ocs, S.picking.nombre);
+}
+
+// ---------- generar ----------
+el('btnGen').onclick = async () => {
+  const b = el('btnGen');
+  b.disabled = true;
+  try {
+    const ok = S.ocs.filter(o => o.encontrada);
+    let fotos = null, infoFotos = '';
+    if (el('conFotos').checked && S.imagenes) {
+      const modelos = [...new Set(ok.flatMap(o => o.modelos.map(m => m.modelo)))];
+      setSt('genSt', '', `Descargando fotos… 0 / ${modelos.length}`);
+      const r = await Armar.traerFotos(modelos, S.imagenes, (h, t) => setSt('genSt', '', `Descargando fotos… ${h} / ${t}`));
+      fotos = r;
+      infoFotos = ` · fotos: ${r.conFoto} de ${modelos.length} modelos` + (r.fallidas ? ` (${r.fallidas} no se pudieron bajar: quedan con link "ver foto")` : '');
+    }
+    setSt('genSt', '', 'Armando el Excel…');
+    await new Promise(r => setTimeout(r, 30));
+    const buf = await Armar.excel(S.ocs, S.picking.nombre, fotos);
+    const nombre = Armar.nombreArchivo(S.ocs, S.picking.nombre);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+    a.download = nombre; document.body.appendChild(a); a.click(); a.remove();
+    const faltan = S.ocs.length - ok.length;
+    el('genSt').className = 'st ok';
+    el('genSt').innerHTML = `✓ Descargado <b>${esc(nombre)}</b> · ${ok.length} OC · ${fmt(ok.reduce((s, o) => s + o.uds, 0))} unidades${esc(infoFotos)}` +
+      (faltan ? `<br><span class="warn">⚠ ${faltan} OC del listado no están en el picking: quedan anotadas en el Resumen, sin hoja propia.</span>` : '') +
+      `<br><span class="small">Siguiente paso: súbelo al dashboard en <a href="cargar.html">Cargar OC</a>.</span>`;
+  } catch (e) { setSt('genSt', 'bad', '✗ ' + (e.message || e)); }
+  b.disabled = false;
+};
+
+// ---------- archivos ----------
+let worker = null;
+try { if (location.protocol === 'file:') throw new Error('file'); worker = new Worker('js/worker-armar.js'); } catch (e) {
+  el('lectura').innerHTML = `<div class="st bad">✗ Esta página no funciona abierta desde el archivo local. Ábrela desde el sitio publicado: <a href="https://jmunozjm93-blip.github.io/cargas/armar.html">jmunozjm93-blip.github.io/cargas/armar.html</a></div>`;
+}
+const pend = {}; let seq = 0;
+if (worker) {
+  worker.onmessage = e => { const h = pend[e.data.id]; if (h) h(e.data); };
+  worker.onerror = e => { Object.keys(pend).forEach(id => pend[id]({ etapa: 'error', error: 'El lector falló: ' + (e.message || 'no pudo cargar sus scripts (¿bloqueo de red a cdnjs.cloudflare.com?)') })); };
+}
+const cola = []; let ocupado = false;
+function procesar(file) { if (!worker) return; cola.push(file); siguiente(); }
+function siguiente() {
+  if (ocupado || !cola.length) return;
+  ocupado = true;
+  const file = cola.shift(), id = ++seq;
+  const c = document.createElement('div');
+  c.innerHTML = `<div class="st">${esc(file.name)} (${(file.size / 1048576).toFixed(1)} MB): leyendo…</div><div class="bar"><i></i></div>`;
+  el('lectura').prepend(c);
+  const st = c.firstChild;
+  const fin = () => { ocupado = false; siguiente(); };
+  pend[id] = msg => {
+    if (msg.etapa === 'leyendo') return;
+    if (msg.etapa === 'revisando') { st.textContent = `${file.name}: revisando columnas…`; return; }
+    delete pend[id];
+    c.querySelector('.bar') && c.querySelector('.bar').remove();
+    if (msg.etapa === 'error') { st.className = 'st bad'; st.textContent = `✗ ${file.name}: ${msg.error}`; fin(); return; }
+    const seg = (msg.ms / 1000).toFixed(1);
+    if (msg.tipo === 'picking') {
+      S.picking = { nombre: file.name, totalFilas: msg.totalFilas, idx: Armar.indexarPicking(msg.filas, msg.col) };
+      st.className = 'st ok'; st.textContent = `✓ ${file.name}: picking leído en ${seg} s` + (S.picking.idx.canceladas ? ` · ${S.picking.idx.canceladas} línea(s) canceladas no se usan` : '');
+    } else if (msg.tipo === 'imagenes') {
+      S.imagenes = msg.imagenes; S.imagenesOrigen = file.name;
+      st.className = 'st ok'; st.textContent = `✓ ${file.name}: catálogo de fotos (${fmt(msg.imagenes.modelos)} modelos) · manda sobre el publicado`;
+    } else if (msg.tipo === 'supervisores') {
+      S.maestro = msg.maestro; S.maestroOrigen = file.name;
+      st.className = 'st ok'; st.textContent = `✓ ${file.name}: maestro de supervisoras (${fmt(msg.maestro.tiendas)} tiendas) · manda sobre el publicado`;
+    } else {
+      el('lista').value = msg.texto; guardar('armar_lista', msg.texto);
+      st.className = 'st ok'; st.textContent = `✓ ${file.name}: listado de OC copiado al paso 1`;
+      leerLista();
+    }
+    pintarFuentes(); revisar(); fin();
+  };
+  file.arrayBuffer().then(buf => worker.postMessage({ id, nombre: file.name, buffer: buf }, [buf]))
+    .catch(e => { delete pend[id]; st.className = 'st bad'; st.textContent = '✗ No pude leer el archivo: ' + e.message; fin(); });
+}
+const drop = el('drop');
+drop.addEventListener('click', e => { if (!e.target.closest('label') && e.target.id !== 'file') el('file').click(); });
+el('file').onchange = e => { [...e.target.files].forEach(procesar); e.target.value = ''; };
+['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', e => { [...e.dataTransfer.files].filter(f => /\.xlsx?$/i.test(f.name) && !/^~\$/.test(f.name)).forEach(procesar); });
+
+leerLista();
+</script>
+</body>
+</html>

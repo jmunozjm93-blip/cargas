@@ -7,6 +7,8 @@ Dashboard de órdenes de compra (OC) enviadas a tienda y su recepción reportada
 | Archivo | Descripción |
 |---|---|
 | `index.html` | Dashboard. Pestaña **Mis cargas** (por supervisora: pendientes / reportadas / con observación, botón *Reportar* con estado, comentario y fotos) y pestaña **Resumen** (solo lectura: avance por supervisora y por OC, reportes sin OC cargada) |
+| `armar.html` | Arma el Excel de cargas desde el listado de OC (Marca · Departamento · N°DEOC · Familia · UND OC) + `Ordenes_Picking` + maestro de supervisoras + fotos (ver *Armar el Excel de cargas*) |
+| `js/armar.js` · `js/worker-armar.js` | Cruce OC × picking × supervisoras y escritura del Excel (ExcelJS); el worker lee los Excel sin congelar la pantalla |
 | `cargar.html` | App de carga: valida el Excel de cargas, lo convierte y lo sube a GitHub |
 | `js/convertir.js` | Conversión Excel → JSON (hoja `Datos`) |
 | `js/worker-convertir.js` | Web Worker que lee el Excel sin congelar la pantalla |
@@ -49,7 +51,20 @@ var API_URL='https://script.google.com/macros/s/…/exec';
 
 Si se cambia el código del script hay que crear una **versión nueva** de la implementación para que la URL use el código nuevo. Mientras `API_URL` esté vacío la página avisa y no deja reportar.
 
+Todo lo del sistema vive en la carpeta de Drive **Cargas - Grupo Depor** (el Sheet de reportes, la carpeta `Cargas - Fotos` y el propio script). La función `organizar()` del script la crea y mete todo dentro; se puede volver a ejecutar cuando sea.
+
 Columnas del Sheet: `Fecha · OC · Cliente · Departamento · Cod tienda · Tienda · Supervisora · Estado (completa / incompleta / nollego) · Comentario · Fotos (IDs de Drive) · Unidades · Origen`.
+
+## Armar el Excel de cargas
+
+**https://jmunozjm93-blip.github.io/cargas/armar.html**
+
+1. Pegar el listado de OC copiado desde Excel (`Marca · Departamento · N°DEOC · Familia · UND OC`, con o sin títulos; también sirve una OC por línea o arrastrar el Excel del listado).
+2. Arrastrar el `Ordenes_Picking <dd.mm>.xlsx` del día. El maestro de supervisoras y el catálogo de fotos se toman de lo publicado (`data/supervisores.json`, `data/imagenes.json`); arrastrar `Supervisores_Consolidado.xlsx` o `Excel_Macro.xlsx` los reemplaza solo para esa sesión.
+3. Revisar la tabla: por OC muestra cliente, tiendas, modelos, UND OC vs unidades del picking, estado en el picking y tiendas sin supervisora. Si una OC no está en el picking sugiere las parecidas (primero las que calzan con UND OC, ej. `232336` → `2323362`) con un botón para corregirla.
+4. **Generar Excel** → descarga `Cargas_<dd.mm>_<Clientes>[-<depto>].xlsx` con hojas `Resumen`, `Datos` y una por OC (modelo × tienda, supervisora arriba, foto). Ese archivo se sube en `cargar.html`.
+
+Reglas: cliente por `CardName` (CENCOSUD → Paris, COMERCIAL ECCSA → Ripley, Falabella, La Polar, Hites); se ignoran líneas `CANCELED = Y`; sin filtro por `StatusOrden`; si una OC viene con varios `DocNum`, por OC + tienda + ItemCode manda el más reciente. Las fotos se bajan de `lh3.googleusercontent.com` de a 3 con reintentos (Google responde 429 si se piden muchas seguidas); las que no bajan quedan con un link "ver foto".
 
 ## Rutina de carga
 

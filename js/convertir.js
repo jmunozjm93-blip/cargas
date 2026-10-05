@@ -124,7 +124,9 @@
     const iHdr = filas.findIndex(r => /^oc\b/i.test(txt(r[0])));
     if (iHdr < 0) return out;
     const hdr = filas[iHdr].map(h => txt(h).toLowerCase());
-    const iCom = hdr.findIndex(h => h.startsWith('comentario'));
+    // los Excel de armar.html no traen "Comentario": se muestra la Familia (Zapatillas, Ropa…)
+    let iCom = hdr.findIndex(h => h.startsWith('comentario'));
+    if (iCom < 0) iCom = hdr.findIndex(h => h.startsWith('familia'));
     const iUnd = hdr.findIndex(h => h === 'und oc' || h.startsWith('unidades oc'));
     for (const r of filas.slice(iHdr + 1)) {
       const oc = cod(r[0]);
