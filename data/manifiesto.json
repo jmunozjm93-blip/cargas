@@ -1271,6 +1271,121 @@
    ],
    "subido": "2026-09-23T20:39:33.855Z"
   },
+  "1817482": {
+   "oc": "1817482",
+   "cliente": "La Polar",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 0,
+   "fuente": "Ordenes_Picking 07.10.26.xlsx",
+   "archivo": "Cargas_07.10_La_Polar-deporte.xlsx",
+   "uds": 5379,
+   "modelos": 11,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "23",
+     "nombre": "23-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 374,
+     "modelos": 11
+    },
+    {
+     "cod": "10",
+     "nombre": "10-MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 374,
+     "modelos": 11
+    },
+    {
+     "cod": "25",
+     "nombre": "25-GRAN AVENIDA",
+     "sup": "CATALINA BRAVO",
+     "uds": 495,
+     "modelos": 11
+    },
+    {
+     "cod": "45",
+     "nombre": "45-QUILIN",
+     "sup": "CATALINA BRAVO",
+     "uds": 220,
+     "modelos": 11
+    },
+    {
+     "cod": "32",
+     "nombre": "32-LOS ANDES",
+     "sup": "DAYAN PILICHI",
+     "uds": 495,
+     "modelos": 11
+    },
+    {
+     "cod": "38",
+     "nombre": "38-LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 495,
+     "modelos": 11
+    },
+    {
+     "cod": "41",
+     "nombre": "41-OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 495,
+     "modelos": 11
+    },
+    {
+     "cod": "30",
+     "nombre": "30-LINARES",
+     "sup": "EVA FONSECA",
+     "uds": 495,
+     "modelos": 11
+    },
+    {
+     "cod": "73",
+     "nombre": "73-CURICO II",
+     "sup": "EVA FONSECA",
+     "uds": 220,
+     "modelos": 11
+    },
+    {
+     "cod": "43",
+     "nombre": "43-SAN ANTONIO",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 374,
+     "modelos": 11
+    },
+    {
+     "cod": "5",
+     "nombre": "5-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 220,
+     "modelos": 11
+    },
+    {
+     "cod": "17",
+     "nombre": "17-CORONEL",
+     "sup": "GONZALO TOLEDO",
+     "uds": 374,
+     "modelos": 11
+    },
+    {
+     "cod": "27",
+     "nombre": "27-VINA",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 374,
+     "modelos": 11
+    },
+    {
+     "cod": "28",
+     "nombre": "28-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 374,
+     "modelos": 11
+    }
+   ],
+   "subido": "2026-10-13T16:45:02.938Z"
+  },
   "2323200": {
    "oc": "2323200",
    "cliente": "Ripley",
@@ -2835,7 +2950,7 @@
    "subido": "2026-10-05T19:16:38.055Z"
   }
  },
- "actualizado": "2026-10-05T19:16:38.055Z",
+ "actualizado": "2026-10-13T16:45:02.938Z",
  "imagenes": {
   "subido": "2026-09-15T21:21:28.352Z",
   "modelos": 45486
