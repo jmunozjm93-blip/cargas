@@ -52,8 +52,16 @@
   <p class="lead">Pega el listado de OC y adjunta el <code>Ordenes_Picking</code> del día. La app cruza cada OC con el picking y con el maestro de supervisoras y arma el Excel de cargas (hojas <b>Resumen</b>, <b>Datos</b> y una por OC con modelos × tiendas, supervisora y foto). Ese Excel después se sube en <a href="cargar.html">Cargar OC</a>. Todo se procesa en este navegador: los Excel no salen del PC.</p>
 
   <div class="box">
-    <h2>1 · Listado de OC</h2>
-    <textarea id="lista" spellcheck="false" placeholder="Copia desde Excel las columnas y pégalas aquí (con o sin la fila de títulos):&#10;&#10;Marca	Departamento	N°DEOC	Familia	UND OC&#10;CONVERSE	Deporte	527303	Zapatillas	2302&#10;CONVERSE	Kids	528676	Zapatillas	1363&#10;…&#10;&#10;También sirve una OC por línea, o arrastrar el Excel del listado abajo."></textarea>
+    <h2 id="listaTitulo">1 · Listado de OC</h2>
+    <p class="small" id="listaAyuda">Copia las cinco columnas desde Excel en este orden y pégalas abajo. Puedes incluir la fila de títulos. Si pegas solo números de OC, usa uno por línea.</p>
+    <div class="tabla" role="region" aria-label="Orden y ejemplo de las columnas del listado de OC" tabindex="0">
+      <table style="margin:0 0 12px">
+        <thead><tr><th scope="col">1 · Marca</th><th scope="col">2 · Departamento</th><th scope="col">3 · N° de OC</th><th scope="col">4 · Familia</th><th scope="col">5 · Unidades OC</th></tr></thead>
+        <tbody><tr><td>CONVERSE</td><td>Deporte</td><td>527303</td><td>Zapatillas</td><td>2302</td></tr></tbody>
+      </table>
+    </div>
+    <p class="small" id="listaCliente">El cliente (Paris, Ripley, etc.) se obtiene del picking. En la segunda columna coloca el departamento, por ejemplo Deporte o Kids. Unidades OC es la cantidad total declarada en la orden.</p>
+    <textarea id="lista" aria-labelledby="listaTitulo" aria-describedby="listaAyuda listaCliente" spellcheck="false" placeholder="Pega aquí tu listado:&#10;&#10;Marca	Departamento	N°DEOC	Familia	UND OC&#10;CONVERSE	Deporte	527303	Zapatillas	2302&#10;CONVERSE	Kids	528676	Zapatillas	1363&#10;&#10;También puedes arrastrar el Excel del listado al paso 2."></textarea>
     <div class="st" id="listaSt"></div>
   </div>
 
