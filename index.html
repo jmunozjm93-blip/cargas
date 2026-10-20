@@ -294,6 +294,16 @@ tbody tr.sub td{background:var(--input);font-size:.8rem;padding:6px 12px 6px 28p
   <button onclick="cambiarSup()">Cambiar</button>
 </div>
 
+<section class="wrap ancha" aria-label="Buscar orden de compra" style="padding-bottom:0">
+  <label for="buscarOC" style="display:block;font-weight:700;margin-bottom:8px">Buscar OC</label>
+  <div class="buscar">
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" id="buscarOC" inputmode="numeric" placeholder="Escribe el número de OC, completo o parcial…" autocomplete="off" aria-describedby="buscarOCInfo">
+  </div>
+  <p class="small" id="buscarOCInfo" role="status">Busca entre todas las OC cargadas.</p>
+  <div class="nombres" id="buscarOCResultados" style="margin-top:10px" hidden></div>
+</section>
+
 <div class="wrap" id="wrapSup">
   <!-- ================= VISTA SUPERVISORA ================= -->
   <section class="vista on" id="vSup">
@@ -738,7 +748,32 @@ window.irVista=function(v){
   $('navSup').classList.toggle('on',v==='sup'); $('navArch').classList.toggle('on',v==='arch'); $('navRes').classList.toggle('on',v==='res');
   localStorage.setItem('cargas_vista',v); render(); window.scrollTo(0,0);
 };
-function render(){ if(!MAN) return; renderWho(); if(VISTA==='res') renderRes(); else renderSup(); }
+function buscarOC(){
+  var q=$('buscarOC').value.trim(), resultados=$('buscarOCResultados');
+  resultados.innerHTML='';
+  resultados.hidden=!q;
+  if(!q){ $('buscarOCInfo').textContent='Busca entre todas las OC cargadas.'; return; }
+  if(!MAN){ $('buscarOCInfo').textContent='Cargando las OC…'; return; }
+  var coincidencias=OCS.filter(function(o){ return String(o.oc).indexOf(q)>=0; });
+  $('buscarOCInfo').textContent=coincidencias.length
+    ? coincidencias.length+' OC encontrada'+(coincidencias.length===1?'':'s')+'. Selecciona una para ver sus tiendas.'
+    : 'No se encontraron OC con ese número.';
+  coincidencias.forEach(function(o){
+    var b=document.createElement('button');
+    b.type='button';
+    b.innerHTML='<span>OC '+esc(o.oc)+'<small>'+esc([o.cliente,o.marca,o.depto].filter(Boolean).join(' · '))+'</small></span>';
+    b.addEventListener('click',function(){
+      ['rCli','rSup','rEst','rQ'].forEach(function(id){ $(id).value=''; });
+      $('rOc').value=String(o.oc);
+      ABIERTAS[o.oc]=true;
+      irVista('res');
+      $('rOcs').closest('.panel').scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    resultados.appendChild(b);
+  });
+}
+$('buscarOC').addEventListener('input',buscarOC);
+function render(){ if(!MAN) return; buscarOC(); renderWho(); if(VISTA==='res') renderRes(); else renderSup(); }
 ['rCli','rSup','rEst','rOc'].forEach(function(id){ $(id).addEventListener('change',renderRes); });
 $('rQ').addEventListener('input',renderRes);
 if(localStorage.getItem('cargas_vista')==='res') irVista('res');
