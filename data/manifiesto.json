@@ -1271,6 +1271,180 @@
    ],
    "subido": "2026-09-23T20:39:33.855Z"
   },
+  "533344": {
+   "oc": "533344",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Calcetines",
+   "udsOC": 1003,
+   "fuente": "Ordenes Picking 15.10.xlsx",
+   "archivo": "Cargas_15.10_Paris-deporte.xlsx",
+   "uds": 1003,
+   "modelos": 4,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "39",
+     "nombre": "39-PARIS CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 3,
+     "modelos": 1
+    },
+    {
+     "cod": "101",
+     "nombre": "101-PARIS SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 143,
+     "modelos": 3
+    },
+    {
+     "cod": "102",
+     "nombre": "102-PARIS ARAUCO MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 143,
+     "modelos": 3
+    },
+    {
+     "cod": "64",
+     "nombre": "64-PARIS FLORIDA CENTER",
+     "sup": "DAYAN PILICHI",
+     "uds": 24,
+     "modelos": 2
+    },
+    {
+     "cod": "89",
+     "nombre": "89-PARIS PLAZA VESPUCIO",
+     "sup": "DAYAN PILICHI",
+     "uds": 109,
+     "modelos": 3
+    },
+    {
+     "cod": "105",
+     "nombre": "105-PARIS COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 83,
+     "modelos": 3
+    },
+    {
+     "cod": "40",
+     "nombre": "40-PARIS RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 182,
+     "modelos": 4
+    },
+    {
+     "cod": "13",
+     "nombre": "13-PARIS VALPARAISO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 8,
+     "modelos": 2
+    },
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 86,
+     "modelos": 4
+    },
+    {
+     "cod": "109",
+     "nombre": "109-PARIS PORTAL OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 115,
+     "modelos": 3
+    },
+    {
+     "cod": "41",
+     "nombre": "41-PARIS PORTAL TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 104,
+     "modelos": 2
+    },
+    {
+     "cod": "110",
+     "nombre": "110-PARIS ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 3,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-10-20T14:27:25.096Z"
+  },
+  "533345": {
+   "oc": "533345",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Balones",
+   "udsOC": 43,
+   "fuente": "Ordenes Picking 15.10.xlsx",
+   "archivo": "Cargas_15.10_Paris-deporte.xlsx",
+   "uds": 43,
+   "modelos": 2,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "39",
+     "nombre": "39-PARIS CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 3,
+     "modelos": 2
+    },
+    {
+     "cod": "64",
+     "nombre": "64-PARIS FLORIDA CENTER",
+     "sup": "DAYAN PILICHI",
+     "uds": 6,
+     "modelos": 1
+    },
+    {
+     "cod": "89",
+     "nombre": "89-PARIS PLAZA VESPUCIO",
+     "sup": "DAYAN PILICHI",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "105",
+     "nombre": "105-PARIS COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 5,
+     "modelos": 1
+    },
+    {
+     "cod": "19",
+     "nombre": "19-PARIS CURICO",
+     "sup": "EVA FONSECA",
+     "uds": 1,
+     "modelos": 1
+    },
+    {
+     "cod": "60",
+     "nombre": "60-PARIS EL ROBLE",
+     "sup": "EVA FONSECA",
+     "uds": 6,
+     "modelos": 1
+    },
+    {
+     "cod": "40",
+     "nombre": "40-PARIS RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 11,
+     "modelos": 2
+    },
+    {
+     "cod": "41",
+     "nombre": "41-PARIS PORTAL TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 10,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-10-20T14:27:25.096Z"
+  },
   "1817482": {
    "oc": "1817482",
    "cliente": "La Polar",
@@ -2950,7 +3124,7 @@
    "subido": "2026-10-05T19:16:38.055Z"
   }
  },
- "actualizado": "2026-10-13T16:45:02.938Z",
+ "actualizado": "2026-10-20T14:27:25.096Z",
  "imagenes": {
   "subido": "2026-09-15T21:21:28.352Z",
   "modelos": 45486
