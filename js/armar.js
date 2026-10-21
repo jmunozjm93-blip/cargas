@@ -363,14 +363,14 @@
   const esperar = ms => new Promise(r => setTimeout(r, ms));
   async function bajarFoto(id) {
     for (let intento = 0; ; intento++) {
-      const r = await fetch(`https://lh3.googleusercontent.com/d/${id}=w220`);
+      const r = await fetch(FotosManuales.url(id,220));
       if (r.ok) return r.blob();
       if ((r.status === 429 || r.status >= 500) && intento < 5) { await esperar(1500 * 2 ** intento + Math.random() * 500); continue; }
       throw new Error(r.status);
     }
   }
   async function traerFotos(modelos, imagenes, avance) {
-    const img = (imagenes && imagenes.img) || {};
+    const img = FotosManuales.combinar(imagenes && imagenes.img, await FotosManuales.leer());
     const pedir = [...new Set(modelos.map(m => m.toUpperCase()))].filter(m => img[m]);
     const out = {}, fallidas = [];
     let hechas = 0;
@@ -393,7 +393,7 @@
     await Promise.all(Array.from({ length: 3 }, async () => { while (cola.length) await uno(cola.shift()); }));
     // las que no bajaron quedan con un link a la foto en Drive
     const links = {};
-    for (const m of fallidas) links[m] = `https://drive.google.com/file/d/${img[m]}/view`;
+    for (const m of fallidas) links[m] = String(img[m]).startsWith("img/manuales/") ? new URL(img[m],location.href).href : `https://drive.google.com/file/d/${img[m]}/view`;
     return { fotos: out, links, conFoto: Object.keys(out).length, sinCatalogo: modelos.length - pedir.length, fallidas: fallidas.length };
   }
 
