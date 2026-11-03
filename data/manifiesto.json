@@ -392,6 +392,587 @@
    ],
    "subido": "2026-10-27T20:22:14.317Z"
   },
+  "502438": {
+   "oc": "502438",
+   "cliente": "Hites",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Ropa",
+   "udsOC": 1400,
+   "fuente": "Ordenes_Picking 03.11.xlsx",
+   "archivo": "Cargas_03.11_Paris_La_Polar_Hites-deporte.xlsx",
+   "uds": 1400,
+   "modelos": 5,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "1",
+     "nombre": "1-EDIF. PUENTE",
+     "sup": "ANGELICA GARCIA",
+     "uds": 96,
+     "modelos": 5
+    },
+    {
+     "cod": "54",
+     "nombre": "54-ESTACION CENTRAL",
+     "sup": "ANGELICA GARCIA",
+     "uds": 96,
+     "modelos": 5
+    },
+    {
+     "cod": "8",
+     "nombre": "8-PLAZA ARMAS",
+     "sup": "ANGELICA GARCIA",
+     "uds": 56,
+     "modelos": 5
+    },
+    {
+     "cod": "59",
+     "nombre": "59-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 96,
+     "modelos": 5
+    },
+    {
+     "cod": "13",
+     "nombre": "13-QUILICURA",
+     "sup": "CATALINA BRAVO",
+     "uds": 56,
+     "modelos": 5
+    },
+    {
+     "cod": "50",
+     "nombre": "50-MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 56,
+     "modelos": 5
+    },
+    {
+     "cod": "51",
+     "nombre": "51-PUENTE ALTO",
+     "sup": "CATALINA BRAVO",
+     "uds": 96,
+     "modelos": 5
+    },
+    {
+     "cod": "55",
+     "nombre": "55-SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 96,
+     "modelos": 5
+    },
+    {
+     "cod": "40",
+     "nombre": "40-LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 136,
+     "modelos": 5
+    },
+    {
+     "cod": "47",
+     "nombre": "47-COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 136,
+     "modelos": 5
+    },
+    {
+     "cod": "38",
+     "nombre": "38-TALCA",
+     "sup": "EVA FONSECA",
+     "uds": 56,
+     "modelos": 5
+    },
+    {
+     "cod": "53",
+     "nombre": "53-LOS ANGELES",
+     "sup": "EVA FONSECA",
+     "uds": 96,
+     "modelos": 5
+    },
+    {
+     "cod": "86",
+     "nombre": "86-CURICO",
+     "sup": "EVA FONSECA",
+     "uds": 136,
+     "modelos": 5
+    },
+    {
+     "cod": "49",
+     "nombre": "49-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 96,
+     "modelos": 5
+    },
+    {
+     "cod": "52",
+     "nombre": "52-CONCEPCION 2",
+     "sup": "GONZALO TOLEDO",
+     "uds": 96,
+     "modelos": 5
+    }
+   ],
+   "subido": "2026-11-03T18:08:19.515Z"
+  },
+  "502708": {
+   "oc": "502708",
+   "cliente": "Hites",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Zapatillas",
+   "udsOC": 432,
+   "fuente": "Ordenes_Picking 03.11.xlsx",
+   "archivo": "Cargas_03.11_Paris_La_Polar_Hites-deporte.xlsx",
+   "uds": 432,
+   "modelos": 8,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "1",
+     "nombre": "1-EDIF. PUENTE",
+     "sup": "ANGELICA GARCIA",
+     "uds": 24,
+     "modelos": 2
+    },
+    {
+     "cod": "54",
+     "nombre": "54-ESTACION CENTRAL",
+     "sup": "ANGELICA GARCIA",
+     "uds": 3,
+     "modelos": 2
+    },
+    {
+     "cod": "8",
+     "nombre": "8-PLAZA ARMAS",
+     "sup": "ANGELICA GARCIA",
+     "uds": 5,
+     "modelos": 3
+    },
+    {
+     "cod": "59",
+     "nombre": "59-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 33,
+     "modelos": 7
+    },
+    {
+     "cod": "50",
+     "nombre": "50-MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 25,
+     "modelos": 4
+    },
+    {
+     "cod": "51",
+     "nombre": "51-PUENTE ALTO",
+     "sup": "CATALINA BRAVO",
+     "uds": 83,
+     "modelos": 7
+    },
+    {
+     "cod": "55",
+     "nombre": "55-SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 32,
+     "modelos": 5
+    },
+    {
+     "cod": "67",
+     "nombre": "67-MELIPILLA",
+     "sup": "CATALINA BRAVO",
+     "uds": 6,
+     "modelos": 2
+    },
+    {
+     "cod": "18",
+     "nombre": "18-OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 3,
+     "modelos": 2
+    },
+    {
+     "cod": "40",
+     "nombre": "40-LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 9,
+     "modelos": 2
+    },
+    {
+     "cod": "47",
+     "nombre": "47-COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 7,
+     "modelos": 2
+    },
+    {
+     "cod": "64",
+     "nombre": "64-COQUIMBO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 24,
+     "modelos": 2
+    },
+    {
+     "cod": "38",
+     "nombre": "38-TALCA",
+     "sup": "EVA FONSECA",
+     "uds": 2,
+     "modelos": 2
+    },
+    {
+     "cod": "53",
+     "nombre": "53-LOS ANGELES",
+     "sup": "EVA FONSECA",
+     "uds": 113,
+     "modelos": 8
+    },
+    {
+     "cod": "65",
+     "nombre": "65-LINARES",
+     "sup": "EVA FONSECA",
+     "uds": 2,
+     "modelos": 2
+    },
+    {
+     "cod": "86",
+     "nombre": "86-CURICO",
+     "sup": "EVA FONSECA",
+     "uds": 4,
+     "modelos": 3
+    },
+    {
+     "cod": "49",
+     "nombre": "49-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 10,
+     "modelos": 4
+    },
+    {
+     "cod": "52",
+     "nombre": "52-CONCEPCION 2",
+     "sup": "GONZALO TOLEDO",
+     "uds": 5,
+     "modelos": 2
+    },
+    {
+     "cod": "45",
+     "nombre": "45-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 9,
+     "modelos": 2
+    },
+    {
+     "cod": "56",
+     "nombre": "56-TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 20,
+     "modelos": 3
+    },
+    {
+     "cod": "68",
+     "nombre": "68-PUERTO MONTT",
+     "sup": "TERESA LILLO",
+     "uds": 4,
+     "modelos": 2
+    },
+    {
+     "cod": "78",
+     "nombre": "78-IQUIQUE",
+     "sup": "YESSICA GRENDY",
+     "uds": 9,
+     "modelos": 3
+    }
+   ],
+   "subido": "2026-11-03T18:08:19.515Z"
+  },
+  "502711": {
+   "oc": "502711",
+   "cliente": "Hites",
+   "depto": "Deporte",
+   "marca": "Fila",
+   "comentario": "Zapatillas",
+   "udsOC": 446,
+   "fuente": "Ordenes_Picking 03.11.xlsx",
+   "archivo": "Cargas_03.11_Paris_La_Polar_Hites-deporte.xlsx",
+   "uds": 462,
+   "modelos": 8,
+   "sinSupervisor": [
+    "093-LA CALERA"
+   ],
+   "udsOmitidas": 25,
+   "tiendas": [
+    {
+     "cod": "1",
+     "nombre": "1-EDIF. PUENTE",
+     "sup": "ANGELICA GARCIA",
+     "uds": 39,
+     "modelos": 3
+    },
+    {
+     "cod": "8",
+     "nombre": "8-PLAZA ARMAS",
+     "sup": "ANGELICA GARCIA",
+     "uds": 47,
+     "modelos": 6
+    },
+    {
+     "cod": "59",
+     "nombre": "59-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 41,
+     "modelos": 5
+    },
+    {
+     "cod": "50",
+     "nombre": "50-MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 27,
+     "modelos": 3
+    },
+    {
+     "cod": "51",
+     "nombre": "51-PUENTE ALTO",
+     "sup": "CATALINA BRAVO",
+     "uds": 37,
+     "modelos": 4
+    },
+    {
+     "cod": "55",
+     "nombre": "55-SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 17,
+     "modelos": 2
+    },
+    {
+     "cod": "67",
+     "nombre": "67-MELIPILLA",
+     "sup": "CATALINA BRAVO",
+     "uds": 8,
+     "modelos": 1
+    },
+    {
+     "cod": "18",
+     "nombre": "18-OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 46,
+     "modelos": 5
+    },
+    {
+     "cod": "40",
+     "nombre": "40-LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 57,
+     "modelos": 5
+    },
+    {
+     "cod": "26",
+     "nombre": "26-CHILLAN",
+     "sup": "EVA FONSECA",
+     "uds": 41,
+     "modelos": 4
+    },
+    {
+     "cod": "38",
+     "nombre": "38-TALCA",
+     "sup": "EVA FONSECA",
+     "uds": 39,
+     "modelos": 3
+    },
+    {
+     "cod": "53",
+     "nombre": "53-LOS ANGELES",
+     "sup": "EVA FONSECA",
+     "uds": 13,
+     "modelos": 1
+    },
+    {
+     "cod": "49",
+     "nombre": "49-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 13,
+     "modelos": 1
+    },
+    {
+     "cod": "52",
+     "nombre": "52-CONCEPCION 2",
+     "sup": "GONZALO TOLEDO",
+     "uds": 13,
+     "modelos": 2
+    },
+    {
+     "cod": "45",
+     "nombre": "45-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 13,
+     "modelos": 1
+    },
+    {
+     "cod": "56",
+     "nombre": "56-TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 7,
+     "modelos": 1
+    },
+    {
+     "cod": "68",
+     "nombre": "68-PUERTO MONTT",
+     "sup": "TERESA LILLO",
+     "uds": 4,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-11-03T18:08:19.515Z"
+  },
+  "502730": {
+   "oc": "502730",
+   "cliente": "Hites",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Accesorios",
+   "udsOC": 533,
+   "fuente": "Ordenes_Picking 03.11.xlsx",
+   "archivo": "Cargas_03.11_Paris_La_Polar_Hites-deporte.xlsx",
+   "uds": 533,
+   "modelos": 6,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "1",
+     "nombre": "1-EDIF. PUENTE",
+     "sup": "ANGELICA GARCIA",
+     "uds": 12,
+     "modelos": 2
+    },
+    {
+     "cod": "11",
+     "nombre": "11-ALAMEDA",
+     "sup": "ANGELICA GARCIA",
+     "uds": 16,
+     "modelos": 4
+    },
+    {
+     "cod": "54",
+     "nombre": "54-ESTACION CENTRAL",
+     "sup": "ANGELICA GARCIA",
+     "uds": 16,
+     "modelos": 4
+    },
+    {
+     "cod": "8",
+     "nombre": "8-PLAZA ARMAS",
+     "sup": "ANGELICA GARCIA",
+     "uds": 40,
+     "modelos": 6
+    },
+    {
+     "cod": "59",
+     "nombre": "59-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 50,
+     "modelos": 6
+    },
+    {
+     "cod": "13",
+     "nombre": "13-QUILICURA",
+     "sup": "CATALINA BRAVO",
+     "uds": 36,
+     "modelos": 6
+    },
+    {
+     "cod": "50",
+     "nombre": "50-MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 30,
+     "modelos": 4
+    },
+    {
+     "cod": "55",
+     "nombre": "55-SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 42,
+     "modelos": 6
+    },
+    {
+     "cod": "18",
+     "nombre": "18-OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 52,
+     "modelos": 6
+    },
+    {
+     "cod": "47",
+     "nombre": "47-COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 10,
+     "modelos": 2
+    },
+    {
+     "cod": "64",
+     "nombre": "64-COQUIMBO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 10,
+     "modelos": 2
+    },
+    {
+     "cod": "26",
+     "nombre": "26-CHILLAN",
+     "sup": "EVA FONSECA",
+     "uds": 20,
+     "modelos": 2
+    },
+    {
+     "cod": "38",
+     "nombre": "38-TALCA",
+     "sup": "EVA FONSECA",
+     "uds": 10,
+     "modelos": 2
+    },
+    {
+     "cod": "53",
+     "nombre": "53-LOS ANGELES",
+     "sup": "EVA FONSECA",
+     "uds": 21,
+     "modelos": 6
+    },
+    {
+     "cod": "65",
+     "nombre": "65-LINARES",
+     "sup": "EVA FONSECA",
+     "uds": 20,
+     "modelos": 2
+    },
+    {
+     "cod": "86",
+     "nombre": "86-CURICO",
+     "sup": "EVA FONSECA",
+     "uds": 8,
+     "modelos": 2
+    },
+    {
+     "cod": "49",
+     "nombre": "49-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 54,
+     "modelos": 6
+    },
+    {
+     "cod": "45",
+     "nombre": "45-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 40,
+     "modelos": 6
+    },
+    {
+     "cod": "56",
+     "nombre": "56-TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 46,
+     "modelos": 4
+    }
+   ],
+   "subido": "2026-11-03T18:08:19.515Z"
+  },
   "523227": {
    "oc": "523227",
    "cliente": "Paris",
@@ -2693,6 +3274,201 @@
    ],
    "subido": "2026-10-27T20:22:14.317Z"
   },
+  "549440": {
+   "oc": "549440",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Calcetines",
+   "udsOC": 660,
+   "fuente": "Ordenes_Picking 03.11.xlsx",
+   "archivo": "Cargas_03.11_Paris_La_Polar_Hites-deporte.xlsx",
+   "uds": 660,
+   "modelos": 4,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "39",
+     "nombre": "39-PARIS CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 46,
+     "modelos": 2
+    },
+    {
+     "cod": "64",
+     "nombre": "64-PARIS FLORIDA CENTER",
+     "sup": "DAYAN PILICHI",
+     "uds": 31,
+     "modelos": 3
+    },
+    {
+     "cod": "105",
+     "nombre": "105-PARIS COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 173,
+     "modelos": 4
+    },
+    {
+     "cod": "21",
+     "nombre": "21-PARIS PLAZA LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 74,
+     "modelos": 3
+    },
+    {
+     "cod": "13",
+     "nombre": "13-PARIS VALPARAISO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 37,
+     "modelos": 3
+    },
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 83,
+     "modelos": 3
+    },
+    {
+     "cod": "109",
+     "nombre": "109-PARIS PORTAL OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 43,
+     "modelos": 3
+    },
+    {
+     "cod": "41",
+     "nombre": "41-PARIS PORTAL TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 75,
+     "modelos": 3
+    },
+    {
+     "cod": "103",
+     "nombre": "103-PARIS IQUIQUE",
+     "sup": "YESSICA GRENDY",
+     "uds": 50,
+     "modelos": 3
+    },
+    {
+     "cod": "110",
+     "nombre": "110-PARIS ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 48,
+     "modelos": 3
+    }
+   ],
+   "subido": "2026-11-03T18:08:19.515Z"
+  },
+  "552247": {
+   "oc": "552247",
+   "cliente": "Paris",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Ropa",
+   "udsOC": 5292,
+   "fuente": "Ordenes_Picking 03.11.xlsx",
+   "archivo": "Cargas_03.11_Paris_La_Polar_Hites-deporte.xlsx",
+   "uds": 5336,
+   "modelos": 10,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "118",
+     "nombre": "118-PARIS QUILIN",
+     "sup": "CATALINA BRAVO",
+     "uds": 320,
+     "modelos": 10
+    },
+    {
+     "cod": "407",
+     "nombre": "407-PARIS PUENTE ALTO",
+     "sup": "CATALINA BRAVO",
+     "uds": 320,
+     "modelos": 10
+    },
+    {
+     "cod": "433",
+     "nombre": "433-PARIS SAN FELIPE",
+     "sup": "DAYAN PILICHI",
+     "uds": 320,
+     "modelos": 10
+    },
+    {
+     "cod": "64",
+     "nombre": "64-PARIS FLORIDA CENTER",
+     "sup": "DAYAN PILICHI",
+     "uds": 416,
+     "modelos": 10
+    },
+    {
+     "cod": "89",
+     "nombre": "89-PARIS PLAZA VESPUCIO",
+     "sup": "DAYAN PILICHI",
+     "uds": 552,
+     "modelos": 10
+    },
+    {
+     "cod": "121",
+     "nombre": "121-PARIS OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 416,
+     "modelos": 10
+    },
+    {
+     "cod": "124",
+     "nombre": "124-PARIS COQUIMBO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 416,
+     "modelos": 10
+    },
+    {
+     "cod": "21",
+     "nombre": "21-PARIS PLAZA LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 552,
+     "modelos": 10
+    },
+    {
+     "cod": "40",
+     "nombre": "40-PARIS RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 416,
+     "modelos": 10
+    },
+    {
+     "cod": "464",
+     "nombre": "464-PARIS TALCAHUANO",
+     "sup": "GONZALO TOLEDO",
+     "uds": 320,
+     "modelos": 10
+    },
+    {
+     "cod": "107",
+     "nombre": "107-PARIS PORTAL BELLOTO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 320,
+     "modelos": 10
+    },
+    {
+     "cod": "13",
+     "nombre": "13-PARIS VALPARAISO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 552,
+     "modelos": 10
+    },
+    {
+     "cod": "110",
+     "nombre": "110-PARIS ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 416,
+     "modelos": 10
+    }
+   ],
+   "subido": "2026-11-03T18:08:19.515Z"
+  },
   "1817482": {
    "oc": "1817482",
    "cliente": "La Polar",
@@ -2922,6 +3698,115 @@
     }
    ],
    "subido": "2026-10-27T20:22:14.317Z"
+  },
+  "1829791": {
+   "oc": "1829791",
+   "cliente": "La Polar",
+   "depto": "Deporte",
+   "marca": "Umbro",
+   "comentario": "Calcetines",
+   "udsOC": 2615,
+   "fuente": "Ordenes_Picking 03.11.xlsx",
+   "archivo": "Cargas_03.11_Paris_La_Polar_Hites-deporte.xlsx",
+   "uds": 783,
+   "modelos": 5,
+   "sinSupervisor": [
+    "701-21 de mayo 455-459",
+    "724-Manuel Rodríguez 923",
+    "746-Manuel Montt 764",
+    "767-Av. Los Carrera 754, locales 118, 120, 122 y 124",
+    "786-Camilo Henríquez 522",
+    "788-San José 460–468",
+    "790-Av. Diego Portales 401"
+   ],
+   "udsOmitidas": 1832,
+   "tiendas": [
+    {
+     "cod": "23",
+     "nombre": "23-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 55,
+     "modelos": 2
+    },
+    {
+     "cod": "47",
+     "nombre": "47-CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 56,
+     "modelos": 2
+    },
+    {
+     "cod": "15",
+     "nombre": "15-COLINA",
+     "sup": "CATALINA BRAVO",
+     "uds": 55,
+     "modelos": 2
+    },
+    {
+     "cod": "25",
+     "nombre": "25-GRAN AVENIDA",
+     "sup": "CATALINA BRAVO",
+     "uds": 61,
+     "modelos": 3
+    },
+    {
+     "cod": "30",
+     "nombre": "30-LINARES",
+     "sup": "EVA FONSECA",
+     "uds": 63,
+     "modelos": 3
+    },
+    {
+     "cod": "4",
+     "nombre": "4-LOS ANGELES",
+     "sup": "EVA FONSECA",
+     "uds": 64,
+     "modelos": 3
+    },
+    {
+     "cod": "73",
+     "nombre": "73-CURICO II",
+     "sup": "EVA FONSECA",
+     "uds": 170,
+     "modelos": 5
+    },
+    {
+     "cod": "43",
+     "nombre": "43-SAN ANTONIO",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 30,
+     "modelos": 4
+    },
+    {
+     "cod": "17",
+     "nombre": "17-CORONEL",
+     "sup": "GONZALO TOLEDO",
+     "uds": 56,
+     "modelos": 3
+    },
+    {
+     "cod": "3",
+     "nombre": "3-QUILLOTA",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 63,
+     "modelos": 4
+    },
+    {
+     "cod": "28",
+     "nombre": "28-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 55,
+     "modelos": 2
+    },
+    {
+     "cod": "36",
+     "nombre": "36-PTA. ARENAS",
+     "sup": "TERESA LILLO",
+     "uds": 55,
+     "modelos": 2
+    }
+   ],
+   "subido": "2026-11-03T18:08:19.515Z"
   },
   "2323200": {
    "oc": "2323200",
@@ -5133,7 +6018,7 @@
    "subido": "2026-10-05T19:16:38.055Z"
   }
  },
- "actualizado": "2026-10-27T20:22:14.317Z",
+ "actualizado": "2026-11-03T18:08:19.515Z",
  "imagenes": {
   "subido": "2026-09-15T21:21:28.352Z",
   "modelos": 45486
