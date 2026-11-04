@@ -685,6 +685,93 @@
    ],
    "subido": "2026-11-03T18:08:19.515Z"
   },
+  "502709": {
+   "oc": "502709",
+   "cliente": "Hites",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "Zapatillas",
+   "udsOC": 302,
+   "fuente": "Ordenes_Picking 03.11.2026.xlsx",
+   "archivo": "Cargas_03.11_La_Polar_Hites_Falabella.xlsx",
+   "uds": 363,
+   "modelos": 5,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "59",
+     "nombre": "59-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 31,
+     "modelos": 4
+    },
+    {
+     "cod": "50",
+     "nombre": "50-MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 47,
+     "modelos": 4
+    },
+    {
+     "cod": "55",
+     "nombre": "55-SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 30,
+     "modelos": 3
+    },
+    {
+     "cod": "26",
+     "nombre": "26-CHILLAN",
+     "sup": "EVA FONSECA",
+     "uds": 29,
+     "modelos": 3
+    },
+    {
+     "cod": "38",
+     "nombre": "38-TALCA",
+     "sup": "EVA FONSECA",
+     "uds": 23,
+     "modelos": 4
+    },
+    {
+     "cod": "65",
+     "nombre": "65-LINARES",
+     "sup": "EVA FONSECA",
+     "uds": 44,
+     "modelos": 5
+    },
+    {
+     "cod": "49",
+     "nombre": "49-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 29,
+     "modelos": 4
+    },
+    {
+     "cod": "45",
+     "nombre": "45-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 44,
+     "modelos": 4
+    },
+    {
+     "cod": "56",
+     "nombre": "56-TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 31,
+     "modelos": 4
+    },
+    {
+     "cod": "78",
+     "nombre": "78-IQUIQUE",
+     "sup": "YESSICA GRENDY",
+     "uds": 55,
+     "modelos": 4
+    }
+   ],
+   "subido": "2026-11-04T13:44:01.895Z"
+  },
   "502711": {
    "oc": "502711",
    "cliente": "Hites",
@@ -4488,6 +4575,121 @@
    ],
    "subido": "2026-10-27T20:22:14.317Z"
   },
+  "1829765": {
+   "oc": "1829765",
+   "cliente": "La Polar",
+   "depto": "Juvenil",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 2433,
+   "fuente": "Ordenes_Picking 03.11.2026.xlsx",
+   "archivo": "Cargas_03.11_La_Polar_Hites_Falabella.xlsx",
+   "uds": 2435,
+   "modelos": 11,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "23",
+     "nombre": "23-ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 181,
+     "modelos": 11
+    },
+    {
+     "cod": "10",
+     "nombre": "10-MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 132,
+     "modelos": 6
+    },
+    {
+     "cod": "25",
+     "nombre": "25-GRAN AVENIDA",
+     "sup": "CATALINA BRAVO",
+     "uds": 253,
+     "modelos": 11
+    },
+    {
+     "cod": "45",
+     "nombre": "45-QUILIN",
+     "sup": "CATALINA BRAVO",
+     "uds": 66,
+     "modelos": 6
+    },
+    {
+     "cod": "32",
+     "nombre": "32-LOS ANDES",
+     "sup": "DAYAN PILICHI",
+     "uds": 258,
+     "modelos": 11
+    },
+    {
+     "cod": "38",
+     "nombre": "38-LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 253,
+     "modelos": 11
+    },
+    {
+     "cod": "41",
+     "nombre": "41-OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 254,
+     "modelos": 11
+    },
+    {
+     "cod": "30",
+     "nombre": "30-LINARES",
+     "sup": "EVA FONSECA",
+     "uds": 270,
+     "modelos": 11
+    },
+    {
+     "cod": "73",
+     "nombre": "73-CURICO II",
+     "sup": "EVA FONSECA",
+     "uds": 74,
+     "modelos": 7
+    },
+    {
+     "cod": "43",
+     "nombre": "43-SAN ANTONIO",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 132,
+     "modelos": 6
+    },
+    {
+     "cod": "5",
+     "nombre": "5-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 66,
+     "modelos": 6
+    },
+    {
+     "cod": "17",
+     "nombre": "17-CORONEL",
+     "sup": "GONZALO TOLEDO",
+     "uds": 177,
+     "modelos": 11
+    },
+    {
+     "cod": "27",
+     "nombre": "27-VINA",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 132,
+     "modelos": 6
+    },
+    {
+     "cod": "28",
+     "nombre": "28-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 187,
+     "modelos": 11
+    }
+   ],
+   "subido": "2026-11-04T13:44:01.895Z"
+  },
   "1829791": {
    "oc": "1829791",
    "cliente": "La Polar",
@@ -7034,9 +7236,154 @@
     }
    ],
    "subido": "2026-10-05T19:16:38.055Z"
+  },
+  "41108340": {
+   "oc": "41108340",
+   "cliente": "Falabella",
+   "depto": "Kids",
+   "marca": "Converse",
+   "comentario": "Zapatillas",
+   "udsOC": 420,
+   "fuente": "Ordenes_Picking 03.11.2026.xlsx",
+   "archivo": "Cargas_03.11_La_Polar_Hites_Falabella.xlsx",
+   "uds": 407,
+   "modelos": 20,
+   "sinSupervisor": [
+    "2262-SN FERN2"
+   ],
+   "udsOmitidas": 13,
+   "tiendas": [
+    {
+     "cod": "165",
+     "nombre": "165-CENTRO",
+     "sup": "ANGELICA GARCIA",
+     "uds": 23,
+     "modelos": 3
+    },
+    {
+     "cod": "3741",
+     "nombre": "3741-ARAUCO MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 108,
+     "modelos": 9
+    },
+    {
+     "cod": "1445",
+     "nombre": "1445-LA DEHESA",
+     "sup": "DAYAN PILICHI",
+     "uds": 16,
+     "modelos": 2
+    },
+    {
+     "cod": "9001",
+     "nombre": "9001-ALTO LAS CONDES",
+     "sup": "DAYAN PILICHI",
+     "uds": 13,
+     "modelos": 1
+    },
+    {
+     "cod": "2077",
+     "nombre": "2077-MALL COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 2,
+     "modelos": 1
+    },
+    {
+     "cod": "472",
+     "nombre": "472-LOS  ANGELES",
+     "sup": "EVA FONSECA",
+     "uds": 2,
+     "modelos": 1
+    },
+    {
+     "cod": "878",
+     "nombre": "878-CHILLAN",
+     "sup": "EVA FONSECA",
+     "uds": 27,
+     "modelos": 2
+    },
+    {
+     "cod": "3660",
+     "nombre": "3660-COSTANERA CENTER",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 35,
+     "modelos": 4
+    },
+    {
+     "cod": "3790",
+     "nombre": "3790-PLAZA EGANA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 31,
+     "modelos": 3
+    },
+    {
+     "cod": "438",
+     "nombre": "438-RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 38,
+     "modelos": 4
+    },
+    {
+     "cod": "802",
+     "nombre": "802-CONCEPCION CENTRO",
+     "sup": "GONZALO TOLEDO",
+     "uds": 25,
+     "modelos": 3
+    },
+    {
+     "cod": "510",
+     "nombre": "510-VIÑA DEL MAR",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 2,
+     "modelos": 1
+    },
+    {
+     "cod": "514",
+     "nombre": "514-ESPACIO URBANO VIÑA",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 15,
+     "modelos": 1
+    },
+    {
+     "cod": "2775",
+     "nombre": "2775-VALDIVIA",
+     "sup": "TERESA LILLO",
+     "uds": 8,
+     "modelos": 1
+    },
+    {
+     "cod": "307",
+     "nombre": "307-PUERTO MONTT",
+     "sup": "TERESA LILLO",
+     "uds": 18,
+     "modelos": 2
+    },
+    {
+     "cod": "570",
+     "nombre": "570-TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 15,
+     "modelos": 1
+    },
+    {
+     "cod": "836",
+     "nombre": "836-OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 24,
+     "modelos": 2
+    },
+    {
+     "cod": "2618",
+     "nombre": "2618-ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 5,
+     "modelos": 1
+    }
+   ],
+   "subido": "2026-11-04T13:44:01.895Z"
   }
  },
- "actualizado": "2026-11-03T18:15:15.935Z",
+ "actualizado": "2026-11-04T13:44:01.895Z",
  "imagenes": {
   "subido": "2026-09-15T21:21:28.352Z",
   "modelos": 45486
