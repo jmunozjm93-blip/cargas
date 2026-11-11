@@ -4345,6 +4345,666 @@
    ],
    "subido": "2026-11-03T18:08:19.515Z"
   },
+  "555987": {
+   "oc": "555987",
+   "cliente": "Paris",
+   "depto": "Kids",
+   "marca": "Converse",
+   "comentario": "Zapatillas",
+   "udsOC": 948,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 948,
+   "modelos": 20,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "104",
+     "nombre": "104-PARIS BANDERA",
+     "sup": "ANGELICA GARCIA",
+     "uds": 17,
+     "modelos": 3
+    },
+    {
+     "cod": "106",
+     "nombre": "106-PARIS MALL PASEO ESTACION",
+     "sup": "ANGELICA GARCIA",
+     "uds": 2,
+     "modelos": 2
+    },
+    {
+     "cod": "30",
+     "nombre": "30-PARIS ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 26,
+     "modelos": 9
+    },
+    {
+     "cod": "39",
+     "nombre": "39-PARIS CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 14,
+     "modelos": 6
+    },
+    {
+     "cod": "101",
+     "nombre": "101-PARIS SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 32,
+     "modelos": 7
+    },
+    {
+     "cod": "102",
+     "nombre": "102-PARIS ARAUCO MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 41,
+     "modelos": 6
+    },
+    {
+     "cod": "118",
+     "nombre": "118-PARIS QUILIN",
+     "sup": "CATALINA BRAVO",
+     "uds": 16,
+     "modelos": 5
+    },
+    {
+     "cod": "119",
+     "nombre": "119-PARIS QUILICURA",
+     "sup": "CATALINA BRAVO",
+     "uds": 23,
+     "modelos": 4
+    },
+    {
+     "cod": "108",
+     "nombre": "108-PARIS PORTAL NUNOA",
+     "sup": "DAYAN PILICHI",
+     "uds": 19,
+     "modelos": 6
+    },
+    {
+     "cod": "123",
+     "nombre": "123-PARIS LA DEHESA",
+     "sup": "DAYAN PILICHI",
+     "uds": 26,
+     "modelos": 4
+    },
+    {
+     "cod": "20",
+     "nombre": "20-PARIS ALTO LAS CONDES",
+     "sup": "DAYAN PILICHI",
+     "uds": 8,
+     "modelos": 3
+    },
+    {
+     "cod": "64",
+     "nombre": "64-PARIS FLORIDA CENTER",
+     "sup": "DAYAN PILICHI",
+     "uds": 14,
+     "modelos": 2
+    },
+    {
+     "cod": "88",
+     "nombre": "88-PARIS PARQUE ARAUCO",
+     "sup": "DAYAN PILICHI",
+     "uds": 27,
+     "modelos": 3
+    },
+    {
+     "cod": "89",
+     "nombre": "89-PARIS PLAZA VESPUCIO",
+     "sup": "DAYAN PILICHI",
+     "uds": 128,
+     "modelos": 13
+    },
+    {
+     "cod": "105",
+     "nombre": "105-PARIS COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 24,
+     "modelos": 5
+    },
+    {
+     "cod": "121",
+     "nombre": "121-PARIS OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 9,
+     "modelos": 5
+    },
+    {
+     "cod": "124",
+     "nombre": "124-PARIS COQUIMBO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 10,
+     "modelos": 2
+    },
+    {
+     "cod": "21",
+     "nombre": "21-PARIS PLAZA LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 31,
+     "modelos": 7
+    },
+    {
+     "cod": "131",
+     "nombre": "131-PARIS MAULE",
+     "sup": "EVA FONSECA",
+     "uds": 4,
+     "modelos": 2
+    },
+    {
+     "cod": "19",
+     "nombre": "19-PARIS CURICO",
+     "sup": "EVA FONSECA",
+     "uds": 19,
+     "modelos": 3
+    },
+    {
+     "cod": "44",
+     "nombre": "44-PARIS LOS ANGELES",
+     "sup": "EVA FONSECA",
+     "uds": 89,
+     "modelos": 11
+    },
+    {
+     "cod": "60",
+     "nombre": "60-PARIS EL ROBLE",
+     "sup": "EVA FONSECA",
+     "uds": 16,
+     "modelos": 5
+    },
+    {
+     "cod": "10",
+     "nombre": "10-PARIS PLAZA OESTE",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 17,
+     "modelos": 5
+    },
+    {
+     "cod": "111",
+     "nombre": "111-PARIS SAN ANTONIO",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 24,
+     "modelos": 7
+    },
+    {
+     "cod": "115",
+     "nombre": "115-PARIS COSTANERA CENTER",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 3,
+     "modelos": 2
+    },
+    {
+     "cod": "37",
+     "nombre": "37-PARIS HUECHURABA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 13,
+     "modelos": 5
+    },
+    {
+     "cod": "40",
+     "nombre": "40-PARIS RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 78,
+     "modelos": 7
+    },
+    {
+     "cod": "9",
+     "nombre": "9-PARIS LYON",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 21,
+     "modelos": 2
+    },
+    {
+     "cod": "16",
+     "nombre": "16-PARIS PLAZA DEL TREBOL",
+     "sup": "GONZALO TOLEDO",
+     "uds": 15,
+     "modelos": 3
+    },
+    {
+     "cod": "17",
+     "nombre": "17-PARIS BARROS ARANA",
+     "sup": "GONZALO TOLEDO",
+     "uds": 6,
+     "modelos": 3
+    },
+    {
+     "cod": "107",
+     "nombre": "107-PARIS PORTAL BELLOTO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 26,
+     "modelos": 4
+    },
+    {
+     "cod": "13",
+     "nombre": "13-PARIS VALPARAISO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 15,
+     "modelos": 5
+    },
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 25,
+     "modelos": 5
+    },
+    {
+     "cod": "25",
+     "nombre": "25-PARIS PUERTO MONTT",
+     "sup": "TERESA LILLO",
+     "uds": 23,
+     "modelos": 2
+    },
+    {
+     "cod": "41",
+     "nombre": "41-PARIS PORTAL TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 29,
+     "modelos": 5
+    },
+    {
+     "cod": "87",
+     "nombre": "87-PARIS TEMUCO CENTRO",
+     "sup": "TERESA LILLO",
+     "uds": 23,
+     "modelos": 4
+    },
+    {
+     "cod": "103",
+     "nombre": "103-PARIS IQUIQUE",
+     "sup": "YESSICA GRENDY",
+     "uds": 32,
+     "modelos": 6
+    },
+    {
+     "cod": "110",
+     "nombre": "110-PARIS ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 3,
+     "modelos": 2
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "556033": {
+   "oc": "556033",
+   "cliente": "Paris",
+   "depto": "Juvenil",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 4213,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 4213,
+   "modelos": 17,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "104",
+     "nombre": "104-PARIS BANDERA",
+     "sup": "ANGELICA GARCIA",
+     "uds": 182,
+     "modelos": 15
+    },
+    {
+     "cod": "106",
+     "nombre": "106-PARIS MALL PASEO ESTACION",
+     "sup": "ANGELICA GARCIA",
+     "uds": 82,
+     "modelos": 12
+    },
+    {
+     "cod": "30",
+     "nombre": "30-PARIS ANTOFAGASTA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 166,
+     "modelos": 15
+    },
+    {
+     "cod": "39",
+     "nombre": "39-PARIS CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 19,
+     "modelos": 7
+    },
+    {
+     "cod": "101",
+     "nombre": "101-PARIS SAN BERNARDO",
+     "sup": "CATALINA BRAVO",
+     "uds": 91,
+     "modelos": 10
+    },
+    {
+     "cod": "102",
+     "nombre": "102-PARIS ARAUCO MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 119,
+     "modelos": 13
+    },
+    {
+     "cod": "118",
+     "nombre": "118-PARIS QUILIN",
+     "sup": "CATALINA BRAVO",
+     "uds": 53,
+     "modelos": 9
+    },
+    {
+     "cod": "119",
+     "nombre": "119-PARIS QUILICURA",
+     "sup": "CATALINA BRAVO",
+     "uds": 80,
+     "modelos": 10
+    },
+    {
+     "cod": "407",
+     "nombre": "407-PARIS PUENTE ALTO",
+     "sup": "CATALINA BRAVO",
+     "uds": 109,
+     "modelos": 14
+    },
+    {
+     "cod": "424",
+     "nombre": "424-PARIS EL LLANO",
+     "sup": "CATALINA BRAVO",
+     "uds": 139,
+     "modelos": 15
+    },
+    {
+     "cod": "108",
+     "nombre": "108-PARIS PORTAL NUNOA",
+     "sup": "DAYAN PILICHI",
+     "uds": 101,
+     "modelos": 11
+    },
+    {
+     "cod": "20",
+     "nombre": "20-PARIS ALTO LAS CONDES",
+     "sup": "DAYAN PILICHI",
+     "uds": 160,
+     "modelos": 15
+    },
+    {
+     "cod": "433",
+     "nombre": "433-PARIS SAN FELIPE",
+     "sup": "DAYAN PILICHI",
+     "uds": 78,
+     "modelos": 11
+    },
+    {
+     "cod": "64",
+     "nombre": "64-PARIS FLORIDA CENTER",
+     "sup": "DAYAN PILICHI",
+     "uds": 95,
+     "modelos": 15
+    },
+    {
+     "cod": "88",
+     "nombre": "88-PARIS PARQUE ARAUCO",
+     "sup": "DAYAN PILICHI",
+     "uds": 99,
+     "modelos": 9
+    },
+    {
+     "cod": "105",
+     "nombre": "105-PARIS COPIAPO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 243,
+     "modelos": 17
+    },
+    {
+     "cod": "121",
+     "nombre": "121-PARIS OVALLE",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 177,
+     "modelos": 15
+    },
+    {
+     "cod": "124",
+     "nombre": "124-PARIS COQUIMBO",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 209,
+     "modelos": 15
+    },
+    {
+     "cod": "21",
+     "nombre": "21-PARIS PLAZA LA SERENA",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 60,
+     "modelos": 11
+    },
+    {
+     "cod": "131",
+     "nombre": "131-PARIS MAULE",
+     "sup": "EVA FONSECA",
+     "uds": 99,
+     "modelos": 11
+    },
+    {
+     "cod": "19",
+     "nombre": "19-PARIS CURICO",
+     "sup": "EVA FONSECA",
+     "uds": 88,
+     "modelos": 15
+    },
+    {
+     "cod": "10",
+     "nombre": "10-PARIS PLAZA OESTE",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 6,
+     "modelos": 4
+    },
+    {
+     "cod": "111",
+     "nombre": "111-PARIS SAN ANTONIO",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 102,
+     "modelos": 12
+    },
+    {
+     "cod": "115",
+     "nombre": "115-PARIS COSTANERA CENTER",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 197,
+     "modelos": 17
+    },
+    {
+     "cod": "125",
+     "nombre": "125-PARIS INDEPENDENCIA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 70,
+     "modelos": 9
+    },
+    {
+     "cod": "40",
+     "nombre": "40-PARIS RANCAGUA",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 122,
+     "modelos": 14
+    },
+    {
+     "cod": "16",
+     "nombre": "16-PARIS PLAZA DEL TREBOL",
+     "sup": "GONZALO TOLEDO",
+     "uds": 134,
+     "modelos": 14
+    },
+    {
+     "cod": "17",
+     "nombre": "17-PARIS BARROS ARANA",
+     "sup": "GONZALO TOLEDO",
+     "uds": 152,
+     "modelos": 15
+    },
+    {
+     "cod": "464",
+     "nombre": "464-PARIS TALCAHUANO",
+     "sup": "GONZALO TOLEDO",
+     "uds": 193,
+     "modelos": 17
+    },
+    {
+     "cod": "479",
+     "nombre": "479-PARIS CORONEL",
+     "sup": "GONZALO TOLEDO",
+     "uds": 103,
+     "modelos": 13
+    },
+    {
+     "cod": "107",
+     "nombre": "107-PARIS PORTAL BELLOTO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 23,
+     "modelos": 5
+    },
+    {
+     "cod": "13",
+     "nombre": "13-PARIS VALPARAISO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 51,
+     "modelos": 11
+    },
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 117,
+     "modelos": 15
+    },
+    {
+     "cod": "109",
+     "nombre": "109-PARIS PORTAL OSORNO",
+     "sup": "TERESA LILLO",
+     "uds": 62,
+     "modelos": 12
+    },
+    {
+     "cod": "25",
+     "nombre": "25-PARIS PUERTO MONTT",
+     "sup": "TERESA LILLO",
+     "uds": 99,
+     "modelos": 14
+    },
+    {
+     "cod": "41",
+     "nombre": "41-PARIS PORTAL TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 29,
+     "modelos": 9
+    },
+    {
+     "cod": "87",
+     "nombre": "87-PARIS TEMUCO CENTRO",
+     "sup": "TERESA LILLO",
+     "uds": 95,
+     "modelos": 11
+    },
+    {
+     "cod": "103",
+     "nombre": "103-PARIS IQUIQUE",
+     "sup": "YESSICA GRENDY",
+     "uds": 14,
+     "modelos": 7
+    },
+    {
+     "cod": "110",
+     "nombre": "110-PARIS ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 195,
+     "modelos": 17
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "556034": {
+   "oc": "556034",
+   "cliente": "Paris",
+   "depto": "Juvenil",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 5588,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 5596,
+   "modelos": 38,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "104",
+     "nombre": "104-PARIS BANDERA",
+     "sup": "ANGELICA GARCIA",
+     "uds": 443,
+     "modelos": 29
+    },
+    {
+     "cod": "39",
+     "nombre": "39-PARIS CALAMA",
+     "sup": "CAMILA GUERRERO",
+     "uds": 709,
+     "modelos": 30
+    },
+    {
+     "cod": "102",
+     "nombre": "102-PARIS ARAUCO MAIPU",
+     "sup": "CATALINA BRAVO",
+     "uds": 253,
+     "modelos": 23
+    },
+    {
+     "cod": "19",
+     "nombre": "19-PARIS CURICO",
+     "sup": "EVA FONSECA",
+     "uds": 301,
+     "modelos": 29
+    },
+    {
+     "cod": "10",
+     "nombre": "10-PARIS PLAZA OESTE",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 328,
+     "modelos": 27
+    },
+    {
+     "cod": "13",
+     "nombre": "13-PARIS VALPARAISO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 984,
+     "modelos": 32
+    },
+    {
+     "cod": "22",
+     "nombre": "22-PARIS MARINA ARAUCO",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 412,
+     "modelos": 29
+    },
+    {
+     "cod": "41",
+     "nombre": "41-PARIS PORTAL TEMUCO",
+     "sup": "TERESA LILLO",
+     "uds": 861,
+     "modelos": 36
+    },
+    {
+     "cod": "103",
+     "nombre": "103-PARIS IQUIQUE",
+     "sup": "YESSICA GRENDY",
+     "uds": 743,
+     "modelos": 29
+    },
+    {
+     "cod": "110",
+     "nombre": "110-PARIS ARICA",
+     "sup": "YESSICA GRENDY",
+     "uds": 562,
+     "modelos": 30
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
   "1817482": {
    "oc": "1817482",
    "cliente": "La Polar",
@@ -5880,6 +6540,632 @@
    ],
    "subido": "2026-11-03T18:15:15.935Z"
   },
+  "2326131": {
+   "oc": "2326131",
+   "cliente": "Ripley",
+   "depto": "Juvenil",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 463,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 463,
+   "modelos": 7,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "10026",
+     "nombre": "10026-Antofagasta",
+     "sup": "CAMILA GUERRERO",
+     "uds": 99,
+     "modelos": 5
+    },
+    {
+     "cod": "10057",
+     "nombre": "10057-Florida Center",
+     "sup": "DAYAN PILICHI",
+     "uds": 58,
+     "modelos": 5
+    },
+    {
+     "cod": "10071",
+     "nombre": "10071-Plaza Egana",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 97,
+     "modelos": 7
+    },
+    {
+     "cod": "10014",
+     "nombre": "10014-Puerto Montt",
+     "sup": "TERESA LILLO",
+     "uds": 116,
+     "modelos": 7
+    },
+    {
+     "cod": "10049",
+     "nombre": "10049-Iquique",
+     "sup": "YESSICA GRENDY",
+     "uds": 93,
+     "modelos": 5
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "2326136": {
+   "oc": "2326136",
+   "cliente": "Ripley",
+   "depto": "Juvenil",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 209,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 209,
+   "modelos": 10,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "10026",
+     "nombre": "10026-Antofagasta",
+     "sup": "CAMILA GUERRERO",
+     "uds": 88,
+     "modelos": 8
+    },
+    {
+     "cod": "10057",
+     "nombre": "10057-Florida Center",
+     "sup": "DAYAN PILICHI",
+     "uds": 11,
+     "modelos": 1
+    },
+    {
+     "cod": "10071",
+     "nombre": "10071-Plaza Egana",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 7,
+     "modelos": 3
+    },
+    {
+     "cod": "10014",
+     "nombre": "10014-Puerto Montt",
+     "sup": "TERESA LILLO",
+     "uds": 13,
+     "modelos": 2
+    },
+    {
+     "cod": "10049",
+     "nombre": "10049-Iquique",
+     "sup": "YESSICA GRENDY",
+     "uds": 90,
+     "modelos": 9
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "2326162": {
+   "oc": "2326162",
+   "cliente": "Ripley",
+   "depto": "Juvenil",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 6012,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 5437,
+   "modelos": 14,
+   "sinSupervisor": [
+    "10023-10023D"
+   ],
+   "udsOmitidas": 575,
+   "tiendas": [
+    {
+     "cod": "10026",
+     "nombre": "10026-Antofagasta",
+     "sup": "CAMILA GUERRERO",
+     "uds": 729,
+     "modelos": 14
+    },
+    {
+     "cod": "10012",
+     "nombre": "10012-Parque Arauco",
+     "sup": "DAYAN PILICHI",
+     "uds": 406,
+     "modelos": 13
+    },
+    {
+     "cod": "10016",
+     "nombre": "10016-Plaza Vespucio",
+     "sup": "DAYAN PILICHI",
+     "uds": 303,
+     "modelos": 11
+    },
+    {
+     "cod": "10057",
+     "nombre": "10057-Florida Center",
+     "sup": "DAYAN PILICHI",
+     "uds": 286,
+     "modelos": 7
+    },
+    {
+     "cod": "10041",
+     "nombre": "10041-La Serena",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 680,
+     "modelos": 14
+    },
+    {
+     "cod": "10032",
+     "nombre": "10032-Rancagua",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 288,
+     "modelos": 10
+    },
+    {
+     "cod": "10034",
+     "nombre": "10034-Costanera Center",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 445,
+     "modelos": 13
+    },
+    {
+     "cod": "10002",
+     "nombre": "10002-Mall Concepcion",
+     "sup": "GONZALO TOLEDO",
+     "uds": 427,
+     "modelos": 13
+    },
+    {
+     "cod": "10028",
+     "nombre": "10028-El Trebol",
+     "sup": "GONZALO TOLEDO",
+     "uds": 342,
+     "modelos": 12
+    },
+    {
+     "cod": "10014",
+     "nombre": "10014-Puerto Montt",
+     "sup": "TERESA LILLO",
+     "uds": 789,
+     "modelos": 14
+    },
+    {
+     "cod": "10049",
+     "nombre": "10049-Iquique",
+     "sup": "YESSICA GRENDY",
+     "uds": 742,
+     "modelos": 14
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "2326163": {
+   "oc": "2326163",
+   "cliente": "Ripley",
+   "depto": "Juvenil",
+   "marca": "Converse",
+   "comentario": "Ropa",
+   "udsOC": 2758,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 2758,
+   "modelos": 13,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "10099",
+     "nombre": "10099-San Bernardo",
+     "sup": "CATALINA BRAVO",
+     "uds": 556,
+     "modelos": 13
+    },
+    {
+     "cod": "10057",
+     "nombre": "10057-Florida Center",
+     "sup": "DAYAN PILICHI",
+     "uds": 363,
+     "modelos": 8
+    },
+    {
+     "cod": "10072",
+     "nombre": "10072-Los Angeles",
+     "sup": "EVA FONSECA",
+     "uds": 402,
+     "modelos": 12
+    },
+    {
+     "cod": "10071",
+     "nombre": "10071-Plaza Egana",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 691,
+     "modelos": 13
+    },
+    {
+     "cod": "10068",
+     "nombre": "10068-Portal Temuco",
+     "sup": "TERESA LILLO",
+     "uds": 332,
+     "modelos": 12
+    },
+    {
+     "cod": "10078",
+     "nombre": "10078-M.Costanera P.Montt",
+     "sup": "TERESA LILLO",
+     "uds": 414,
+     "modelos": 12
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "2326210": {
+   "oc": "2326210",
+   "cliente": "Ripley",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "Zapatillas",
+   "udsOC": 1111,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 1082,
+   "modelos": 32,
+   "sinSupervisor": [
+    "10023-10023D"
+   ],
+   "udsOmitidas": 29,
+   "tiendas": [
+    {
+     "cod": "10018",
+     "nombre": "10018-Puente",
+     "sup": "ANGELICA GARCIA",
+     "uds": 28,
+     "modelos": 8
+    },
+    {
+     "cod": "10019",
+     "nombre": "10019-Crillon",
+     "sup": "ANGELICA GARCIA",
+     "uds": 36,
+     "modelos": 10
+    },
+    {
+     "cod": "10026",
+     "nombre": "10026-Antofagasta",
+     "sup": "CAMILA GUERRERO",
+     "uds": 39,
+     "modelos": 10
+    },
+    {
+     "cod": "10010",
+     "nombre": "10010-Los Andes",
+     "sup": "DAYAN PILICHI",
+     "uds": 194,
+     "modelos": 23
+    },
+    {
+     "cod": "10012",
+     "nombre": "10012-Parque Arauco",
+     "sup": "DAYAN PILICHI",
+     "uds": 41,
+     "modelos": 9
+    },
+    {
+     "cod": "10016",
+     "nombre": "10016-Plaza Vespucio",
+     "sup": "DAYAN PILICHI",
+     "uds": 87,
+     "modelos": 14
+    },
+    {
+     "cod": "10022",
+     "nombre": "10022-Chillan",
+     "sup": "EVA FONSECA",
+     "uds": 65,
+     "modelos": 10
+    },
+    {
+     "cod": "10032",
+     "nombre": "10032-Rancagua",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 129,
+     "modelos": 20
+    },
+    {
+     "cod": "10034",
+     "nombre": "10034-Costanera Center",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 18,
+     "modelos": 3
+    },
+    {
+     "cod": "10002",
+     "nombre": "10002-Mall Concepcion",
+     "sup": "GONZALO TOLEDO",
+     "uds": 115,
+     "modelos": 12
+    },
+    {
+     "cod": "10011",
+     "nombre": "10011-Concepcion 2",
+     "sup": "GONZALO TOLEDO",
+     "uds": 35,
+     "modelos": 6
+    },
+    {
+     "cod": "10028",
+     "nombre": "10028-El Trebol",
+     "sup": "GONZALO TOLEDO",
+     "uds": 83,
+     "modelos": 15
+    },
+    {
+     "cod": "10003",
+     "nombre": "10003-Vina",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 26,
+     "modelos": 4
+    },
+    {
+     "cod": "10025",
+     "nombre": "10025-Valparaiso",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 103,
+     "modelos": 12
+    },
+    {
+     "cod": "10004",
+     "nombre": "10004-Temuco",
+     "sup": "TERESA LILLO",
+     "uds": 15,
+     "modelos": 7
+    },
+    {
+     "cod": "10014",
+     "nombre": "10014-Puerto Montt",
+     "sup": "TERESA LILLO",
+     "uds": 49,
+     "modelos": 10
+    },
+    {
+     "cod": "10021",
+     "nombre": "10021-Arica",
+     "sup": "YESSICA GRENDY",
+     "uds": 19,
+     "modelos": 6
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "2326211": {
+   "oc": "2326211",
+   "cliente": "Ripley",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "Zapatillas",
+   "udsOC": 1168,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 1168,
+   "modelos": 35,
+   "sinSupervisor": [],
+   "udsOmitidas": 0,
+   "tiendas": [
+    {
+     "cod": "10051",
+     "nombre": "10051-Mall Calama",
+     "sup": "CAMILA GUERRERO",
+     "uds": 35,
+     "modelos": 10
+    },
+    {
+     "cod": "10046",
+     "nombre": "10046-Plaza Tobalaba",
+     "sup": "CATALINA BRAVO",
+     "uds": 39,
+     "modelos": 5
+    },
+    {
+     "cod": "10057",
+     "nombre": "10057-Florida Center",
+     "sup": "DAYAN PILICHI",
+     "uds": 30,
+     "modelos": 7
+    },
+    {
+     "cod": "10041",
+     "nombre": "10041-La Serena",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 158,
+     "modelos": 20
+    },
+    {
+     "cod": "10069",
+     "nombre": "10069-Coquimbo",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 208,
+     "modelos": 21
+    },
+    {
+     "cod": "10034",
+     "nombre": "10034-Costanera Center",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 33,
+     "modelos": 6
+    },
+    {
+     "cod": "10045",
+     "nombre": "10045-Plaza Oeste",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 95,
+     "modelos": 14
+    },
+    {
+     "cod": "10048",
+     "nombre": "10048-Huechuraba",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 222,
+     "modelos": 24
+    },
+    {
+     "cod": "10037",
+     "nombre": "10037-Marina Arauco",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 87,
+     "modelos": 11
+    },
+    {
+     "cod": "10068",
+     "nombre": "10068-Portal Temuco",
+     "sup": "TERESA LILLO",
+     "uds": 115,
+     "modelos": 18
+    },
+    {
+     "cod": "10049",
+     "nombre": "10049-Iquique",
+     "sup": "YESSICA GRENDY",
+     "uds": 146,
+     "modelos": 20
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "2326212": {
+   "oc": "2326212",
+   "cliente": "Ripley",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "Zapatillas",
+   "udsOC": 1229,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 1080,
+   "modelos": 35,
+   "sinSupervisor": [
+    "10067-Eleuterio Ramírez 1076"
+   ],
+   "udsOmitidas": 149,
+   "tiendas": [
+    {
+     "cod": "10097",
+     "nombre": "10097-Nueva Alameda",
+     "sup": "ANGELICA GARCIA",
+     "uds": 58,
+     "modelos": 6
+    },
+    {
+     "cod": "10088",
+     "nombre": "10088-Maipu",
+     "sup": "CATALINA BRAVO",
+     "uds": 51,
+     "modelos": 7
+    },
+    {
+     "cod": "10099",
+     "nombre": "10099-San Bernardo",
+     "sup": "CATALINA BRAVO",
+     "uds": 16,
+     "modelos": 2
+    },
+    {
+     "cod": "10069",
+     "nombre": "10069-Coquimbo",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 6,
+     "modelos": 1
+    },
+    {
+     "cod": "10084",
+     "nombre": "10084-Copiapo",
+     "sup": "ERIKA ZUAZUA",
+     "uds": 178,
+     "modelos": 19
+    },
+    {
+     "cod": "10072",
+     "nombre": "10072-Los Angeles",
+     "sup": "EVA FONSECA",
+     "uds": 25,
+     "modelos": 5
+    },
+    {
+     "cod": "10074",
+     "nombre": "10074-Talca",
+     "sup": "EVA FONSECA",
+     "uds": 19,
+     "modelos": 7
+    },
+    {
+     "cod": "10076",
+     "nombre": "10076-Curico",
+     "sup": "EVA FONSECA",
+     "uds": 18,
+     "modelos": 5
+    },
+    {
+     "cod": "10071",
+     "nombre": "10071-Plaza Egana",
+     "sup": "FERNANDA CARRASCO",
+     "uds": 185,
+     "modelos": 20
+    },
+    {
+     "cod": "10079",
+     "nombre": "10079-La Calera",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 22,
+     "modelos": 3
+    },
+    {
+     "cod": "10085",
+     "nombre": "10085-Quilpue",
+     "sup": "PAOLA BAHAMONDES",
+     "uds": 30,
+     "modelos": 5
+    },
+    {
+     "cod": "10078",
+     "nombre": "10078-M.Costanera P.Montt",
+     "sup": "TERESA LILLO",
+     "uds": 212,
+     "modelos": 22
+    },
+    {
+     "cod": "10096",
+     "nombre": "10096-Punta Arenas",
+     "sup": "TERESA LILLO",
+     "uds": 154,
+     "modelos": 14
+    },
+    {
+     "cod": "10098",
+     "nombre": "10098-Nueva Valdivia Store",
+     "sup": "TERESA LILLO",
+     "uds": 106,
+     "modelos": 13
+    }
+   ],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
+  "2326213": {
+   "oc": "2326213",
+   "cliente": "Ripley",
+   "depto": "Deporte",
+   "marca": "Converse",
+   "comentario": "Zapatillas",
+   "udsOC": 82,
+   "fuente": "Ordenes_Picking 11.11.xlsx",
+   "archivo": "Cargas_11.11_Ripley_Paris.xlsx",
+   "uds": 0,
+   "modelos": 6,
+   "sinSupervisor": [
+    "10067-Eleuterio Ramírez 1076"
+   ],
+   "udsOmitidas": 82,
+   "tiendas": [],
+   "subido": "2026-11-11T18:28:43.844Z"
+  },
   "12803302": {
    "oc": "12803302",
    "cliente": "Ripley",
@@ -7383,7 +8669,7 @@
    "subido": "2026-11-04T13:44:01.895Z"
   }
  },
- "actualizado": "2026-11-04T13:44:01.895Z",
+ "actualizado": "2026-11-11T18:28:43.844Z",
  "imagenes": {
   "subido": "2026-09-15T21:21:28.352Z",
   "modelos": 45486
