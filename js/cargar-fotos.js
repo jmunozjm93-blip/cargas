@@ -10,7 +10,9 @@
     </div><p class="small">Hasta 100 fotos por carga, máximo 15 MB por foto. Se guardan optimizadas. Solo se completan códigos sin foto registrada; un enlace existente que no abre no se considera faltante.</p>
     <p id="fotoStatus" role="status" aria-live="polite"></p><div id="fotoLista"></div>
     <button type="button" id="fotoSubir" disabled>Subir fotos faltantes</button> <button type="button" id="fotoLimpiar">Limpiar selección</button>`;
-  document.querySelector('main').append(box);
+  // va antes de la lista de OC publicadas: primero lo que se carga, al final lo que ya está
+  const lista = document.getElementById('boxEstado');
+  if (lista) lista.before(box); else document.querySelector('main').append(box);
   const q = id => box.querySelector('#' + id);
   let rows = [], busy = false;
   const status = text => { q('fotoStatus').textContent = text; };

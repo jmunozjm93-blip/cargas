@@ -73,17 +73,19 @@
   </div>
 
   <div class="box">
-    <h2>2 · OC publicadas</h2>
-    <div id="estado" class="small">Cargando…</div>
-  </div>
-
-  <div class="box">
-    <h2>3 · Adjuntar archivos</h2>
+    <h2>2 · Adjuntar archivos</h2>
     <div class="drop" id="drop">Arrastra aquí los Excel de cargas, <b>Supervisores_Consolidado.xlsx</b> o <b>Excel_Macro.xlsx</b><br><span class="small">Se aceptan varios a la vez; se procesan de a uno.</span>
       <div style="margin-top:14px"><label for="file" class="btnfile">Elegir archivos…</label></div>
       <input type="file" id="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple>
     </div>
     <div id="cards"></div>
+  </div>
+
+  <!-- aquí se inserta "Fotos faltantes" (js/cargar-fotos.js), antes de la lista -->
+
+  <div class="box" id="boxEstado">
+    <h2>OC publicadas</h2>
+    <div id="estado" class="small">Cargando…</div>
   </div>
 </main>
 
